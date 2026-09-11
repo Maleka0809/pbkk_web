@@ -1,0 +1,50 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+.judul {
+    text-align: center;
+    text-color: #333;
+}
+
+.isi {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.navbar {
+    background-color: #737070;
+    padding: 10px;
+}
+
+.selected {
+    background-color: #4b4b4b;
+    font-weight: bold;
+    padding: 10px;
+    color: rgb(182, 178, 178);
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+.nav-link:hover {
+    background-color: #555;
+    color: #857272;
+}
+
+.identitas {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.label-tugas {
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
