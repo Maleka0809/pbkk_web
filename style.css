@@ -47,4 +47,9 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
     text-decoration: none;
+    background-color: #4b4b4b;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+
 }
