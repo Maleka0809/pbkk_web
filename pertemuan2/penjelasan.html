@@ -42,6 +42,7 @@
     </code></pre>
     <h3>Logika Menu Dashboard (C#)</h3>
     <p>Pada bagian Dashboard, aplikasi hanya berisi tombol menu navigasi. Setiap kali tombol ditekan, ia akan memanggil halaman (Window) baru yang dikhususkan untuk satu fungsi (Tambah, Cari, Hapus, Lihat). Berikut adalah penjelasan logika C# pada masing-masing tombol:</p>
+    <img src="Dokumentasi/halaman-menu.png" alt="Halaman Menu Dashboard" width="400">
 
     <h4>1. Tombol Tambah Data</h4>
     <pre class="language-csharp"><code>
@@ -52,6 +53,7 @@
     }
     </code></pre>
     <p>Metode ini membuat instance dari class <code>TambahData</code> (yang merupakan halaman window baru) lalu menampilkannya menggunakan <code>ShowDialog()</code>. Penggunaan <code>ShowDialog()</code> bertujuan agar pengguna harus menyelesaikan aktivitas di jendela tersebut sebelum bisa kembali menekan menu di Dashboard.</p>
+    <img src="Dokumentasi/tambah-data.png" alt="Form Tambah Data" width="400">
 
     <h4>2. Tombol Cari Data</h4>
     <pre class="language-csharp"><code>
@@ -62,6 +64,8 @@
     }
     </code></pre>
     <p>Fungsi ini membuka jendela <code>CariData</code> tempat pengguna bisa memasukkan NIM untuk mencari data yang ada di <code>DataStore</code>.</p>
+    <img src="Dokumentasi/cari-data-nrp.png" alt="Cari Data NIM" width="400">
+    <img src="Dokumentasi/cari-data-nama.png" alt="Cari Data Nama" width="400">
 
     <h4>3. Tombol Hapus Data</h4>
     <pre class="language-csharp"><code>
@@ -72,6 +76,8 @@
     }
     </code></pre>
     <p>Fungsi ini akan membuka jendela <code>HapusData</code> untuk memproses penghapusan data dari list mahasiswa.</p>
+    <img src="Dokumentasi/hapus-data.png" alt="Hapus Data" width="400">
+    <img src="Dokumentasi/data-after-hapus.png" alt="Data Setelah Dihapus" width="400">
 
     <h4>4. Tombol Lihat Data</h4>
     <pre class="language-csharp"><code>
@@ -82,6 +88,7 @@
     }
     </code></pre>
     <p>Tombol ini memanggil jendela <code>LihatData</code> yang berisi sebuah tabel (DataGrid) yang terhubung ke data mahasiswa untuk menampilkan isi daftarnya.</p>
+    <img src="Dokumentasi/lihat-data.png" alt="Lihat Data" width="500">
 
     <h4>5. Tombol Keluar</h4>
     <pre class="language-csharp"><code>
