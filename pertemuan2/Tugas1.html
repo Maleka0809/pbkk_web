@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-    
+
     <div class="navbar">
-            <a class="nav-link" href="../index.html">Home</a>
-            <a class = "nav-link" href="../Tugas.html">Tugas</a>
-            <a class="nav-link" href="../contact.html">Contact</a>
-    
-        </div>
-    <div class = "judul">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../contact.html">Contact</a>
+
+    </div>
+    <div class="judul">
         <h1>Penjelasan Tugas 1</h1>
-    </div>    
+    </div>
 
     <div class="isi">
-    <h2>Soal :</h2>
-    <p>Membuat aplikasi desktop sederhana sistem pendataan mahasiswa, dengan fitur-fitur : 
+        <h2>Soal :</h2>
+        <p>Membuat aplikasi desktop sederhana sistem pendataan mahasiswa, dengan fitur-fitur :
         <ul>
             <li>Menambah data mahasiswa.</li>
             <li>Mencari data mahasiswa berdasarkan NIM atau nama.</li>
             <li>Menghapus data mahasiswa.</li>
             <li>Menampilkan daftar semua mahasiswa.</li>
             <li>keluar dari aplikasi.</li>
-        </ul> 
-    </p>
-    <h2>Jawaban :</h2> 
-    <a href="https://github.com/Maleka0809/pbkk_web/tree/main/pertemuan2/AplikasiDesktop">github code</a>
-    <p>Disini saya menggunakan framework .NET. bahasa yang digunakan yaitu bahasa C# sebagai logika dan bahasa XAML untuk tampilan.</p> 
+        </ul>
+        </p>
+        <h2>Jawaban :</h2>
+        <a href="https://github.com/Maleka0809/pbkk_web/tree/main/pertemuan2/AplikasiDesktop">github code</a>
+        <p>Disini saya menggunakan framework .NET. bahasa yang digunakan yaitu bahasa C# sebagai logika dan bahasa XAML
+            untuk tampilan.</p>
 
-    <h3>Logika Utama Aplikasi (C#)</h3>
-    <p>Aplikasi ini memiliki beberapa fitur utama. Berikut adalah penjelasan logika C# (backend) yang berjalan di balik layar untuk masing-masing fitur:</p>
-    <img src="Dokumentasi/halaman-menu.png" alt="Halaman Menu Dashboard" width="400">
+        <h3>Logika Utama Aplikasi (C#)</h3>
+        <p>Aplikasi ini memiliki beberapa fitur utama. Berikut adalah penjelasan logika C# (backend) yang berjalan di
+            balik layar untuk masing-masing fitur:</p>
+        <img src="Dokumentasi/halaman-menu.png" alt="Halaman Menu Dashboard" width="400">
 
-    <h4>1. Fitur Tambah Data</h4>
-    <pre class="language-csharp"><code>
+        <h4>1. Fitur Tambah Data</h4>
+        <pre class="language-csharp"><code>
     private void tambah_data_click(object sender, RoutedEventArgs e)
     {
         string nim = InputNim.Text;
@@ -58,11 +62,13 @@
         }
     }
     </code></pre>
-    <p>Logika ini mengambil input dari *textbox*, memvalidasi apakah IPK berupa angka 0-4, lalu membuat objek <code>Mahasiswa</code> baru dan menambahkannya ke dalam <code>DataStore.DaftarMahasiswa</code> (sebuah List statis yang menyimpan semua data).</p>
-    <img src="Dokumentasi/tambah-data.png" alt="Form Tambah Data" width="400">
+        <p>Logika ini mengambil input dari *textbox*, memvalidasi apakah IPK berupa angka 0-4, lalu membuat objek
+            <code>Mahasiswa</code> baru dan menambahkannya ke dalam <code>DataStore.DaftarMahasiswa</code> (sebuah List
+            statis yang menyimpan semua data).</p>
+        <img src="Dokumentasi/tambah-data.png" alt="Form Tambah Data" width="400">
 
-    <h4>2. Fitur Cari Data</h4>
-    <pre class="language-csharp"><code>
+        <h4>2. Fitur Cari Data</h4>
+        <pre class="language-csharp"><code>
     private void cari_data_click(object sender, RoutedEventArgs e)
     {
         string keyword = InputPencarian.Text.ToLower();
@@ -79,12 +85,14 @@
         TabelHasilPencarian.ItemsSource = hasilPencarian;
     }
     </code></pre>
-    <p>Fungsi ini melakukan pencarian data berdasarkan NIM atau Nama. Input dari pengguna dan data asli dikonversi menjadi huruf kecil (`ToLower()`) lalu dicari kecocokannya (`Contains()`). Semua data yang cocok akan dimasukkan ke *list* baru lalu ditampilkan dalam sebuah tabel (*DataGrid*).</p>
-    <img src="Dokumentasi/cari-data-nrp.png" alt="Cari Data NIM" width="400">
-    <img src="Dokumentasi/cari-data-nama.png" alt="Cari Data Nama" width="400">
+        <p>Fungsi ini melakukan pencarian data berdasarkan NIM atau Nama. Input dari pengguna dan data asli dikonversi
+            menjadi huruf kecil (`ToLower()`) lalu dicari kecocokannya (`Contains()`). Semua data yang cocok akan
+            dimasukkan ke *list* baru lalu ditampilkan dalam sebuah tabel (*DataGrid*).</p>
+        <img src="Dokumentasi/cari-data-nrp.png" alt="Cari Data NIM" width="400">
+        <img src="Dokumentasi/cari-data-nama.png" alt="Cari Data Nama" width="400">
 
-    <h4>3. Fitur Hapus Data</h4>
-    <pre class="language-csharp"><code>
+        <h4>3. Fitur Hapus Data</h4>
+        <pre class="language-csharp"><code>
     private void hapus_data_click(object sender, RoutedEventArgs e)
     {
         string nimHapus = InputNimHapus.Text.Trim();
@@ -106,31 +114,37 @@
         }
     }
     </code></pre>
-    <p>Fungsi ini mencari mahasiswa berdasarkan NIM yang dimasukkan secara spesifik. Penggunaan <code>Trim()</code> memastikan spasi ekstra yang tidak sengaja terketik akan diabaikan. Jika data ditemukan, data tersebut akan dihapus dari *List* menggunakan perintah <code>Remove()</code>.</p>
-    <img src="Dokumentasi/hapus-data.png" alt="Hapus Data" width="400">
-    <img src="Dokumentasi/data-after-hapus.png" alt="Data Setelah Dihapus" width="400">
+        <p>Fungsi ini mencari mahasiswa berdasarkan NIM yang dimasukkan secara spesifik. Penggunaan <code>Trim()</code>
+            memastikan spasi ekstra yang tidak sengaja terketik akan diabaikan. Jika data ditemukan, data tersebut akan
+            dihapus dari *List* menggunakan perintah <code>Remove()</code>.</p>
+        <img src="Dokumentasi/hapus-data.png" alt="Hapus Data" width="400">
+        <img src="Dokumentasi/data-after-hapus.png" alt="Data Setelah Dihapus" width="400">
 
-    <h4>4. Fitur Lihat Seluruh Data</h4>
-    <pre class="language-csharp"><code>
+        <h4>4. Fitur Lihat Seluruh Data</h4>
+        <pre class="language-csharp"><code>
     private void LoadData()
     {
         TabelMahasiswa.ItemsSource = null;
         TabelMahasiswa.ItemsSource = DataStore.DaftarMahasiswa;
     }
     </code></pre>
-    <p>Fungsi <code>LoadData()</code> dipanggil saat *Window* Lihat Data dibuka. Fungsi ini langsung mengikat data (*binding*) dari <code>DataStore.DaftarMahasiswa</code> ke komponen <code>DataGrid</code> agar otomatis dirender sebagai tabel yang terstruktur.</p>
-    <img src="Dokumentasi/lihat-data.png" alt="Lihat Data" width="500">
+        <p>Fungsi <code>LoadData()</code> dipanggil saat *Window* Lihat Data dibuka. Fungsi ini langsung mengikat data
+            (*binding*) dari <code>DataStore.DaftarMahasiswa</code> ke komponen <code>DataGrid</code> agar otomatis
+            dirender sebagai tabel yang terstruktur.</p>
+        <img src="Dokumentasi/lihat-data.png" alt="Lihat Data" width="500">
 
-    <h4>5. Tombol Keluar</h4>
-    <pre class="language-csharp"><code>
+        <h4>5. Tombol Keluar</h4>
+        <pre class="language-csharp"><code>
     private void keluar_click(object sender, RoutedEventArgs e)
     {
         this.Close();
     }
     </code></pre>
-    <p>Perintah <code>this.Close()</code> akan menutup Window Dashboard, yang secara efektif akan mengakhiri berjalannya aplikasi karena merupakan jendela utama.</p>
+        <p>Perintah <code>this.Close()</code> akan menutup Window Dashboard, yang secara efektif akan mengakhiri
+            berjalannya aplikasi karena merupakan jendela utama.</p>
     </div>
 
-    
+
 </body>
+
 </html>
