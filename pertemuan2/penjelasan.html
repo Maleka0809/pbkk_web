@@ -40,54 +40,92 @@
         
         &lt;/StackPanel&gt;
     </code></pre>
-    <h3>Logika Menu Dashboard (C#)</h3>
-    <p>Pada bagian Dashboard, aplikasi hanya berisi tombol menu navigasi. Setiap kali tombol ditekan, ia akan memanggil halaman (Window) baru yang dikhususkan untuk satu fungsi (Tambah, Cari, Hapus, Lihat). Berikut adalah penjelasan logika C# pada masing-masing tombol:</p>
+    <h3>Logika Utama Aplikasi (C#)</h3>
+    <p>Aplikasi ini memiliki beberapa fitur utama. Berikut adalah penjelasan logika C# (backend) yang berjalan di balik layar untuk masing-masing fitur:</p>
     <img src="Dokumentasi/halaman-menu.png" alt="Halaman Menu Dashboard" width="400">
 
-    <h4>1. Tombol Tambah Data</h4>
+    <h4>1. Fitur Tambah Data</h4>
     <pre class="language-csharp"><code>
     private void tambah_data_click(object sender, RoutedEventArgs e)
     {
-        TambahData windowTambah = new TambahData();
-        windowTambah.ShowDialog();
+        string nim = InputNim.Text;
+        string nama = InputNama.Text;
+        string prodi = InputProdi.Text;
+        
+        if (double.TryParse(InputIpk.Text, out double ipk))
+        {
+            if (ipk >= 0 && ipk <= 4)
+            {
+                Mahasiswa mhsBaru = new Mahasiswa(nim, nama, prodi, ipk);
+                DataStore.DaftarMahasiswa.Add(mhsBaru);
+                
+                MessageBox.Show("Data mahasiswa berhasil ditambahkan.");
+                this.Close();
+            }
+        }
     }
     </code></pre>
-    <p>Metode ini membuat instance dari class <code>TambahData</code> (yang merupakan halaman window baru) lalu menampilkannya menggunakan <code>ShowDialog()</code>. Penggunaan <code>ShowDialog()</code> bertujuan agar pengguna harus menyelesaikan aktivitas di jendela tersebut sebelum bisa kembali menekan menu di Dashboard.</p>
+    <p>Logika ini mengambil input dari *textbox*, memvalidasi apakah IPK berupa angka 0-4, lalu membuat objek <code>Mahasiswa</code> baru dan menambahkannya ke dalam <code>DataStore.DaftarMahasiswa</code> (sebuah List statis yang menyimpan semua data).</p>
     <img src="Dokumentasi/tambah-data.png" alt="Form Tambah Data" width="400">
 
-    <h4>2. Tombol Cari Data</h4>
+    <h4>2. Fitur Cari Data</h4>
     <pre class="language-csharp"><code>
     private void cari_data_click(object sender, RoutedEventArgs e)
     {
-        CariData windowCari = new CariData();
-        windowCari.ShowDialog();
+        string keyword = InputPencarian.Text.ToLower();
+        List&lt;Mahasiswa&gt; hasilPencarian = new List&lt;Mahasiswa&gt;();
+
+        foreach (Mahasiswa m in DataStore.DaftarMahasiswa)
+        {
+            if (m.NIM.ToLower().Contains(keyword) || m.Nama.ToLower().Contains(keyword))
+            {
+                hasilPencarian.Add(m);
+            }
+        }
+
+        TabelHasilPencarian.ItemsSource = hasilPencarian;
     }
     </code></pre>
-    <p>Fungsi ini membuka jendela <code>CariData</code> tempat pengguna bisa memasukkan NIM untuk mencari data yang ada di <code>DataStore</code>.</p>
+    <p>Fungsi ini melakukan pencarian data berdasarkan NIM atau Nama. Input dari pengguna dan data asli dikonversi menjadi huruf kecil (`ToLower()`) lalu dicari kecocokannya (`Contains()`). Semua data yang cocok akan dimasukkan ke *list* baru lalu ditampilkan dalam sebuah tabel (*DataGrid*).</p>
     <img src="Dokumentasi/cari-data-nrp.png" alt="Cari Data NIM" width="400">
     <img src="Dokumentasi/cari-data-nama.png" alt="Cari Data Nama" width="400">
 
-    <h4>3. Tombol Hapus Data</h4>
+    <h4>3. Fitur Hapus Data</h4>
     <pre class="language-csharp"><code>
     private void hapus_data_click(object sender, RoutedEventArgs e)
     {
-        HapusData windowHapus = new HapusData();
-        windowHapus.ShowDialog();
+        string nimHapus = InputNimHapus.Text.Trim();
+        Mahasiswa? mahasiswaDitemukan = null;
+
+        foreach (Mahasiswa m in DataStore.DaftarMahasiswa)
+        {
+            if (m.NIM.Trim().Equals(nimHapus, StringComparison.OrdinalIgnoreCase))
+            {
+                mahasiswaDitemukan = m;
+                break;
+            }
+        }
+
+        if (mahasiswaDitemukan != null)
+        {
+            DataStore.DaftarMahasiswa.Remove(mahasiswaDitemukan);
+            MessageBox.Show("Data mahasiswa berhasil dihapus.");
+        }
     }
     </code></pre>
-    <p>Fungsi ini akan membuka jendela <code>HapusData</code> untuk memproses penghapusan data dari list mahasiswa.</p>
+    <p>Fungsi ini mencari mahasiswa berdasarkan NIM yang dimasukkan secara spesifik. Penggunaan <code>Trim()</code> memastikan spasi ekstra yang tidak sengaja terketik akan diabaikan. Jika data ditemukan, data tersebut akan dihapus dari *List* menggunakan perintah <code>Remove()</code>.</p>
     <img src="Dokumentasi/hapus-data.png" alt="Hapus Data" width="400">
     <img src="Dokumentasi/data-after-hapus.png" alt="Data Setelah Dihapus" width="400">
 
-    <h4>4. Tombol Lihat Data</h4>
+    <h4>4. Fitur Lihat Seluruh Data</h4>
     <pre class="language-csharp"><code>
-    private void lihat_data_click(object sender, RoutedEventArgs e)
+    private void LoadData()
     {
-        LihatData windowLihat = new LihatData();
-        windowLihat.ShowDialog();
+        TabelMahasiswa.ItemsSource = null;
+        TabelMahasiswa.ItemsSource = DataStore.DaftarMahasiswa;
     }
     </code></pre>
-    <p>Tombol ini memanggil jendela <code>LihatData</code> yang berisi sebuah tabel (DataGrid) yang terhubung ke data mahasiswa untuk menampilkan isi daftarnya.</p>
+    <p>Fungsi <code>LoadData()</code> dipanggil saat *Window* Lihat Data dibuka. Fungsi ini langsung mengikat data (*binding*) dari <code>DataStore.DaftarMahasiswa</code> ke komponen <code>DataGrid</code> agar otomatis dirender sebagai tabel yang terstruktur.</p>
     <img src="Dokumentasi/lihat-data.png" alt="Lihat Data" width="500">
 
     <h4>5. Tombol Keluar</h4>
