@@ -45,7 +45,7 @@ body {
 }
 
 .label-tugas {
-    display: inline-block;
+    display: block;
     width: 150px;
     text-align: center;
     font-weight: bold;
