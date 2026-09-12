@@ -12,12 +12,12 @@ public partial class HapusData : Window
 
     private void hapus_data_click(object sender, RoutedEventArgs e)
     {
-        string nimHapus = InputNimHapus.Text;
+        string nimHapus = InputNimHapus.Text.Trim();
         Mahasiswa? mahasiswaDitemukan = null;
 
         foreach (Mahasiswa m in DataStore.DaftarMahasiswa)
         {
-            if (m.NIM.Equals(nimHapus, StringComparison.OrdinalIgnoreCase))
+            if (m.NIM.Trim().Equals(nimHapus, StringComparison.OrdinalIgnoreCase))
             {
                 mahasiswaDitemukan = m;
                 break;
