@@ -45,10 +45,11 @@ body {
 }
 
 .label-tugas {
-    display: block;
+    display: inline-block;
     width: 150px;
     text-align: center;
     font-weight: bold;
+    margin-right: 15px;
     margin-bottom: 15px;
     text-decoration: none;
     background-color: #4b4b4b;
