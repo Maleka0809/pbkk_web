@@ -1,16 +1,18 @@
 <Window x:Class="AplikasiDesktop.CariData"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Cari Data Mahasiswa" Height="250" Width="400">
+        Title="Cari Data Mahasiswa" Height="450" Width="600">
     
     <Grid Margin="20">
         <StackPanel>
             <TextBlock Text="CARI DATA MAHASISWA" FontSize="18" FontWeight="Bold" Margin="0,0,0,15" HorizontalAlignment="Center"/>
             
-            <TextBlock Text="Masukkan NIM yang dicari:"/>
-            <TextBox x:Name="InputNimCari" Margin="0,0,0,15" Height="25"/>
+            <TextBlock Text="Masukkan NIM atau Nama (bisa potongan nama):"/>
+            <TextBox x:Name="InputPencarian" Margin="0,0,0,15" Height="25"/>
             
             <Button Content="Cari" Height="35" Click="cari_data_click"/>
+            
+            <DataGrid x:Name="TabelHasilPencarian" AutoGenerateColumns="True" IsReadOnly="True" AlternatingRowBackground="LightGray" Height="220" Margin="0,15,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -83,7 +83,7 @@ namespace AplikasiDesktop {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AplikasiDesktop;V1.0.0.0;component/tambahdata.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AplikasiDesktop;component/tambahdata.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\TambahData.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

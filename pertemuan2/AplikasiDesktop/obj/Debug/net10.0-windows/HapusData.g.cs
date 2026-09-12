@@ -59,7 +59,7 @@ namespace AplikasiDesktop {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AplikasiDesktop;V1.0.0.0;component/hapusdata.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AplikasiDesktop;component/hapusdata.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\HapusData.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace AplikasiDesktop;
@@ -12,26 +13,26 @@ public partial class CariData : Window
 
     private void cari_data_click(object sender, RoutedEventArgs e)
     {
-        string nimCari = InputNimCari.Text;
-        Mahasiswa? mahasiswaDitemukan = null;
+        string keyword = InputPencarian.Text.ToLower();
+        List<Mahasiswa> hasilPencarian = new List<Mahasiswa>();
 
         foreach (Mahasiswa m in DataStore.DaftarMahasiswa)
         {
-            if (m.NIM.Equals(nimCari, StringComparison.OrdinalIgnoreCase))
+            if (m.NIM.ToLower().Contains(keyword) || m.Nama.ToLower().Contains(keyword))
             {
-                mahasiswaDitemukan = m;
-                break;
+                hasilPencarian.Add(m);
             }
         }
 
-        if (mahasiswaDitemukan != null)
+        TabelHasilPencarian.ItemsSource = null;
+        
+        if (hasilPencarian.Count > 0)
         {
-            MessageBox.Show($"Data Ditemukan!\n\nNIM: {mahasiswaDitemukan.NIM}\nNama: {mahasiswaDitemukan.Nama}\nProdi: {mahasiswaDitemukan.Prodi}\nIPK: {mahasiswaDitemukan.IPK}");
-            this.Close();
+            TabelHasilPencarian.ItemsSource = hasilPencarian;
         }
         else
         {
-            MessageBox.Show("Mahasiswa dengan NIM tersebut tidak ditemukan.");
+            MessageBox.Show("Mahasiswa tidak ditemukan.");
         }
     }
 }
