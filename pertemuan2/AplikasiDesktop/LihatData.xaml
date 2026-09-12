@@ -1,0 +1,15 @@
+<Window x:Class="AplikasiDesktop.LihatData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lihat Data Mahasiswa" Height="400" Width="600">
+    
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="DATA MAHASISWA" FontSize="18" FontWeight="Bold" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+            
+            <DataGrid x:Name="TabelMahasiswa" AutoGenerateColumns="True" IsReadOnly="True" AlternatingRowBackground="LightGray" Height="250"/>
+            
+            <Button Content="Tutup" Height="35" Margin="0,15,0,0" Click="tutup_click"/>
+        </StackPanel>
+    </Grid>
+</Window>

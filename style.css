@@ -41,6 +41,7 @@ body {
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .label-tugas {
@@ -52,4 +53,13 @@ body {
     padding: 10px;
     border-radius: 5px;
 
+}
+
+.language-markup {
+    background-color: #8a8989;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-color: #afacac;
 }

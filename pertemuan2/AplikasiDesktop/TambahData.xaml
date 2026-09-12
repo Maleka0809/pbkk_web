@@ -1,0 +1,25 @@
+<Window x:Class="AplikasiDesktop.TambahData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tambah Data Mahasiswa" Height="350" Width="400">
+    
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="TAMBAH DATA MAHASISWA" FontSize="18" FontWeight="Bold" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+            
+            <TextBlock Text="NIM:"/>
+            <TextBox x:Name="InputNim" Margin="0,0,0,10" Height="25"/>
+            
+            <TextBlock Text="Nama:"/>
+            <TextBox x:Name="InputNama" Margin="0,0,0,10" Height="25"/>
+            
+            <TextBlock Text="Prodi:"/>
+            <TextBox x:Name="InputProdi" Margin="0,0,0,10" Height="25"/>
+            
+            <TextBlock Text="IPK (Gunakan koma untuk desimal):"/>
+            <TextBox x:Name="InputIpk" Margin="0,0,0,20" Height="25"/>
+            
+            <Button Content="Simpan" Height="35" Click="tambah_data_click"/>
+        </StackPanel>
+    </Grid>
+</Window>

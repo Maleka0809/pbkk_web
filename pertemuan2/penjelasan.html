@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    
+    <div class="navbar">
+            <a class="nav-link" href="../index.html">Home</a>
+            <a class = "nav-link" href="../Tugas.html">Tugas</a>
+            <a class="nav-link" href="../contact.html">Contact</a>
+    
+        </div>
+    <div class = "judul">
+        <h1>Penjelasan Tugas 1</h1>
+    </div>    
+
+    <div class="isi">
+    <h2>Soal :</h2>
+    <p>Membuat aplikasi desktop sederhana sistem pendataan mahasiswa, dengan fitur-fitur : 
+        <ul>
+            <li>Menambah data mahasiswa.</li>
+            <li>Mencari data mahasiswa berdasarkan NIM atau nama.</li>
+            <li>Menghapus data mahasiswa.</li>
+            <li>Menampilkan daftar semua mahasiswa.</li>
+            <li>keluar dari aplikasi.</li>
+        </ul> 
+    </p>
+    <h2>Jawaban :</h2> 
+    <p>Disini saya menggunakan framework .NET. bahasa yang digunakan yaitu bahasa C# sebagai logika dan bahasa XAML untuk tampilan.</p> 
+    <pre class="language-markup"><code>
+        &lt;StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"&gt;
+        
+        &lt;TextBlock Text="Selamat Datang di Aplikasi Desktop" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/&gt;
+        &lt;Button Content="Masuk" Width="150" Height="50" Click="masuk_click"/&gt;
+        
+        &lt;/StackPanel&gt;
+    </code></pre>
+    <h3>Logika Menu Dashboard (C#)</h3>
+    <p>Pada bagian Dashboard, aplikasi hanya berisi tombol menu navigasi. Setiap kali tombol ditekan, ia akan memanggil halaman (Window) baru yang dikhususkan untuk satu fungsi (Tambah, Cari, Hapus, Lihat). Berikut adalah penjelasan logika C# pada masing-masing tombol:</p>
+
+    <h4>1. Tombol Tambah Data</h4>
+    <pre class="language-csharp"><code>
+    private void tambah_data_click(object sender, RoutedEventArgs e)
+    {
+        TambahData windowTambah = new TambahData();
+        windowTambah.ShowDialog();
+    }
+    </code></pre>
+    <p>Metode ini membuat instance dari class <code>TambahData</code> (yang merupakan halaman window baru) lalu menampilkannya menggunakan <code>ShowDialog()</code>. Penggunaan <code>ShowDialog()</code> bertujuan agar pengguna harus menyelesaikan aktivitas di jendela tersebut sebelum bisa kembali menekan menu di Dashboard.</p>
+
+    <h4>2. Tombol Cari Data</h4>
+    <pre class="language-csharp"><code>
+    private void cari_data_click(object sender, RoutedEventArgs e)
+    {
+        CariData windowCari = new CariData();
+        windowCari.ShowDialog();
+    }
+    </code></pre>
+    <p>Fungsi ini membuka jendela <code>CariData</code> tempat pengguna bisa memasukkan NIM untuk mencari data yang ada di <code>DataStore</code>.</p>
+
+    <h4>3. Tombol Hapus Data</h4>
+    <pre class="language-csharp"><code>
+    private void hapus_data_click(object sender, RoutedEventArgs e)
+    {
+        HapusData windowHapus = new HapusData();
+        windowHapus.ShowDialog();
+    }
+    </code></pre>
+    <p>Fungsi ini akan membuka jendela <code>HapusData</code> untuk memproses penghapusan data dari list mahasiswa.</p>
+
+    <h4>4. Tombol Lihat Data</h4>
+    <pre class="language-csharp"><code>
+    private void lihat_data_click(object sender, RoutedEventArgs e)
+    {
+        LihatData windowLihat = new LihatData();
+        windowLihat.ShowDialog();
+    }
+    </code></pre>
+    <p>Tombol ini memanggil jendela <code>LihatData</code> yang berisi sebuah tabel (DataGrid) yang terhubung ke data mahasiswa untuk menampilkan isi daftarnya.</p>
+
+    <h4>5. Tombol Keluar</h4>
+    <pre class="language-csharp"><code>
+    private void keluar_click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+    </code></pre>
+    <p>Perintah <code>this.Close()</code> akan menutup Window Dashboard, yang secara efektif akan mengakhiri berjalannya aplikasi karena merupakan jendela utama.</p>
+    </div>
+
+    
+</body>
+</html>
