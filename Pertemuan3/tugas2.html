@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../contact.html">Contact</a>
+
+    </div>
+    <div class="judul">
+        <h1>Penjelasan Tugas 2</h1>
+    </div>
+
+    <div class="isi">
+        <h2>Soal :</h2>
+        <p>Membuat aplikasi desktop sederhana kalkulator, dengan fitur-fitur :
+        <ul>
+            <li>Operasi aritmatika dasar (Penjumlahan, Pengurangan, Perkalian, Pembagian).</li>
+            <li>Mode Default (hasil dalam bentuk desimal).</li>
+            <li>Mode Scientific (hasil desimal diubah ke bentuk pecahan).</li>
+            <li>Clear screen (AC) untuk mereset kalkulator.</li>
+        </ul>
+        </p>
+        <h2>Jawaban :</h2>
+        <a href="https://github.com/Maleka0809/pbkk_web/tree/main/Pertemuan3/kalkulator">github code</a>
+        <p>Disini saya menggunakan framework .NET. bahasa yang digunakan yaitu bahasa C# sebagai logika dan bahasa XAML
+            untuk tampilan.</p>
+
+        <h3>Logika Utama Aplikasi (C#)</h3>
+        <p>Aplikasi ini memiliki beberapa fitur utama. Berikut adalah penjelasan logika C# (backend) yang berjalan di
+            balik layar untuk masing-masing fitur:</p>
+
+        <h4>1. Input Angka dan Operasi</h4>
+        <pre class="language-csharp"><code>
+    private void masuk_angka(string angka)
+    {
+        if(Layar.Text == "0" || operasiklik)
+        {
+            Layar.Text = angka;
+            operasiklik = false;    
+        }
+        else
+        {
+            Layar.Text += angka;
+        }
+    }
+
+    private void aturoperasi(string operasi)
+    {
+        bil1 = double.Parse(Layar.Text);
+        op = operasi;
+        operasiklik = true;
+    }
+    </code></pre>
+        <p>Fungsi <code>masuk_angka</code> menangani input digit dari pengguna dan memperbarui tampilan pada layar kalkulator. Fungsi <code>aturoperasi</code> menyimpan angka pertama (<code>bil1</code>) dan operator yang dipilih, kemudian menyiapkan kalkulator untuk menerima angka kedua.</p>
+
+        <h4>2. Proses Perhitungan</h4>
+        <pre class="language-csharp"><code>
+    private void bc_hitung(object sender, RoutedEventArgs e)
+    {
+        bil2 = double.Parse(Layar.Text);
+        double hasil = 0;
+
+        switch (op)
+        {
+            case "+": hasil = bil1 + bil2; break;
+            case "-": hasil = bil1 - bil2; break;
+            case "*": hasil = bil1 * bil2; break;
+            case "/": 
+                if (bil2 == 0) { Layar.Text = "Error"; return; }
+                hasil = bil1 / bil2; 
+                break;
+        }
+
+        if (modeScientific && hasil % 1 != 0)
+        {
+            Layar.Text = UbahKePecahan(hasil);
+        }
+        else
+        {
+            Layar.Text = hasil.ToString();
+        }
+        
+        op = "";
+    }
+    </code></pre>
+        <p>Saat tombol sama dengan (=) ditekan, fungsi <code>bc_hitung</code> akan membaca angka kedua (<code>bil2</code>) dan melakukan operasi matematika (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>) sesuai dengan operator yang sebelumnya disimpan. Jika <code>modeScientific</code> aktif dan hasilnya memiliki angka desimal, maka hasil akan dikonversi menjadi format pecahan.</p>
+
+        <h4>3. Konversi ke Pecahan (Mode Scientific)</h4>
+        <pre class="language-csharp"><code>
+    private string UbahKePecahan(double angka)
+    {
+        // ... kode konversi ke desimal
+        long penyebut = (long)Math.Pow(10, jumlahDesimal);
+        long pembilang = (long)Math.Round(angka * penyebut);
+
+        long fpb = CariFPB(pembilang, penyebut);
+
+        long pembilangAkhir = (pembilang / fpb) * tanda;
+        long penyebutAkhir = penyebut / fpb;
+
+        return $"{pembilangAkhir}/{penyebutAkhir}";
+    }
+
+    private long CariFPB(long a, long b)
+    {
+        while (b != 0)
+        {
+            long sisa = a % b;
+            a = b;
+            b = sisa;
+        }
+        return a;
+    }
+    </code></pre>
+        <p>Fungsi <code>UbahKePecahan</code> akan mengubah nilai desimal menjadi pecahan paling sederhana menggunakan algoritma Euclidean untuk mencari Faktor Persekutuan Terbesar (FPB) antara pembilang dan penyebut.</p>
+
+        <h4>4. Fitur Reset dan Mode</h4>
+        <pre class="language-csharp"><code>
+    private void bc_ac(object sender, RoutedEventArgs e)
+    {
+        bil1 = 0;
+        op = "";
+        Layar.Text = "0";
+    }
+
+    private void bc_sci(object sender, RoutedEventArgs e)
+    {
+        modeScientific = true;
+        MessageBox.Show("Mode Scientific Aktif: Hasil desimal akan menjadi pecahan.");
+    }
+    </code></pre>
+        <p>Tombol <strong>AC</strong> berfungsi untuk mengosongkan layar dan mereset nilai operator. Tombol <strong>SCI</strong> digunakan untuk mengaktifkan mode scientific, di mana hasil dari operasi dengan desimal akan diubah ke pecahan. Tombol <strong>DEF</strong> digunakan untuk mengembalikan mode perhitungan ke default desimal.</p>
+    </div>
+
+
+</body>
+
+</html>

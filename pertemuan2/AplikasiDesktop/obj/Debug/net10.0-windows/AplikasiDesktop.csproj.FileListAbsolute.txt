@@ -13,7 +13,6 @@ C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\
 C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\AplikasiDesktop.AssemblyInfoInputs.cache
 C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\AplikasiDesktop.AssemblyInfo.cs
 C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\AplikasiDesktop.csproj.CoreCompileInputs.cache
-C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\AplikasiDesktop.sourcelink.json
 C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\AplikasiDesktop.dll
 C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\refint\AplikasiDesktop.dll
 C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\AplikasiDesktop.pdb

@@ -67,7 +67,7 @@ namespace AplikasiDesktop {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AplikasiDesktop;component/caridata.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AplikasiDesktop;V1.0.0.0;component/caridata.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\CariData.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

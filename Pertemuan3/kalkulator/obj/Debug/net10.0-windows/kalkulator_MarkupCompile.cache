@@ -1,20 +1,20 @@
-﻿AplikasiDesktop
+﻿kalkulator
 1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\obj\Debug\net10.0-windows\
-AplikasiDesktop
+C:\Users\Maleka Ghaniya\Downloads\PBKK-web\Pertemuan3\kalkulator\obj\Debug\net10.0-windows\
+kalkulator
 none
 false
 TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP1_0_OR_GREATER;NETCOREAPP1_1_OR_GREATER;NETCOREAPP2_0_OR_GREATER;NETCOREAPP2_1_OR_GREATER;NETCOREAPP2_2_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\Maleka Ghaniya\Downloads\PBKK-web\pertemuan2\AplikasiDesktop\App.xaml
-61640280341
+C:\Users\Maleka Ghaniya\Downloads\PBKK-web\Pertemuan3\kalkulator\App.xaml
+11407045341
 
-12-89615718
+6547642898
 206-381443163
-CariData.xaml;DashboardWindow.xaml;HapusData.xaml;LihatData.xaml;MainWindow.xaml;TambahData.xaml;
+MainWindow.xaml;
 
-True
+False
 
