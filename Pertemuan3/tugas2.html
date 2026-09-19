@@ -22,22 +22,17 @@
 
     <div class="isi">
         <h2>Soal :</h2>
-        <p>Membuat aplikasi desktop sederhana kalkulator, dengan fitur-fitur :
-        <ul>
-            <li>Operasi aritmatika dasar (Penjumlahan, Pengurangan, Perkalian, Pembagian).</li>
-            <li>Mode Default (hasil dalam bentuk desimal).</li>
-            <li>Mode Scientific (hasil desimal diubah ke bentuk pecahan).</li>
-            <li>Clear screen (AC) untuk mereset kalkulator.</li>
-        </ul>
-        </p>
+        <p>Membuat aplikasi desktop sederhana kalkulator</p>
         <h2>Jawaban :</h2>
         <a href="https://github.com/Maleka0809/pbkk_web/tree/main/Pertemuan3/kalkulator">github code</a>
         <p>Disini saya menggunakan framework .NET. bahasa yang digunakan yaitu bahasa C# sebagai logika dan bahasa XAML
-            untuk tampilan.</p>
+            untuk tampilan. kalkulator ini memiliki fitur yaitu operasi aritmatika dasar dan bisa mengubah
+            hasil desimal ke dalam bentuk pecahan. Mode Scientific dan default.</p>
 
         <h3>Logika Utama Aplikasi (C#)</h3>
         <p>Aplikasi ini memiliki beberapa fitur utama. Berikut adalah penjelasan logika C# (backend) yang berjalan di
             balik layar untuk masing-masing fitur:</p>
+        <img src="dokumentasi/kalkulator.png" alt="Tampilan Awal Kalkulator" width="300">
 
         <h4>1. Input Angka dan Operasi</h4>
         <pre class="language-csharp"><code>
@@ -61,7 +56,9 @@
         operasiklik = true;
     }
     </code></pre>
-        <p>Fungsi <code>masuk_angka</code> menangani input digit dari pengguna dan memperbarui tampilan pada layar kalkulator. Fungsi <code>aturoperasi</code> menyimpan angka pertama (<code>bil1</code>) dan operator yang dipilih, kemudian menyiapkan kalkulator untuk menerima angka kedua.</p>
+        <p>Fungsi <code>masuk_angka</code> menangani input digit dari pengguna dan memperbarui tampilan pada layar
+            kalkulator. Fungsi <code>aturoperasi</code> menyimpan angka pertama (<code>bil1</code>) dan operator yang
+            dipilih, kemudian menyiapkan kalkulator untuk menerima angka kedua.</p>
 
         <h4>2. Proses Perhitungan</h4>
         <pre class="language-csharp"><code>
@@ -93,7 +90,11 @@
         op = "";
     }
     </code></pre>
-        <p>Saat tombol sama dengan (=) ditekan, fungsi <code>bc_hitung</code> akan membaca angka kedua (<code>bil2</code>) dan melakukan operasi matematika (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>) sesuai dengan operator yang sebelumnya disimpan. Jika <code>modeScientific</code> aktif dan hasilnya memiliki angka desimal, maka hasil akan dikonversi menjadi format pecahan.</p>
+        <p>Saat tombol sama dengan (=) ditekan, fungsi <code>bc_hitung</code> akan membaca angka kedua
+            (<code>bil2</code>) dan melakukan operasi matematika (<code>+</code>, <code>-</code>, <code>*</code>,
+            <code>/</code>) sesuai dengan operator yang sebelumnya disimpan. Jika <code>modeScientific</code> aktif dan
+            hasilnya memiliki angka desimal, maka hasil akan dikonversi menjadi format pecahan.</p>
+        <img src="dokumentasi/kalkulator_Def.png" alt="Tampilan Perhitungan Mode Default" width="300">
 
         <h4>3. Konversi ke Pecahan (Mode Scientific)</h4>
         <pre class="language-csharp"><code>
@@ -122,7 +123,9 @@
         return a;
     }
     </code></pre>
-        <p>Fungsi <code>UbahKePecahan</code> akan mengubah nilai desimal menjadi pecahan paling sederhana menggunakan algoritma Euclidean untuk mencari Faktor Persekutuan Terbesar (FPB) antara pembilang dan penyebut.</p>
+        <p>Fungsi <code>UbahKePecahan</code> akan mengubah nilai desimal menjadi pecahan paling sederhana menggunakan
+            algoritma Euclidean untuk mencari Faktor Persekutuan Terbesar (FPB) antara pembilang dan penyebut.</p>
+        <img src="dokumentasi/kalkulator_sci.png" alt="Tampilan Perhitungan Mode Scientific" width="300">
 
         <h4>4. Fitur Reset dan Mode</h4>
         <pre class="language-csharp"><code>
@@ -139,7 +142,10 @@
         MessageBox.Show("Mode Scientific Aktif: Hasil desimal akan menjadi pecahan.");
     }
     </code></pre>
-        <p>Tombol <strong>AC</strong> berfungsi untuk mengosongkan layar dan mereset nilai operator. Tombol <strong>SCI</strong> digunakan untuk mengaktifkan mode scientific, di mana hasil dari operasi dengan desimal akan diubah ke pecahan. Tombol <strong>DEF</strong> digunakan untuk mengembalikan mode perhitungan ke default desimal.</p>
+        <p>Tombol <strong>AC</strong> berfungsi untuk mengosongkan layar dan mereset nilai operator. Tombol
+            <strong>SCI</strong> digunakan untuk mengaktifkan mode scientific, di mana hasil dari operasi dengan desimal
+            akan diubah ke pecahan. Tombol <strong>DEF</strong> digunakan untuk mengembalikan mode perhitungan ke
+            default desimal.</p>
     </div>
 
 
