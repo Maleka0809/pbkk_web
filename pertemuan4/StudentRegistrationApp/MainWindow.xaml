@@ -1,0 +1,230 @@
+<Window x:Class="StudentRegistrationApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Student Registration App" Height="700" Width="1100" WindowStartupLocation="CenterScreen"
+        Background="#F4F6F9">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,5,0,2"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="STUDENT REGISTRATION" FontSize="26" FontWeight="Bold" Foreground="#1F2937" Margin="0"/>
+            <TextBlock Text="Kelola Data Mahasiswa dengan Mudah" FontSize="14" Foreground="#6B7280" Margin="0"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- FORM CARD -->
+            <Border Grid.Column="0" Background="White" CornerRadius="8" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#DDDDDD" BlurRadius="10" ShadowDepth="1" Opacity="0.5"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Form Mahasiswa" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,15" Foreground="#111827"/>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,5,0">
+                            <TextBlock Text="NIM"/>
+                            <TextBox x:Name="txtNim" />
+
+                            <TextBlock Text="Nama Mahasiswa"/>
+                            <TextBox x:Name="txtNama" />
+
+                            <TextBlock Text="Program Studi"/>
+                            <ComboBox x:Name="cmbProdi">
+                                <ComboBoxItem Content="Teknik Informatika"/>
+                                <ComboBoxItem Content="Sistem Informasi"/>
+                                <ComboBoxItem Content="Manajemen"/>
+                                <ComboBoxItem Content="Akuntansi"/>
+                            </ComboBox>
+
+                            <TextBlock Text="Jenis Kelamin"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,15">
+                                <RadioButton x:Name="rbLaki" Content="Laki-laki" Margin="0,0,20,0" VerticalAlignment="Center"/>
+                                <RadioButton x:Name="rbPerempuan" Content="Perempuan" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <TextBlock Text="Tanggal Lahir"/>
+                            <DatePicker x:Name="dpTanggalLahir" />
+
+                            <TextBlock Text="Alamat"/>
+                            <TextBox x:Name="txtAlamat" Height="50" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+                            <TextBlock Text="Nomor Telepon"/>
+                            <TextBox x:Name="txtNoTelepon" />
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <UniformGrid Grid.Row="2" Columns="3" Margin="0,15,0,0">
+                        <Button x:Name="btnSimpan" Content="Simpan" Background="#10B981" Foreground="White" FontWeight="Bold" Margin="0,0,5,0" Height="35" Click="BtnSimpan_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button x:Name="btnUpdate" Content="Update" Background="#3B82F6" Foreground="White" FontWeight="Bold" Margin="5,0,5,0" Height="35" Click="BtnUpdate_Click" IsEnabled="False">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="Bersihkan" Background="#6B7280" Foreground="White" FontWeight="Bold" Margin="5,0,0,0" Height="35" Click="BtnReset_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </UniformGrid>
+                </Grid>
+            </Border>
+
+            <!-- DATA CARD -->
+            <Border Grid.Column="2" Background="White" CornerRadius="8" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#DDDDDD" BlurRadius="10" ShadowDepth="1" Opacity="0.5"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Data Mahasiswa" FontSize="18" FontWeight="SemiBold" Foreground="#111827"/>
+                        <TextBlock Grid.Column="1" x:Name="txtJumlahMahasiswa" Text="Jumlah Mahasiswa: 0" FontWeight="SemiBold" Foreground="#059669" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="txtSearch" Grid.Column="0" Height="35" Padding="10,0" Margin="0,0,10,0" VerticalContentAlignment="Center" />
+                        <Button Grid.Column="1" Content="Cari" Background="#3B82F6" Foreground="White" Width="80" Height="35" FontWeight="Bold" Click="BtnSearch_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+
+                    <DataGrid x:Name="dgMahasiswa" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" 
+                              Background="White" RowHeaderWidth="0" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#E5E7EB"
+                              HeadersVisibility="Column" BorderBrush="#E5E7EB" BorderThickness="1">
+                        <DataGrid.Resources>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#F9FAFB"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="Padding" Value="10,8"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                <Setter Property="BorderBrush" Value="#E5E7EB"/>
+                            </Style>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Padding" Value="10,8"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="DataGridCell">
+                                            <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="NIM" Binding="{Binding Nim}" Width="SizeToCells" MinWidth="80" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Nama" Binding="{Binding Nama}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Prodi" Binding="{Binding Prodi}" Width="120" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="JK" Binding="{Binding JenisKelamin}" Width="100" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Tgl Lahir" Binding="{Binding TanggalLahir, StringFormat=dd/MM/yyyy}" Width="100" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="No Telepon" Binding="{Binding NoTelepon}" Width="110" IsReadOnly="True"/>
+                            
+                            <DataGridTemplateColumn Header="Aksi" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="✎" Width="28" Height="28" Margin="0,0,5,0" Background="#3B82F6" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="BtnEdit_Click">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                            <Button Content="🗑" Width="28" Height="28" Background="#EF4444" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="BtnDelete_Click">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

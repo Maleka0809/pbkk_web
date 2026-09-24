@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjelasan Tugas 4 - WPF</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../contact.html">Contact</a>
+    </div>
+
+    <div class="judul">
+        <h1>Penjelasan Tugas 4</h1>
+    </div>
+
+    <div class="isi">
+        <h2>Soal :</h2>
+        <p>Membuat aplikasi desktop Student Registration App menggunakan Windows Presentation Foundation (WPF) dengan fitur CRUD in-memory (Simpan, Edit, Hapus, Cari, dan Reset).</p>
+        
+        <h2>Jawaban :</h2>
+        <a href="https://github.com/Maleka0809/pbkk_web/tree/main/pertemuan4/StudentRegistrationApp">github code</a>
+        <p>Aplikasi ini dibuat menggunakan framework .NET dengan pendekatan arsitektur WPF modern. File XAML digunakan secara eksklusif untuk menyusun <i>User Interface</i> (UI) yang kaya dan menarik, sementara file C# (.xaml.cs) berperan di belakang layar sebagai logika interaksi dan validasi. Aplikasi ini sudah dikembangkan hingga memenuhi tantangan "Level 2" yang mencakup komponen yang lebih bervariasi, pencarian data, serta sistem update.</p>
+
+        <h3>Logika Utama Aplikasi (C# & XAML)</h3>
+        <p>Berikut adalah beberapa implementasi kunci di dalam aplikasi:</p>
+
+        <h4>1. Desain Tampilan (XAML)</h4>
+        <img src="dokumentasi/Screenshot 2026-09-24 122502.png" alt="Desain Tampilan UI" width="700">
+        <pre class="language-xml"><code>
+&lt;!-- XAML: Penggunaan Control Modern --&gt;
+&lt;DatePicker x:Name="dpTanggalLahir" /&gt;
+
+&lt;StackPanel Orientation="Horizontal" Margin="0,5,0,15"&gt;
+    &lt;RadioButton x:Name="rbLaki" Content="Laki-laki" Margin="0,0,20,0"/&gt;
+    &lt;RadioButton x:Name="rbPerempuan" Content="Perempuan"/&gt;
+&lt;/StackPanel&gt;
+
+&lt;DataGrid x:Name="dgMahasiswa" AutoGenerateColumns="False" CanUserAddRows="False"&gt;
+    &lt;DataGrid.Columns&gt;
+        &lt;DataGridTextColumn Header="NIM" Binding="{Binding Nim}" /&gt;
+        &lt;DataGridTextColumn Header="Nama" Binding="{Binding Nama}" /&gt;
+        &lt;!-- Data lainnya... --&gt;
+    &lt;/DataGrid.Columns&gt;
+&lt;/DataGrid&gt;
+        </code></pre>
+        <p>Kode XAML di atas mendemonstrasikan bagaimana WPF mengikat elemen UI. Kami menggunakan <code>DatePicker</code> untuk kemudahan entri tanggal lahir, <code>RadioButton</code> untuk jenis kelamin, dan <code>DataGrid</code> untuk menampilkan tabel data mahasiswa yang secara otomatis akan tersinkronisasi (Data Binding).</p>
+
+        <h4>2. Data Binding & ObservableCollection</h4>
+        <img src="dokumentasi/Screenshot 2026-09-24 122658.png" alt="Data Binding" width="700">
+        <pre class="language-csharp"><code>
+private ObservableCollection&lt;Student&gt; _mahasiswaList;
+
+public MainWindow()
+{
+    InitializeComponent();
+    _mahasiswaList = new ObservableCollection&lt;Student&gt;();
+    dgMahasiswa.ItemsSource = _mahasiswaList;
+}
+        </code></pre>
+        <p>Kami menggunakan <code>ObservableCollection&lt;Student&gt;</code> untuk menyimpan data secara in-memory. Keunggulan koleksi ini di WPF adalah jika terjadi perubahan (penambahan atau penghapusan elemen), maka tabel <code>DataGrid</code> pada tampilan akan otomatis diperbarui tanpa perlu dipanggil secara manual.</p>
+
+        <h4>3. Validasi & Proses Simpan</h4>
+        <img src="dokumentasi/Screenshot 2026-09-24 123053.png" alt="Validasi dan Simpan" width="700">
+        <pre class="language-csharp"><code>
+private void BtnSimpan_Click(object sender, RoutedEventArgs e)
+{
+    if (!ValidateInput()) return;
+
+    var student = new Student
+    {
+        Nim = txtNim.Text,
+        Nama = txtNama.Text,
+        Prodi = (cmbProdi.SelectedItem as ComboBoxItem)?.Content.ToString(),
+        JenisKelamin = rbLaki.IsChecked == true ? "Laki-laki" : "Perempuan",
+        TanggalLahir = dpTanggalLahir.SelectedDate,
+        Alamat = txtAlamat.Text,
+        NoTelepon = txtNoTelepon.Text
+    };
+
+    _mahasiswaList.Add(student);
+    MessageBox.Show("Data mahasiswa berhasil disimpan!");
+    ResetForm();
+    UpdateJumlahMahasiswa();
+}
+        </code></pre>
+        <p>Sebelum menyimpan, aplikasi akan memanggil method <code>ValidateInput()</code>. Jika input kosong atau tidak lengkap, form akan menampilkan pesan <i>Warning</i>. Jika valid, instance <code>Student</code> baru akan dibuat dan ditambahkan ke <code>_mahasiswaList</code>.</p>
+
+        <h4>4. Konfirmasi Penghapusan</h4>
+        <img src="dokumentasi/Screenshot 2026-09-24 123203.png" alt="Konfirmasi Hapus" width="700">
+        <pre class="language-csharp"><code>
+private void BtnDelete_Click(object sender, RoutedEventArgs e)
+{
+    var btn = sender as Button;
+    var student = btn?.DataContext as Student;
+
+    if (student != null)
+    {
+        var result = MessageBox.Show($"Apakah Anda yakin ingin menghapus {student.Nama}?", 
+            "Konfirmasi", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        
+        if (result == MessageBoxResult.Yes)
+        {
+            _mahasiswaList.Remove(student);
+            UpdateJumlahMahasiswa();
+        }
+    }
+}
+        </code></pre>
+        <p>Fitur hapus diimplementasikan melalui tombol di dalam setiap baris tabel. Tombol tersebut membawa <i>DataContext</i> berupa objek Student spesifik di baris tersebut. Kami menggunakan konfirmasi <code>MessageBox.YesNo</code> untuk mencegah penghapusan data secara tidak sengaja.</p>
+
+        <h4>5. Fitur Pencarian (Search)</h4>
+        <img src="dokumentasi/Screenshot 2026-09-24 123239.png" alt="Fitur Pencarian" width="700">
+        <pre class="language-csharp"><code>
+private void BtnSearch_Click(object sender, RoutedEventArgs e)
+{
+    string keyword = txtSearch.Text.ToLower();
+    
+    if (string.IsNullOrWhiteSpace(keyword))
+    {
+        dgMahasiswa.ItemsSource = _mahasiswaList; // Kembali tampilkan semua
+    }
+    else
+    {
+        var filteredList = _mahasiswaList.Where(s =&gt; 
+            (s.Nim != null && s.Nim.ToLower().Contains(keyword)) || 
+            (s.Nama != null && s.Nama.ToLower().Contains(keyword))
+        ).ToList();
+        
+        dgMahasiswa.ItemsSource = filteredList; // Tampilkan hasil filter
+    }
+}
+        </code></pre>
+        <p>Fungsi ini memanfaatkan LINQ di C# untuk memfilter daftar mahasiswa berdasarkan kata kunci yang diinput. Jika <i>keyword</i> cocok dengan sebagian NIM atau Nama, data tersebut akan ditampilkan ke tabel tanpa mengubah daftar asli yang disimpan di memori.</p>
+    </div>
+
+</body>
+
+</html>
