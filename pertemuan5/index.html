@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentasi Pertemuan 5 - WPF Dashboard UI</title>
+    <style>
+        :root {
+            --primary: #1F2937;
+            --accent: #3B82F6;
+            --bg: #F9FAFB;
+            --text: #374151;
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin-top: 1.5rem;
+        }
+
+        code {
+            background-color: #E5E7EB;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 0.9em;
+            color: #EF4444;
+        }
+
+        pre {
+            background-color: #1F2937;
+            color: #F87171;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 0.9em;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #E5E7EB;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            background-color: #EFF6FF;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .feature-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pertemuan 5</h1>
+        <p>Dokumentasi Pembuatan Dashboard UI menggunakan WPF & C#</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Tentang Proyek</h2>
+            <p>
+                Pada pertemuan 5 ini, kita telah membangun sebuah aplikasi desktop <strong>Windows Presentation Foundation (WPF)</strong> berbasis .NET. 
+                Fokus utama dari proyek ini adalah merancang antarmuka pengguna (UI) modern yang berupa sebuah <strong>Dashboard</strong>. 
+                Untuk mencapai desain yang bersih, minimalis, dan kekinian, proyek ini mengintegrasikan pustaka desain <code>MaterialDesignThemes</code>.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Struktur Kode Utama</h2>
+            <p>Terdapat dua file utama yang kita ubah/konfigurasi pada pembuatan Dashboard UI ini:</p>
+
+            <h3>1. <code>App.xaml</code></h3>
+            <p>
+                File ini bertindak sebagai pusat sumber daya aplikasi. Di sini kita mendeklarasikan penggunaan <strong>Material Design</strong> 
+                sehingga dapat diakses oleh semua jendela/komponen aplikasi. Kita menggunakan <code>BundledTheme</code> dengan tema dasar terang (Light) 
+                dan warna aksen DeepPurple & Lime.
+            </p>
+
+            <h3>2. <code>MainWindow.xaml</code></h3>
+            <p>
+                File ini berisi markup XAML utama yang mendefinisikan layout dan struktur Dashboard. Layout ini dibagi menggunakan sistem <code>Grid</code> 
+                dengan dua kolom utama:
+            </p>
+            <ul>
+                <li><strong>Kolom 1 (Sidebar):</strong> Berisi menu navigasi vertikal (Home, Analytics, Customers, Settings). Kita menghilangkan ikon Dashboard utama sesuai revisi terakhir agar terlihat lebih rapi.</li>
+                <li><strong>Kolom 2 (Main Content):</strong> Area kerja utama yang berisi Header (notifikasi & foto profil), Kartu Ringkasan (Revenue, Users, Sales), dan daftar transaksi terbaru.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Fitur Desain yang Digunakan</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Grid System</h4>
+                    <p>Menggunakan pembagian struktur Grid dan StackPanel untuk memisahkan konten (sidebar dan main area) agar layout tetap responsif.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Material PackIcons</h4>
+                    <p>Menggunakan set ikon bawaan dari Material Design (seperti <code>CurrencyUsd</code>, <code>BellOutline</code>, dll) yang ringan dan konsisten.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Card Component</h4>
+                    <p>Memanfaatkan komponen <code>materialDesign:Card</code> untuk menampilkan widget ringkasan pendapatan dan aktivitas dengan efek bayangan alami.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>Ellipses & Radius</h4>
+                    <p>Penggunaan sudut membulat (CornerRadius) pada Border dan Ellipse untuk foto profil yang membuat UI tidak kaku (modern look).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Cara Menjalankan</h2>
+            <p>Aplikasi ini dapat dijalankan melalui terminal / command prompt. Arahkan direktori terminal ke dalam folder <code>pertemuan5</code>, kemudian jalankan perintah berikut:</p>
+            <pre><code>cd pertemuan5
+dotnet run</code></pre>
+            <p>
+                Perintah di atas akan melakukan proses <em>build</em> (kompilasi C# dan XAML) lalu secara otomatis membuka jendela aplikasi Dashboard WPF tersebut. 
+                (Pastikan Anda telah mematikan aplikasi jika sebelumnya sudah berjalan, agar proses <em>build</em> tidak gagal akibat file terkunci).
+            </p>
+        </section>
+    </main>
+
+</body>
+</html>
