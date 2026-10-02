@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace pertemuan5;
+namespace StudentManager;
 
 /// <summary>
 /// Interaction logic for App.xaml

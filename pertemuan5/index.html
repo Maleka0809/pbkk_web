@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penjelasan Tugas 5 - WPF Dashboard</title>
+    <title>Penjelasan Tugas 5 - WPF Student Management System</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -22,64 +22,127 @@
 
     <div class="isi">
         <h2>Soal :</h2>
-        <p>Membuat aplikasi desktop Dashboard UI menggunakan Windows Presentation Foundation (WPF) dengan MaterialDesignThemes.</p>
-        
+        <p>Membuat aplikasi desktop <strong>Student Management System</strong> menggunakan Windows Presentation Foundation (WPF) dengan arsitektur <strong>MVVM</strong>, Data Binding, dan koneksi ke database <strong>MySQL</strong> melalui ADO.NET.</p>
+
         <h2>Jawaban :</h2>
-        <a href="https://github.com/Maleka0809/pbkk_web/tree/main/pertemuan5">github code</a>
-        <p>Pada pertemuan 5 ini, kita telah membangun sebuah aplikasi desktop <strong>Windows Presentation Foundation (WPF)</strong> berbasis .NET. Fokus utama dari proyek ini adalah merancang antarmuka pengguna (UI) modern yang berupa sebuah <strong>Dashboard</strong>. Untuk mencapai desain yang bersih, minimalis, dan kekinian, proyek ini mengintegrasikan pustaka desain <code>MaterialDesignThemes</code>.</p>
+        <a href="https://github.com/Maleka0809/pbkk_web/tree/main/pertemuan5/StudentManager">&#128196; Lihat Kode di GitHub</a>
 
-        <h3>Logika Utama Aplikasi (XAML & Pengaturan)</h3>
-        <p>Berikut adalah beberapa implementasi kunci di dalam aplikasi:</p>
+        <p>Pada pertemuan 5 ini, dikembangkan sebuah aplikasi desktop <strong>WPF (.NET)</strong> yang mengimplementasikan pola arsitektur <strong>MVVM (Model-View-ViewModel)</strong>. Aplikasi ini mampu melakukan operasi <strong>CRUD</strong> (Create, Read, Update, Delete) dan pencarian data mahasiswa yang tersimpan di database <strong>MySQL</strong> secara nyata, bukan sekadar in-memory.</p>
 
-        <h4>1. Konfigurasi Tema (App.xaml)</h4>
-        <pre class="language-xml"><code>
-&lt;Application.Resources&gt;
-    &lt;ResourceDictionary&gt;
-        &lt;ResourceDictionary.MergedDictionaries&gt;
-            &lt;materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" /&gt;
-            &lt;ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" /&gt;
-        &lt;/ResourceDictionary.MergedDictionaries&gt;
-    &lt;/ResourceDictionary&gt;
-&lt;/Application.Resources&gt;
+        <h3>Tampilan Aplikasi</h3>
+        <img src="tampilan-desktop.png" alt="Tampilan Aplikasi Student Management System" width="700">
+
+        <h3>Arsitektur MVVM</h3>
+        <p>Proyek ini dibagi menjadi 4 lapisan utama yang saling terpisah:</p>
+        <ul>
+            <li><strong>Model</strong> — Representasi data (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/Models/Student.cs">Student.cs</a>)</li>
+            <li><strong>View</strong> — Tampilan XAML (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/MainWindow.xaml">MainWindow.xaml</a>)</li>
+            <li><strong>ViewModel</strong> — Logika aplikasi, Command, dan Statistik (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/ViewModels/StudentViewModel.cs">StudentViewModel.cs</a>)</li>
+            <li><strong>Repository</strong> — Akses database dengan ADO.NET (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/Data/StudentRepository.cs">StudentRepository.cs</a>)</li>
+        </ul>
+
+        <h4>1. Model (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/Models/Student.cs">Student.cs</a>)</h4>
+        <pre class="language-csharp"><code>
+public class Student
+{
+    public int Id { get; set; }
+    public string NIM { get; set; } = "";
+    public string Nama { get; set; } = "";
+    public string Jurusan { get; set; } = "";
+    public string Gender { get; set; } = "";
+    public string Email { get; set; } = "";
+}
         </code></pre>
-        <p>File ini bertindak sebagai pusat sumber daya aplikasi. Di sini kita mendeklarasikan penggunaan <strong>Material Design</strong> sehingga dapat diakses oleh semua jendela/komponen aplikasi. Kita menggunakan <code>BundledTheme</code> dengan tema dasar terang (Light) dan warna aksen DeepPurple & Lime.</p>
+        <p>Model merepresentasikan satu baris data mahasiswa dari tabel database. Properti digunakan sebagai sumber binding ke elemen UI di XAML.</p>
 
-        <h4>2. Layout Utama dan Sidebar (MainWindow.xaml)</h4>
-        <img src="dokumentasi.png" alt="Desain Tampilan Dashboard" width="700">
-        <pre class="language-xml"><code>
-&lt;Grid&gt;
-    &lt;Grid.ColumnDefinitions&gt;
-        &lt;ColumnDefinition Width="250"/&gt;
-        &lt;ColumnDefinition Width="*"/&gt;
-    &lt;/Grid.ColumnDefinitions&gt;
+        <h4>2. Repository — Koneksi dan CRUD Database (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/Data/StudentRepository.cs">StudentRepository.cs</a>)</h4>
+        <pre class="language-csharp"><code>
+public class StudentRepository
+{
+    private readonly string connectionString =
+        "Server=127.0.0.1;Port=3307;Database=studentdb;Uid=root;Pwd=;";
 
-    &lt;!-- Sidebar --&gt;
-    &lt;Border Grid.Column="0" Background="#1F2937"&gt;
-        ...
-    &lt;/Border&gt;
-&lt;/Grid&gt;
+    public List&lt;Student&gt; GetAll() { ... }
+    public void Insert(Student student) { ... }
+    public void Update(Student student) { ... }
+    public void Delete(int id) { ... }
+    public List&lt;Student&gt; Search(string keyword) { ... }
+}
         </code></pre>
-        <p>Struktur layout dibagi menggunakan sistem <code>Grid</code> dengan dua kolom utama. Kolom pertama (kiri) digunakan sebagai Sidebar yang berisi menu navigasi vertikal menggunakan gaya flat button dari Material Design.</p>
+        <p>Repository menangani seluruh komunikasi dengan database MySQL menggunakan <code>MySqlConnector</code>. Setiap operasi CRUD dibungkus dalam method terpisah agar ViewModel tidak perlu mengetahui detail implementasi database.</p>
 
-        <h4>3. Komponen Card dan Ikon</h4>
-        <pre class="language-xml"><code>
-&lt;materialDesign:Card Grid.Column="0" Padding="20" UniformCornerRadius="10"&gt;
-    &lt;StackPanel&gt;
-        &lt;Grid&gt;
-            ...
-            &lt;TextBlock Text="Total Revenue" Foreground="#6B7280" FontSize="16" VerticalAlignment="Center"/&gt;
-            &lt;materialDesign:PackIcon Grid.Column="1" Kind="CurrencyUsd" Foreground="#10B981" Width="24" Height="24"/&gt;
-        &lt;/Grid&gt;
-        &lt;TextBlock Text="$45,231.89" FontSize="32" FontWeight="Bold" Foreground="#111827" Margin="0,10,0,0"/&gt;
-        &lt;TextBlock Text="+20.1% from last month" Foreground="#10B981" FontSize="14" Margin="0,5,0,0"/&gt;
-    &lt;/StackPanel&gt;
-&lt;/materialDesign:Card&gt;
+        <h4>3. Database — Tabel Students</h4>
+        <img src="Screenshot_tabel_db.png" alt="Screenshot Tabel Database Students" width="700">
+        <pre class="language-sql"><code>
+CREATE DATABASE IF NOT EXISTS studentdb;
+USE studentdb;
+
+CREATE TABLE IF NOT EXISTS Students (
+    Id      INT AUTO_INCREMENT PRIMARY KEY,
+    NIM     VARCHAR(20)  NOT NULL,
+    Nama    VARCHAR(100) NOT NULL,
+    Jurusan VARCHAR(100) NOT NULL,
+    Gender  VARCHAR(20)  NOT NULL,
+    Email   VARCHAR(100)
+);
         </code></pre>
-        <p>Area konten utama menggunakan <code>materialDesign:Card</code> untuk menampilkan widget ringkasan secara elegan. Ikon disediakan oleh <code>materialDesign:PackIcon</code> yang memungkinkan penggunaan ribuan ikon vektor bawaan, seperti <code>CurrencyUsd</code> dan <code>AccountGroup</code>.</p>
-        
-        <h4>4. Menjalankan Aplikasi</h4>
-        <p>Aplikasi ini dapat dijalankan melalui terminal dengan mengarahkan ke folder <code>pertemuan5</code> lalu menjalankan:</p>
-        <pre class="language-bash"><code>cd pertemuan5
+        <p>Tabel <code>Students</code> dibuat di database MySQL dengan kolom Id sebagai primary key auto increment. Data diakses langsung menggunakan ADO.NET tanpa ORM.</p>
+
+        <h4>4. RelayCommand (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/ViewModels/RelayCommand.cs">RelayCommand.cs</a>)</h4>
+        <pre class="language-csharp"><code>
+public class RelayCommand : ICommand
+{
+    private readonly Action _execute;
+    public RelayCommand(Action execute) { _execute = execute; }
+    public bool CanExecute(object? parameter) => true;
+    public void Execute(object? parameter) => _execute();
+    public event EventHandler? CanExecuteChanged;
+}
+        </code></pre>
+        <p>Kelas ini adalah jembatan antara tombol di XAML (View) dan method di ViewModel. Dengan <code>ICommand</code>, kita tidak perlu menulis event handler di code-behind, melainkan cukup binding ke property Command di ViewModel.</p>
+
+        <h4>5. ViewModel — Logika & Statistik (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/ViewModels/StudentViewModel.cs">StudentViewModel.cs</a>)</h4>
+        <pre class="language-csharp"><code>
+public class StudentViewModel : INotifyPropertyChanged
+{
+    public ObservableCollection&lt;Student&gt; Students { get; } = new();
+
+    public int TotalStudents    => Students.Count;
+    public int TotalInformatika => Students.Count(x => x.Jurusan == "Informatika");
+    public int TotalLakiLaki    => Students.Count(x => x.Gender == "Laki-laki");
+
+    public ICommand SaveCommand   { get; }
+    public ICommand DeleteCommand { get; }
+    public ICommand SearchCommand { get; }
+    public ICommand ResetCommand  { get; }
+
+    private void Save()   { /* Insert atau Update ke DB */ }
+    private void Delete() { /* Hapus dari DB */ }
+    private void Search() { /* Filter dari DB */ }
+}
+        </code></pre>
+        <p>ViewModel mengimplementasikan <code>INotifyPropertyChanged</code> sehingga setiap perubahan data (misalnya setelah simpan/hapus) otomatis merefresh tampilan DataGrid dan panel statistik tanpa perlu kode tambahan di View.</p>
+
+        <h4>6. Data Binding di XAML (<a href="https://github.com/Maleka0809/pbkk_web/blob/main/pertemuan5/StudentManager/MainWindow.xaml">MainWindow.xaml</a>)</h4>
+        <pre class="language-xml"><code>
+&lt;!-- Form Input --&gt;
+&lt;TextBox Text="{Binding SelectedStudent.NIM, UpdateSourceTrigger=PropertyChanged}"/&gt;
+
+&lt;!-- Tombol dengan Command --&gt;
+&lt;Button Content="Simpan" Command="{Binding SaveCommand}"/&gt;
+
+&lt;!-- Statistik --&gt;
+&lt;TextBlock Text="{Binding TotalStudents}" FontSize="32" FontWeight="Bold"/&gt;
+
+&lt;!-- DataGrid dengan two-way binding --&gt;
+&lt;DataGrid ItemsSource="{Binding Students}"
+          SelectedItem="{Binding SelectedStudent, Mode=TwoWay}"/&gt;
+        </code></pre>
+        <p>View hanya berisi deklarasi XAML dan tidak mengandung logika bisnis sama sekali. Semua interaksi dihubungkan ke ViewModel melalui <strong>Data Binding</strong> dan <strong>Command</strong>.</p>
+
+        <h4>7. Menjalankan Aplikasi</h4>
+        <p>Pastikan server MySQL (port 3307) sudah berjalan dan database <code>studentdb</code> sudah dibuat, lalu jalankan:</p>
+        <pre class="language-bash"><code>cd pertemuan5/StudentManager
 dotnet run</code></pre>
     </div>
 
