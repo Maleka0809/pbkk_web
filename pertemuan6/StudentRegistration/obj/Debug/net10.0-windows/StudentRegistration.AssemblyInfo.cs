@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("kalkulator")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("StudentRegistration")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb962c19990d8cc8cc2115cb2deb56dc55d65216")]
-[assembly: System.Reflection.AssemblyProductAttribute("kalkulator")]
-[assembly: System.Reflection.AssemblyTitleAttribute("kalkulator")]
+[assembly: System.Reflection.AssemblyProductAttribute("StudentRegistration")]
+[assembly: System.Reflection.AssemblyTitleAttribute("StudentRegistration")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
