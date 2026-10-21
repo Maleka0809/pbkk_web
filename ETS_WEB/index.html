@@ -99,12 +99,32 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            margin: 12px 0 20px 0;
-            transition: background-color 0.2s;
+            margin: 6px 8px 6px 0;
+            transition: background-color 0.2s, transform 0.15s;
         }
 
         .github-btn:hover {
             background-color: #0366d6;
+            transform: translateY(-1px);
+        }
+
+        .prd-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 6px 8px 6px 0;
+            transition: all 0.2s;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        }
+
+        .prd-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
         }
 
         .table-custom {
@@ -206,6 +226,23 @@
     </div>
 
     <div class="isi">
+        <!-- QUICK ACCESS LINKS & PRD BANNER -->
+        <div style="background: linear-gradient(135deg, #f0fdf4 0%, #e0e7ff 100%); border: 1px solid #c7d2fe; border-radius: 10px; padding: 18px 24px; margin-bottom: 26px; box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+            <div>
+                <span style="display: inline-block; background-color: #4338ca; color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;">Dokumentasi Resmi Proyek</span>
+                <h3 style="margin: 0 0 4px 0; color: #1e1b4b; font-size: 17px;">Product Requirement Document (PRD) &amp; Sumber Kode</h3>
+                <p style="margin: 0; font-size: 13.5px; color: #475569;">Akses spesifikasi kebutuhan produk, arsitektur sistem, dan repositori kode proyek ETS Bank Soal .NET.</p>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <a class="prd-btn" href="https://docs.google.com/document/d/1rIJjDV2JOAmfQsA0vBKrt23nxfbTQi9iRFgvQBgT398/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    📄 Buka Dokumen PRD (Google Docs)
+                </a>
+                <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/ETS" target="_blank" rel="noopener noreferrer">
+                    📁 Repositori GitHub Proyek
+                </a>
+            </div>
+        </div>
+
         <h2>Soal Evaluasi Tengah Semester (ETS) :</h2>
 
         <!-- SOAL 1 -->
@@ -385,10 +422,18 @@
             </div>
         </div>
 
-        <h2>Tautan Repositori Proyek :</h2>
-        <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/ETS" target="_blank">
-            📁 Buka Folder Proyek di GitHub (ETS/BankSoalNET)
-        </a>
+        <h2>Tautan Dokumen PRD &amp; Repositori Proyek :</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 16px 0;">
+            <a class="prd-btn" href="https://docs.google.com/document/d/1rIJjDV2JOAmfQsA0vBKrt23nxfbTQi9iRFgvQBgT398/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                📄 Buka Dokumen PRD (Google Docs)
+            </a>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/ETS" target="_blank" rel="noopener noreferrer">
+                📁 Buka Folder Proyek di GitHub (ETS/BankSoalNET)
+            </a>
+        </div>
+        <p>
+            Dokumen <b>Product Requirement Document (PRD)</b> merangkum secara komprehensif latar belakang kebutuhan, analisis persona pengguna (dosen dan mahasiswa), spesifikasi fitur fungsional &amp; non-fungsional, serta alur pengalaman aplikasi <b>Bank Soal .NET</b>.
+        </p>
         <p>
             Seluruh logika bisnis, manajemen data transaksional, validasi formulir, perancangan antarmuka visual XAML, serta mesin penilaian otomatis dibangun secara mandiri dengan spesifikasi teknologi sebagai berikut:
         </p>

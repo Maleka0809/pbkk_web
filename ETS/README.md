@@ -4,6 +4,12 @@ Aplikasi desktop modern berbasis **WPF (.NET 8 C#)** untuk evaluasi pembelajaran
 
 ---
 
+## 📄 Dokumen Spesifikasi Kebutuhan Produk (PRD)
+Spesifikasi lengkap dan arsitektur produk dapat diakses melalui:
+* **Product Requirement Document (PRD)**: [Buka Dokumen PRD Bank Soal .NET (Google Docs)](https://docs.google.com/document/d/1rIJjDV2JOAmfQsA0vBKrt23nxfbTQi9iRFgvQBgT398/edit?usp=sharing)
+
+---
+
 ## 🚀 Fitur Utama
 
 ### 1. Autentikasi & Manajemen Pengguna
