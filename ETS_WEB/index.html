@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjelasan Proyek ETS - Bank Soal .NET (WPF)</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .isi {
+            max-width: 1080px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            padding: 32px 40px;
+            line-height: 1.68;
+            color: #2d3748;
+        }
+
+        .isi h2 {
+            color: #1a202c;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 28px;
+        }
+
+        .isi h3 {
+            color: #4338ca;
+            margin-top: 24px;
+        }
+
+        .isi h4 {
+            color: #374151;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .badge-tech {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #3730a3;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        .img-container {
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid #cbd5e1;
+        }
+
+        .img-caption {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 13.5px;
+            line-height: 1.45;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+        }
+
+        p code, li code {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .github-btn {
+            display: inline-block;
+            background-color: #24292e;
+            color: #ffffff !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 12px 0 20px 0;
+            transition: background-color 0.2s;
+        }
+
+        .github-btn:hover {
+            background-color: #0366d6;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+
+        .table-custom th, .table-custom td {
+            border: 1px solid #e2e8f0;
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .table-custom th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            border-left: 5px solid #4f46e5;
+            padding: 18px 24px;
+            margin: 24px 0 16px 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.06);
+        }
+
+        .question-badge {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        .question-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin: 0;
+        }
+
+        .answer-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 22px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .feature-item {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .feature-item h5 {
+            margin: 0 0 6px 0;
+            color: #3730a3;
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../contact.html">Contact</a>
+    </div>
+
+    <div class="judul">
+        <h1>Penjelasan Evaluasi Tengah Semester (ETS)</h1>
+    </div>
+
+    <div class="isi">
+        <h2>Soal Evaluasi Tengah Semester (ETS) :</h2>
+
+        <!-- SOAL 1 -->
+        <div class="question-card">
+            <span class="question-badge">Soal 1</span>
+            <p class="question-title">Jelaskan deskripsi dan ruang lingkup fitur aplikasi Desktop Rich UI yang dibuat.</p>
+        </div>
+
+        <div class="answer-box">
+            <h3 style="margin-top:0;">Jawaban Soal 1:</h3>
+            
+            <h4>A. Deskripsi Aplikasi Desktop Rich UI</h4>
+            <p>
+                Aplikasi yang dibangun bernama <b>Bank Soal .NET</b>, yaitu sebuah sistem pembelajaran, katalog bank soal kurikulum, modul studi kasus, dan evaluasi ujian interaktif berbasis <i>Desktop Rich UI</i> yang dikembangkan menggunakan framework <b>Windows Presentation Foundation (WPF) pada ekosistem .NET 8 (C# 12)</b>.
+            </p>
+            <p>
+                Predikat <b>Rich UI (Rich User Interface)</b> pada aplikasi ini diwujudkan melalui:
+            </p>
+            <ul>
+                <li><b>Tema Visual Modern (Dark Slate Theme):</b> Antarmuka bertema gelap elegan (basis warna Slate <code>#0F172A</code> dan <code>#1E293B</code> dengan aksen ungu <code>#7C3AED</code>) yang dirancang menggunakan <i>Material Design in XAML Toolkit</i> untuk meminimalkan kelelahan mata saat belajar dalam durasi lama.</li>
+                <li><b>Tata Letak Kartu Interaktif &amp; Komponen Dinamis:</b> Menggunakan kartu elevasi, lencana peran (*Role Badges*), animasi hover, tombol radio tab beranimasi, serta indikator visual warna real-time untuk status kelulusan (lencana hijau/merah).</li>
+                <li><b>Pengalaman Responsif Tanpa Hambatan (Zero-Lag UI):</b> Seluruh operasi I/O basis data dan rendering berkas berjalan secara asinkron (<code>async/await</code>), sehingga UI desktop tetap mulus dan responsif tanpa fenomena <i>freezing</i>.</li>
+            </ul>
+
+            <h4>B. Ruang Lingkup Fitur (Scope of Features)</h4>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h5>1. Autentikasi Terpadu &amp; RBAC</h5>
+                    <p>Satu pintu masuk (Unified Login) untuk Mahasiswa dan Dosen/Admin dengan deteksi peran otomatis, fitur pendaftaran akun baru dengan validasi data, serta tombol <i>Quick-Fill Demo</i> instan.</p>
+                </div>
+                <div class="feature-item">
+                    <h5>2. Manajemen Kurikulum &amp; Materi</h5>
+                    <p>CRUD Master Data Mata Kuliah (Kode, Nama, SKS, Semester, Ikon Material, dan Warna) serta pengelolaan Materi Pembelajaran per pertemuan terelasi secara relasional.</p>
+                </div>
+                <div class="feature-item">
+                    <h5>3. Manajemen Bank Soal (PG &amp; Essay)</h5>
+                    <p>Pengelolaan bank soal fleksibel mendukung tipe Pilihan Ganda (4 opsi jawaban) dan Essay (pembahasan detail serta kata kunci evaluasi otomatis).</p>
+                </div>
+                <div class="feature-item">
+                    <h5>4. Katalog Bank Soal &amp; Kunci Interaktif</h5>
+                    <p>Penyajian kumpulan soal untuk studi mandiri dengan filter multi-kriteria dan fitur sakelar <b>Kunci Jawaban: ON / OFF</b> yang langsung menyorot opsi benar dan kunci resmi.</p>
+                </div>
+                <div class="feature-item">
+                    <h5>5. Embedded PDF Reader (WebView2)</h5>
+                    <p>Pembaca dokumen PDF terintegrasi penuh di dalam window aplikasi tanpa browser luar untuk membaca kisi-kisi dan silabus, lengkap dengan fitur upload berkas PDF.</p>
+                </div>
+                <div class="feature-item">
+                    <h5>6. Mode Belajar &amp; Scoring (Auto-Grading)</h5>
+                    <p>Mahasiswa dapat membaca materi secara mandiri dan mengerjakan simulasi ujian dengan timer serta mesin penilaian otomatis (auto-grading) langsung.</p>
+                </div>
+                <div class="feature-item">
+                    <h5>7. Rekapitulasi &amp; Riwayat Nilai</h5>
+                    <p>Pencatatan riwayat skor mandiri bagi mahasiswa serta halaman rekapitulasi nilai seluruh mahasiswa bagi Dosen/Admin untuk monitoring performa akademik.</p>
+                </div>
+                <div class="feature-item">
+                    <h5>8. Basis Data Relasional Serverless</h5>
+                    <p>Menggunakan SQLite via Entity Framework Core 8 yang tertanam langsung (in-process) dengan skema relasional tabel terstruktur tanpa instalasi server SQL eksternal.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOAL 2 -->
+        <div class="question-card">
+            <span class="question-badge">Soal 2</span>
+            <p class="question-title">Apa latar belakang dan Manfaat aplikasi tersebut di buat.</p>
+        </div>
+
+        <div class="answer-box">
+            <h3 style="margin-top:0;">Jawaban Soal 2:</h3>
+
+            <h4>A. Latar Belakang Pengembangan Aplikasi</h4>
+            <p>
+                Pengembangan aplikasi <b>Bank Soal .NET</b> dilatarbelakangi oleh sejumlah tantangan nyata dalam proses pembelajaran mata kuliah <b>Pemrograman Berbasis Kerangka Kerja (PBKK)</b>:
+            </p>
+            <ol>
+                <li>
+                    <b>Kebutuhan Pemahaman Mendalam Konsep Framework .NET:</b> Materi PBKK mencakup spektrum konsep teoretis dan praktis yang luas (seperti <i>Common Language Runtime</i>, arsitektur WPF, XAML, MVVM, ADO.NET, dan ORM Entity Framework). Mahasiswa memerlukan sarana evaluasi mandiri yang terstruktur per bab/pertemuan agar pemahaman konsep dapat teruji secara berkala.
+                </li>
+                <li>
+                    <b>Fragmentasi Bahan Ajar dan Dokumen Kisi-Kisi Soal:</b> Selama ini bahan kuliah, lembar kisi-kisi ujian, dan bank soal latihan sering kali tersebar di berbagai tautan Google Drive, grup perpesanan, atau berkas PDF lokal yang tercecer. Mahasiswa kesulitan mencari referensi latihan yang komprehensif dalam satu lingkungan terpadu.
+                </li>
+                <li>
+                    <b>Keterbatasan Aplikasi Desktop Konvensional:</b> Banyak aplikasi evaluasi desktop lama masih dibangun menggunakan antarmuka Windows Forms klasik yang kaku, memiliki visual monokromatik yang membosankan, serta tidak mampu merender dokumen multimedia atau PDF secara native tanpa membuka aplikasi pihak ketiga.
+                </li>
+                <li>
+                    <b>Implementasi Riil Prinsip Desktop Rich UI pada Evaluasi Tengah Semester (ETS):</b> Sebagai pembuktian penguasaan kompetensi PBKK, aplikasi ini dikembangkan untuk mendemonstrasikan integrasi kerangka kerja modern: arsitektur WPF dengan XAML responsif, styling Material Design, efisiensi SQLite serverless, dan integrasi komponen embedded Microsoft Edge WebView2.
+                </li>
+            </ol>
+
+            <h4>B. Manfaat Aplikasi</h4>
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Penerima Manfaat</th>
+                        <th>Manfaat yang Diperoleh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Bagi Mahasiswa</b></td>
+                        <td>
+                            <ul>
+                                <li><b>Akses Belajar Terpusat:</b> Mempelajari materi perkuliahan, bank soal resmi, dan membaca silabus/kisi-kisi PDF dalam satu aplikasi tanpa perlu berganti-ganti jendela software.</li>
+                                <li><b>Umpan Balik Instan (Immediate Feedback):</b> Mengetahui hasil evaluasi secara langsung melalui sistem penilaian otomatis (auto-grading) dan pembahasan kunci jawaban.</li>
+                                <li><b>Pengalaman Belajar Nyaman:</b> Antarmuka Rich UI bertema gelap (Dark Theme) yang nyaman di mata, responsif, dan mudah dinavigasikan.</li>
+                                <li><b>Pemantauan Progres Mandiri:</b> Riwayat skor ujian tersimpan rapi sehingga mahasiswa dapat mengevaluasi topik-topik perkuliahan yang masih perlu diperdalam.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Bagi Dosen / Pengajar</b></td>
+                        <td>
+                            <ul>
+                                <li><b>Sentralisasi Manajemen Kurikulum:</b> Memudahkan pengelolaan mata kuliah, pengelompokan materi per pertemuan, serta penambahan butir soal baru (PG dan Essay).</li>
+                                <li><b>Penyebaran Modul PDF Terintegrasi:</b> Dosen dapat langsung mengunggah berkas PDF kisi-kisi atau lembar studi kasus ke sistem untuk dibaca oleh seluruh mahasiswa.</li>
+                                <li><b>Transparansi Monitoring Mahasiswa:</b> Rekapitulasi nilai dan metrik aktivitas mahasiswa dapat dipantau langsung dari dashboard administratif.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Bagi Praktik Akademik PBKK</b></td>
+                        <td>
+                            <ul>
+                                <li>Menjadi proyek percontohan (<i>reference project</i>) implementasi arsitektur perangkat lunak desktop tingkat lanjut yang menerapkan pemisahan tugas (Separation of Concerns) antara UI XAML, model data C#, dan persistensi database EF Core.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Tautan Repositori Proyek :</h2>
+        <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/ETS" target="_blank">
+            📁 Buka Folder Proyek di GitHub (ETS/BankSoalNET)
+        </a>
+        <p>
+            Seluruh logika bisnis, manajemen data transaksional, validasi formulir, perancangan antarmuka visual XAML, serta mesin penilaian otomatis dibangun secara mandiri dengan spesifikasi teknologi sebagai berikut:
+        </p>
+
+        <div style="margin-bottom: 20px;">
+            <span class="badge-tech">WPF (.NET 8)</span>
+            <span class="badge-tech">C# 12</span>
+            <span class="badge-tech">Entity Framework Core 8</span>
+            <span class="badge-tech">SQLite Serverless</span>
+            <span class="badge-tech">Material Design in XAML Toolkit</span>
+            <span class="badge-tech">Microsoft Edge WebView2</span>
+            <span class="badge-tech">MVVM Architecture</span>
+        </div>
+
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>Komponen / Lapisan</th>
+                    <th>Teknologi / Pustaka</th>
+                    <th>Peran &amp; Tanggung Jawab</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>User Interface (UI)</b></td>
+                    <td>XAML + Material Design 5.1</td>
+                    <td>Tata letak responsif, palet Dark Theme slate modern, ikon vektor, animasi transisi, dan visualisasi interaktif.</td>
+                </tr>
+                <tr>
+                    <td><b>Application Logic</b></td>
+                    <td>C# 12 (.NET 8 SDK)</td>
+                    <td>Pemrosesan autentikasi, routing window/view, validasi input formulir, dan mesin penilaian otomatis (auto-grading).</td>
+                </tr>
+                <tr>
+                    <td><b>Data Persistence</b></td>
+                    <td>SQLite via EF Core 8</td>
+                    <td>Penyimpanan terstruktur tanpa instalasi server terpisah (serverless), migrasi skema dinamis, dan kueri LINQ berkecepatan tinggi.</td>
+                </tr>
+                <tr>
+                    <td><b>PDF Viewer Engine</b></td>
+                    <td>Microsoft WebView2</td>
+                    <td>Merender berkas PDF modul, silabus, dan kisi-kisi soal langsung di dalam aplikasi dengan kontrol zoom, scroll, dan navigasi halaman penuh.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ================= BAGIAN 1 ================= -->
+        <h2>Pembahasan Modul &amp; Penjelasan Kode</h2>
+
+        <h3>1. Autentikasi Terpadu (Unified Login &amp; Registrasi Pengguna)</h3>
+        <p>
+            Sistem autentikasi menerapkan konsep <i>Unified Authentication Portal</i>. Pengguna Mahasiswa maupun Dosen/Admin masuk melalui satu jendela login yang sama. Saat proses login berhasil, sistem secara otomatis membaca atribut <code>Role</code> dari akun tersebut dan mengarahkan ke antarmuka yang sesuai. Terdapat pula tombol <i>Quick-Fill Demo</i> untuk mempermudah pengujian dosen penguji.
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/01_login_window.png" alt="Tampilan Login Window Bank Soal .NET">
+            <div class="img-caption">Gambar 1: Antarmuka Login Terpadu dengan Fitur Quick-Fill Demo (Admin / Mahasiswa)</div>
+        </div>
+
+        <div class="img-container">
+            <img src="dokumentasi/02_register_window.png" alt="Tampilan Registrasi Pengguna Baru">
+            <div class="img-caption">Gambar 2: Formulir Registrasi Akun Baru dengan Pemilihan Peran (Mahasiswa / Admin)</div>
+        </div>
+
+        <h4>Implementasi Logika Login Asinkron (C#) :</h4>
+        <pre class="language-csharp"><code>// Method autentikasi pada DatabaseService.cs
+public async Task&lt;User?&gt; LoginAsync(string username, string password)
+{
+    // Verifikasi keberadaan akun berdasarkan username dan password
+    var user = await _db.Users.FirstOrDefaultAsync(u =&gt; 
+        u.Username.ToLower() == username.ToLower() &amp;&amp; 
+        u.Password == password);
+
+    return user;
+}
+
+// Handler tombol masuk pada LoginWindow.xaml.cs
+private async void BtnLogin_Click(object sender, RoutedEventArgs e)
+{
+    string username = TxtUsername.Text.Trim();
+    string password = TxtPassword.Password;
+
+    var user = await _db.LoginAsync(username, password);
+    if (user == null)
+    {
+        TxtError.Text = "Username atau password salah.";
+        TxtError.Visibility = Visibility.Visible;
+        return;
+    }
+
+    // Navigasi ke jendela kerja utama berdasarkan Role
+    var shell = new MainShell(user, _db);
+    shell.Show();
+    this.Close();
+}</code></pre>
+        <p>
+            Proses pengecekan dilakukan secara asinkron (<code>async/await</code>) agar UI tidak mengalami freeze saat mengakses basis data SQLite.
+        </p>
+
+        <!-- ================= BAGIAN 2 ================= -->
+        <h3>2. Kerangka Antarmuka Utama (Main Shell &amp; Navigasi Berbasis Peran)</h3>
+        <p>
+            Jendela utama (<code>MainShell.xaml</code>) bertindak sebagai kontainer induk (shell). Bilah samping (Sidebar) secara dinamis menampilkan menu navigasi sesuai peran pengguna yang sedang aktif:
+        </p>
+        <ul>
+            <li><b>Menu Admin / Dosen:</b> Dashboard Ringkasan, Kelola Mata Kuliah, Kelola Materi, Kelola Bank Soal, Katalog Bank Soal &amp; Kunci, Dokumen PDF Soal, serta Rekapitulasi Nilai Seluruh Mahasiswa.</li>
+            <li><b>Menu Mahasiswa:</b> Mode Belajar Materi, Mode Scoring (Ujian Evaluasi), Katalog Bank Soal Referensi, Dokumen PDF Kisi-Kisi, dan Riwayat Nilai Mandiri.</li>
+        </ul>
+
+        <h4>Kode Pemisahan Menu Navigasi (XAML &amp; C#) :</h4>
+        <pre class="language-csharp"><code>// SetupUI pada MainShell.xaml.cs
+private void SetupUI()
+{
+    TxtNamaUser.Text = _user.NamaLengkap;
+    TxtUsername.Text = $"@{_user.Username}";
+    TxtAvatarInitials.Text = string.IsNullOrEmpty(_user.NamaLengkap) 
+        ? "U" : _user.NamaLengkap.Substring(0, 2).ToUpper();
+
+    if (_user.Role.ToLower() == "admin")
+    {
+        TxtRoleBadge.Text = "ROLE: ADMIN";
+        MenuAdmin.Visibility = Visibility.Visible;
+        MenuMahasiswa.Visibility = Visibility.Collapsed;
+        NavAdminDashboard_Click(this, new RoutedEventArgs());
+    }
+    else
+    {
+        TxtRoleBadge.Text = "ROLE: MAHASISWA";
+        MenuAdmin.Visibility = Visibility.Collapsed;
+        MenuMahasiswa.Visibility = Visibility.Visible;
+        NavModeBelajar_Click(this, new RoutedEventArgs());
+    }
+}</code></pre>
+
+        <!-- ================= BAGIAN 3 ================= -->
+        <h3>3. Dashboard Administrator &amp; Statistik Analitik</h3>
+        <p>
+            Halaman Dashboard menyajikan metrik statistik operasional sistem secara real-time, meliputi jumlah Mata Kuliah terdaftar, total Modul Materi, total Soal Pilihan Ganda, Soal Essay, serta total sesi Ujian Mahasiswa yang telah diselesaikan.
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/03_admin_dashboard.png" alt="Dashboard Administrator">
+            <div class="img-caption">Gambar 3: Panel Dashboard Admin dengan Kartu Statistik dan Tabel Aktivitas Terkini</div>
+        </div>
+
+        <h4>Kode Pengambilan Metrik Statistik (LINQ / EF Core) :</h4>
+        <pre class="language-csharp"><code>// Mengumpulkan data ringkasan di AdminDashboardView.xaml.cs
+public async void LoadData()
+{
+    var stats = await _db.GetDashboardStatsAsync();
+    TxtTotalMatkul.Text = stats.TotalMatkul.ToString();
+    TxtTotalMateri.Text = stats.TotalMateri.ToString();
+    TxtTotalSoalPg.Text = stats.TotalSoalPg.ToString();
+    TxtTotalSoalEssay.Text = stats.TotalSoalEssay.ToString();
+    TxtTotalUjian.Text = stats.TotalUjianSelesai.ToString();
+
+    // Memuat daftar modul perkuliahan dan hasil ujian terbaru
+    DgModulKuliah.ItemsSource = await _db.GetAllMateriWithMatkulAsync();
+    DgHasilTerbaru.ItemsSource = await _db.GetRecentExamResultsAsync(5);
+}</code></pre>
+
+        <!-- ================= BAGIAN 4 ================= -->
+        <h3>4. Manajemen Kurikulum (Kelola Mata Kuliah &amp; Materi Perkuliahan)</h3>
+        <p>
+            Modul ini memungkinkan Dosen/Admin untuk mengelola data master kurikulum secara mandiri. Dosen dapat menambah mata kuliah baru lengkap dengan bobot SKS, semester, ikon representatif, dan warna aksen kartu, serta mengelompokkan materi pembelajaran per pertemuan ke mata kuliah terkait.
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/04_kelola_matkul.png" alt="Kelola Data Mata Kuliah">
+            <div class="img-caption">Gambar 4: Modul Manajemen Data Mata Kuliah dan Formulir Penambahan/Perubahan Data</div>
+        </div>
+
+        <div class="img-container">
+            <img src="dokumentasi/05_kelola_materi.png" alt="Kelola Materi Pembelajaran">
+            <div class="img-caption">Gambar 5: Modul Pengelolaan Materi Pembelajaran per Pertemuan Terhubung ke Mata Kuliah</div>
+        </div>
+
+        <h4>Struktur Relasi Entity Framework Core (C#) :</h4>
+        <pre class="language-csharp"><code>// Models/Materi.cs
+public class Materi
+{
+    public int Id { get; set; }
+    public int MataKuliahId { get; set; }
+    public int PertemuanKe { get; set; }
+    public string Judul { get; set; } = string.Empty;
+    public string Deskripsi { get; set; } = string.Empty;
+    public string IsiMateri { get; set; } = string.Empty;
+
+    // Relasi navigasi ke MataKuliah induk
+    public virtual MataKuliah? MataKuliah { get; set; }
+}</code></pre>
+
+        <!-- ================= BAGIAN 5 ================= -->
+        <h3>5. Manajemen Bank Soal (Kelola Butir Soal PG &amp; Essay)</h3>
+        <p>
+            Dosen/Admin dapat membuat butir soal evaluasi dengan tipe <b>Pilihan Ganda</b> (dilengkapi 4 opsi jawaban dan deklarasi kunci jawaban) atau tipe <b>Essay</b> (dilengkapi kunci jawaban pembahasan dan kata kunci penilaian otomatis).
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/06_kelola_soal.png" alt="Kelola Soal PG dan Essay">
+            <div class="img-caption">Gambar 6: Antarmuka Manajemen Butir Soal dengan Filter Topik dan Formulir Pembuatan Soal</div>
+        </div>
+
+        <h4>Kode Penyimpanan Soal Baru ke Basis Data (C#) :</h4>
+        <pre class="language-csharp"><code>private async void BtnSimpanSoal_Click(object sender, RoutedEventArgs e)
+{
+    var soal = new Soal
+    {
+        MateriId = selectedMateriId,
+        TipeSoal = CbTipeSoal.SelectedIndex == 0 ? "PG" : "Essay",
+        Pertanyaan = TxtPertanyaan.Text.Trim(),
+        PilihanA = TxtPilihanA.Text.Trim(),
+        PilihanB = TxtPilihanB.Text.Trim(),
+        PilihanC = TxtPilihanC.Text.Trim(),
+        PilihanD = TxtPilihanD.Text.Trim(),
+        KunciJawaban = GetSelectedKunci(),
+        Pembahasan = TxtPembahasan.Text.Trim()
+    };
+
+    await _db.AddSoalAsync(soal);
+    MessageBox.Show("Butir soal berhasil ditambahkan ke bank soal!", 
+        "Informasi", MessageBoxButton.OK, MessageBoxImage.Information);
+    LoadDataSoal();
+}</code></pre>
+
+        <!-- ================= BAGIAN 6 ================= -->
+        <h3>6. Katalog Bank Soal &amp; Kunci Jawaban Interaktif</h3>
+        <p>
+            Modul ini berfungsi sebagai repositori studi mandiri bagi Mahasiswa dan Dosen. Soal-soal ditampilkan dalam kartu interaktif yang dilengkapi tombol toggle <b>Kunci Jawaban: ON / OFF</b>. Saat aktif, opsi yang benar akan disorot warna hijau dengan penanda <i>✓ KUNCI</i> beserta penjelasan materi.
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/07_bank_soal_katalog.png" alt="Katalog Bank Soal dan Kunci Jawaban">
+            <div class="img-caption">Gambar 7: Tampilan Katalog Soal dengan Penyorotan Kunci Jawaban Resmi Aktif</div>
+        </div>
+
+        <h4>Filter Multi-Kriteria Dinamis (C# LINQ) :</h4>
+        <pre class="language-csharp"><code>// Penyaringan soal berdasarkan Mata Kuliah, Topik, Tipe, dan Keyword
+private void ApplyFilter()
+{
+    var query = _allSoalList.AsEnumerable();
+
+    if (_selectedMatkulId > 0)
+        query = query.Where(s =&gt; s.Materi?.MataKuliahId == _selectedMatkulId);
+
+    if (_selectedMateriId > 0)
+        query = query.Where(s =&gt; s.MateriId == _selectedMateriId);
+
+    if (!string.IsNullOrWhiteSpace(searchKeyword))
+        query = query.Where(s =&gt; s.Pertanyaan.Contains(searchKeyword, StringComparison.OrdinalIgnoreCase));
+
+    IcSoalList.ItemsSource = query.ToList();
+}</code></pre>
+
+        <!-- ================= BAGIAN 7 ================= -->
+        <h3>7. Dokumen Bank Soal PDF Terintegrasi (Microsoft WebView2)</h3>
+        <p>
+            Aplikasi menyediakan pembaca dokumen berkas PDF (kisi-kisi ujian, silabus kurikulum, lembar studi kasus) langsung di dalam window aplikasi tanpa memerlukan software penampil eksternal seperti Adobe Reader atau browser luar. Pengguna dapat membaca dokumen dengan fitur zoom, navigasi halaman, dan pencarian teks secara mulus.
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/08_dokumen_pdf.png" alt="Embedded PDF Viewer WebView2">
+            <div class="img-caption">Gambar 8: Penampil Dokumen PDF Kisi-Kisi Ujian menggunakan Microsoft Edge WebView2</div>
+        </div>
+
+        <h4>Kode Inisialisasi WebView2 Engine (C# &amp; XAML) :</h4>
+        <pre class="language-csharp"><code>// Inisialisasi WebView2 kontrol di DokumenPdfView.xaml.cs
+private async Task RenderPdfDocument(string filePath)
+{
+    if (!File.Exists(filePath)) return;
+
+    // Menunggu CoreWebView2 runtime siap
+    await PdfWebView.EnsureCoreWebView2Async();
+    
+    // Membuka URI berkas lokal langsung ke engine Chromium WebView2
+    var fileUri = new Uri(filePath).AbsoluteUri;
+    PdfWebView.CoreWebView2.Navigate(fileUri);
+}</code></pre>
+
+        <!-- ================= BAGIAN 8 ================= -->
+        <h3>8. Pengalaman Mahasiswa (Mode Belajar &amp; Evaluasi Scoring Ujian)</h3>
+        <p>
+            Mahasiswa disuguhkan dua metode belajar mandiri:
+        </p>
+        <ul>
+            <li><b>Mode Belajar:</b> Mahasiswa membaca rangkuman teori per pertemuan beserta contoh sintaks sebelum memulai ujian.</li>
+            <li><b>Mode Scoring (Ujian):</b> Mahasiswa mengerjakan paket kuis interaktif dengan umpan balik cepat dan auto-grading.</li>
+        </ul>
+
+        <div class="img-container">
+            <img src="dokumentasi/10_mode_belajar_mahasiswa.png" alt="Mode Belajar Materi Mahasiswa">
+            <div class="img-caption">Gambar 9: Mode Belajar Mahasiswa untuk Mempelajari Silabus dan Modul Pertemuan</div>
+        </div>
+
+        <div class="img-container">
+            <img src="dokumentasi/11_mode_scoring_ujian.png" alt="Mode Scoring Ujian Mahasiswa">
+            <div class="img-caption">Gambar 10: Lembar Pengerjaan Ujian Interaktif Mahasiswa dengan Pilihan Ganda &amp; Essay</div>
+        </div>
+
+        <h4>Algoritma Auto-Grading &amp; Scoring (C#) :</h4>
+        <pre class="language-csharp"><code>// Perhitungan nilai pada ModeScoringView.xaml.cs
+private async void BtnSubmitUjian_Click(object sender, RoutedEventArgs e)
+{
+    int totalSoal = _listSoal.Count;
+    int benarPg = 0;
+    int totalBobotEssay = 0;
+
+    foreach (var soal in _listSoal)
+    {
+        if (soal.TipeSoal == "PG")
+        {
+            if (_jawabanMahasiswa[soal.Id] == soal.KunciJawaban)
+                benarPg++;
+        }
+        else if (soal.TipeSoal == "Essay")
+        {
+            // Pencocokan kata kunci esensial jawaban mahasiswa
+            string text = _jawabanEssay[soal.Id].ToLower();
+            string[] keywords = soal.KunciJawaban.ToLower().Split(' ');
+            int matches = keywords.Count(k => text.Contains(k));
+            if (matches >= (keywords.Length / 2))
+                totalBobotEssay += 1;
+        }
+    }
+
+    double skorAkhir = ((double)(benarPg + totalBobotEssay) / totalSoal) * 100.0;
+    
+    // Simpan ke riwayat hasil ujian SQLite
+    var hasil = new HasilUjian
+    {
+        UserId = _currentUser.Id,
+        MateriId = _selectedMateriId,
+        Nilai = Math.Round(skorAkhir, 2),
+        TanggalUjian = DateTime.Now
+    };
+    await _db.SimpanHasilUjianAsync(hasil);
+    MessageBox.Show($"Ujian Selesai! Skor Anda: {hasil.Nilai}", "Hasil Evaluasi");
+}</code></pre>
+
+        <!-- ================= BAGIAN 9 ================= -->
+        <h3>9. Rekapitulasi &amp; Riwayat Nilai Mahasiswa</h3>
+        <p>
+            Seluruh data hasil evaluasi dicatat secara permanen di dalam tabel <code>HasilUjians</code> di basis data SQLite. Mahasiswa dapat melihat histori perkembangan belajarnya, sedangkan Dosen/Admin memiliki akses rekapitulasi nilai seluruh mahasiswa untuk keperluan monitoring perkuliahan.
+        </p>
+
+        <div class="img-container">
+            <img src="dokumentasi/12_riwayat_nilai_mahasiswa.png" alt="Riwayat Nilai Mahasiswa">
+            <div class="img-caption">Gambar 11: Riwayat Nilai Mandiri Mahasiswa Menampilkan Skor dan Status Hasil</div>
+        </div>
+
+        <div class="img-container">
+            <img src="dokumentasi/09_rekap_nilai_admin.png" alt="Rekapitulasi Nilai Seluruh Mahasiswa Admin">
+            <div class="img-caption">Gambar 12: Panel Rekapitulasi Nilai Seluruh Mahasiswa pada Sisi Administrator</div>
+        </div>
+
+        <!-- ================= KESIMPULAN ================= -->
+        <h2>Kesimpulan Proyek ETS :</h2>
+        <p>
+            Proyek <b>Bank Soal .NET</b> telah berhasil mengintegrasikan seluruh konsep pemrograman desktop modern berbasis framework <b>.NET 8 WPF</b>:
+        </p>
+        <ol>
+            <li><b>Arsitektur Bersih &amp; Terstruktur:</b> Memisahkan lapisan Model data, View presentasi XAML, dan Service manipulasi data SQLite secara rapi.</li>
+            <li><b>Desain Antarmuka Premium:</b> Mengadopsi palet Dark Theme modern, tata letak card-based yang bersih, serta komponen interaktif Material Design.</li>
+            <li><b>Keamanan &amp; Aksesibilitas:</b> Menerapkan otentikasi berbasis peran (Role-Based Access Control) yang memisahkan fungsi administratif dosen dan alur pembelajaran mahasiswa.</li>
+            <li><b>Integrasi Komponen Tingkat Lanjut:</b> Pemanfaatan WebView2 untuk perenderan berkas PDF dokumen kisi-kisi langsung di dalam desktop app tanpa dependensi eksternal.</li>
+        </ol>
+    </div>
+
+</body>
+
+</html>

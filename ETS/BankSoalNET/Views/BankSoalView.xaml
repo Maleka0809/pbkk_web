@@ -1,0 +1,84 @@
+<UserControl x:Class="BankSoalNET.Views.BankSoalView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="Segoe UI" Foreground="#F8FAFC">
+    <Grid Margin="32">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Header -->
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Bank Soal &amp; Kunci Jawaban" FontSize="26" FontWeight="Bold" Foreground="#F8FAFC"/>
+                <TextBlock Text="Katalog referensi &amp; arsip belajar mandiri. Pelajari soal, diagram, dokumen PDF, dan pembahasan resmi tanpa submit."
+                           FontSize="14" Foreground="#94A3B8" Margin="0,4,0,0"/>
+            </StackPanel>
+
+            <!-- Kunci Jawaban Toggle Switch -->
+            <Border Grid.Column="1" Background="#1E293B" CornerRadius="12" Padding="14,8" BorderBrush="#334155" BorderThickness="1" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="KeyOutline" Width="20" Height="20" Foreground="#34D399" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBlock Text="Kunci Jawaban:" VerticalAlignment="Center" Foreground="#F8FAFC" FontWeight="SemiBold" Margin="0,0,10,0"/>
+                    <ToggleButton x:Name="ToggleKunci" IsChecked="True" Checked="ToggleKunci_Changed" Unchecked="ToggleKunci_Changed"
+                                  Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtToggleStatus" Text="ON" FontWeight="Bold" Foreground="#34D399" VerticalAlignment="Center" Margin="6,0,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Filters Bar -->
+        <Border Grid.Row="1" Background="#1E293B" CornerRadius="14" Padding="16" BorderBrush="#334155" BorderThickness="1" Margin="0,0,0,20">
+            <WrapPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <!-- Mata Kuliah -->
+                <StackPanel Orientation="Horizontal" Margin="0,4,16,4">
+                    <TextBlock Text="Mata Kuliah:" Foreground="#94A3B8" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <ComboBox x:Name="CmbMatkul" Width="220" Height="36" Background="#0F172A" Foreground="White" BorderBrush="#334155"
+                              SelectionChanged="FilterChanged"/>
+                </StackPanel>
+
+                <!-- Topik / Materi -->
+                <StackPanel Orientation="Horizontal" Margin="0,4,16,4">
+                    <TextBlock Text="Topik:" Foreground="#94A3B8" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <ComboBox x:Name="CmbMateri" Width="240" Height="36" Background="#0F172A" Foreground="White" BorderBrush="#334155"
+                              SelectionChanged="FilterChanged"/>
+                </StackPanel>
+
+                <!-- Tipe Soal -->
+                <StackPanel Orientation="Horizontal" Margin="0,4,16,4">
+                    <TextBlock Text="Tipe:" Foreground="#94A3B8" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <ComboBox x:Name="CmbTipe" Width="180" Height="36" Background="#0F172A" Foreground="White" BorderBrush="#334155"
+                              SelectionChanged="FilterChanged">
+                        <ComboBoxItem Content="Semua Tipe Soal" Tag="all" IsSelected="True"/>
+                        <ComboBoxItem Content="Pilihan Ganda" Tag="pg"/>
+                        <ComboBoxItem Content="Essay" Tag="essay"/>
+                        <ComboBoxItem Content="🖼️ Ada Diagram" Tag="gambar"/>
+                        <ComboBoxItem Content="📄 Ada Dokumen PDF" Tag="pdf"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Search Box -->
+                <StackPanel Orientation="Horizontal" Margin="0,4,0,4">
+                    <TextBlock Text="Cari:" Foreground="#94A3B8" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBox x:Name="TxtSearch" Width="200" Height="36" Background="#0F172A" Foreground="White" BorderBrush="#334155"
+                             Padding="8,4" TextChanged="TxtSearch_TextChanged"/>
+                </StackPanel>
+            </WrapPanel>
+        </Border>
+
+        <!-- Question Cards List -->
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="PanelCardsContainer">
+                <!-- Dynamically generated question cards -->
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

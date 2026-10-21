@@ -1,0 +1,14 @@
+Starting capture at 21/10/2026 12:37:42
+01 Login captured
+02 Register captured
+03 Admin Dashboard captured
+04 Kelola Matkul captured
+05 Kelola Materi captured
+06 Kelola Soal captured
+07 Bank Soal captured
+08 Dokumen PDF captured
+09 Rekap Hasil captured
+10 Mode Belajar captured
+11 Mode Scoring captured
+12 Riwayat Nilai captured
+ALL CAPTURE FINISHED AT 21/10/2026 12:37:56

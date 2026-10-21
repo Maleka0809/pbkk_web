@@ -1,0 +1,28 @@
+## Visual Studio / .NET Core / WPF Ignore
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rms/
+[Aa]rm64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# SQLite & Temp data
+*.db-shm
+*.db-wal
+*.tmp
+*.log

@@ -1,0 +1,18 @@
+# Visual Studio / .NET Core Ignore
+**/bin/
+**/obj/
+*.user
+*.suo
+.vs/
+.idea/
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+# SQLite & Temp data
+*.db-shm
+*.db-wal
+*.tmp
+*.log

@@ -1,0 +1,80 @@
+<Window x:Class="BankSoalNET.Views.UploadPdfWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Upload Dokumen PDF" Height="580" Width="520"
+        WindowStartupLocation="CenterOwner"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        ShowInTaskbar="False">
+
+    <Border Background="#1E293B" CornerRadius="18" Padding="28" BorderBrush="#475569" BorderThickness="1.5">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="30" Color="Black" Opacity="0.6" Direction="270" ShadowDepth="8"/>
+        </Border.Effect>
+        <DockPanel>
+            <!-- Header bar (draggable) -->
+            <Grid DockPanel.Dock="Top" Margin="0,0,0,20" MouseLeftButtonDown="Header_MouseLeftButtonDown" Background="Transparent" Cursor="SizeAll">
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="40" Height="40" CornerRadius="12" Background="#7C3AED" Margin="0,0,12,0">
+                        <materialDesign:PackIcon Kind="FileUploadOutline" Width="22" Height="22" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Upload Dokumen Soal (PDF)" FontSize="17" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="Unggah berkas PDF bank soal atau modul ujian resmi" FontSize="11" Foreground="#94A3B8"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="✕" Click="BtnCancel_Click" Height="30" Width="30" Padding="0"
+                        Style="{StaticResource MaterialDesignFlatButton}" Foreground="#94A3B8"
+                        HorizontalAlignment="Right" VerticalAlignment="Top" Cursor="Hand"/>
+            </Grid>
+
+            <!-- Bottom Action Buttons -->
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="Batal" Click="BtnCancel_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#94A3B8" Margin="0,0,12,0" Cursor="Hand"/>
+                <Button x:Name="BtnSaveUpload" Content="✨ Simpan &amp; Publikasi PDF" Click="BtnSaveUpload_Click"
+                        Height="42" Background="#10B981" BorderBrush="#10B981" FontWeight="SemiBold"
+                        Padding="20,0" Cursor="Hand"/>
+            </StackPanel>
+
+            <!-- Form Content -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+                    <!-- Judul Dokumen -->
+                    <TextBlock Text="Judul Dokumen" FontSize="12" Foreground="#94A3B8" Margin="0,0,0,6"/>
+                    <TextBox x:Name="TxtUploadJudul" Height="40" Padding="10,4" Background="#0F172A" Foreground="White" BorderBrush="#475569" FontSize="13" VerticalContentAlignment="Center"
+                             materialDesign:HintAssist.Hint="Contoh: Bank Soal &amp; Pembahasan ETS PBKK 2024"/>
+
+                    <!-- Mata Kuliah -->
+                    <TextBlock Text="Mata Kuliah" FontSize="12" Foreground="#94A3B8" Margin="0,14,0,6"/>
+                    <ComboBox x:Name="CbUploadMatkul" Height="40" Padding="10,4" Background="#0F172A" Foreground="White" BorderBrush="#475569" FontSize="13" VerticalContentAlignment="Center"/>
+
+                    <!-- Deskripsi -->
+                    <TextBlock Text="Deskripsi / Catatan Dokumen" FontSize="12" Foreground="#94A3B8" Margin="0,14,0,6"/>
+                    <TextBox x:Name="TxtUploadDesc" Height="65" TextWrapping="Wrap" AcceptsReturn="True" Padding="10,8" Background="#0F172A" Foreground="White" BorderBrush="#475569" FontSize="12"
+                             materialDesign:HintAssist.Hint="Ringkasan isi dokumen soal, kisi-kisi, atau petunjuk pengerjaan..."/>
+
+                    <!-- File Picker -->
+                    <TextBlock Text="Berkas PDF (*.pdf)" FontSize="12" Foreground="#94A3B8" Margin="0,14,0,6"/>
+                    <Border Background="#0F172A" CornerRadius="12" Padding="14" BorderBrush="#475569" BorderThickness="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="📄 Pilih File PDF" Click="BtnBrowsePdf_Click" Height="36" Padding="14,0" Background="#334155" Foreground="White" BorderThickness="0" Cursor="Hand"/>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="14,0,0,0">
+                                <TextBlock x:Name="TxtUploadFileName" Text="Belum ada file PDF yang dipilih" FontSize="12" FontWeight="SemiBold" Foreground="#94A3B8" TextTrimming="CharacterEllipsis"/>
+                                <TextBlock x:Name="TxtUploadFileSize" Text="Maksimal ukuran disarankan 20 MB" FontSize="10" Foreground="#64748B" Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Error Text -->
+                    <TextBlock x:Name="TxtUploadError" Text="" Foreground="#F87171" FontSize="12" Margin="0,12,0,0" TextWrapping="Wrap" Visibility="Collapsed"/>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
+</Window>

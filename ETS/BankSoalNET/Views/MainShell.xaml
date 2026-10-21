@@ -1,0 +1,146 @@
+<Window x:Class="BankSoalNET.Views.MainShell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Bank Soal .NET — Sistem Pembelajaran &amp; Evaluasi"
+        Height="800" Width="1280"
+        MinHeight="650" MinWidth="950"
+        WindowStartupLocation="CenterScreen"
+        Background="#0F172A"
+        Foreground="#F8FAFC"
+        FontFamily="Segoe UI">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Sidebar Navigation -->
+        <Border Grid.Column="0" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,0,1,0">
+            <DockPanel Margin="16">
+                <!-- Top Brand Logo -->
+                <StackPanel DockPanel.Dock="Top" Margin="8,8,8,24">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="42" Height="42" CornerRadius="12" Background="#7C3AED" Margin="0,0,12,0">
+                            <materialDesign:PackIcon Kind="CodeTags" Width="24" Height="24" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Bank Soal .NET" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                            <TextBlock x:Name="TxtRoleBadge" Text="ROLE: ADMIN" FontSize="11" FontWeight="SemiBold" Foreground="#A78BFA"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Separator Background="#334155" Margin="0,18,0,0"/>
+                </StackPanel>
+
+                <!-- Bottom User Info & Logout -->
+                <StackPanel DockPanel.Dock="Bottom" Margin="0,16,0,0">
+                    <Separator Background="#334155" Margin="0,0,0,16"/>
+                    <Border Background="#0F172A" CornerRadius="12" Padding="12" Margin="0,0,0,10" BorderBrush="#334155" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="36" Height="36" CornerRadius="18" Background="#7C3AED" Margin="0,0,10,0">
+                                <TextBlock x:Name="TxtAvatarInitials" Text="AD" FontWeight="Bold" FontSize="13" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock x:Name="TxtNamaUser" Text="Administrator" FontWeight="SemiBold" FontSize="13" Foreground="White"/>
+                                <TextBlock x:Name="TxtUsername" Text="@admin" FontSize="11" Foreground="#94A3B8"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Button Click="BtnLogout_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#F87171" Height="38" HorizontalContentAlignment="Left" Padding="12,0" Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Logout" Width="18" Height="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBlock Text="Keluar Akun" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Navigation Menu Items -->
+                <StackPanel x:Name="PanelMenu" VerticalAlignment="Top">
+                    <!-- Admin Menu -->
+                    <StackPanel x:Name="MenuAdmin">
+                        <Button x:Name="NavAdminDashboard" Click="NavAdminDashboard_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ViewDashboardOutline" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#A78BFA"/>
+                                <TextBlock Text="Dashboard" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavKelolaMatkul" Click="NavKelolaMatkul_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="SchoolOutline" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#C084FC"/>
+                                <TextBlock Text="Kelola Matkul" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavKelolaMateri" Click="NavKelolaMateri_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="BookOpenOutline" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#60A5FA"/>
+                                <TextBlock Text="Kelola Materi" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavKelolaSoal" Click="NavKelolaSoal_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FormatListBulleted" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#34D399"/>
+                                <TextBlock Text="Kelola Soal (PG/Essay)" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavBankSoalAdmin" Click="NavBankSoal_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="KeyOutline" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#38BDF8"/>
+                                <TextBlock Text="Bank Soal &amp; Kunci" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavDokumenPdfAdmin" Click="NavDokumenPdf_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FilePdfBox" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#F87171"/>
+                                <TextBlock Text="Dokumen Soal (PDF)" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavHasilMahasiswa" Click="NavHasilMahasiswa_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="AccountSchoolOutline" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#FBBF24"/>
+                                <TextBlock Text="Rekap Hasil Nilai" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- Mahasiswa Menu -->
+                    <StackPanel x:Name="MenuMahasiswa" Visibility="Collapsed">
+                        <Button x:Name="NavModeBelajar" Click="NavModeBelajar_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="BookOpenVariant" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#A78BFA"/>
+                                <TextBlock Text="Mode Belajar" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavModeScoring" Click="NavModeScoring_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="TimerSand" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#34D399"/>
+                                <TextBlock Text="Mode Scoring (Ujian)" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavBankSoalMhs" Click="NavBankSoal_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="KeyOutline" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#38BDF8"/>
+                                <TextBlock Text="Bank Soal &amp; Kunci" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavDokumenPdfMhs" Click="NavDokumenPdf_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FilePdfBox" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#F87171"/>
+                                <TextBlock Text="Dokumen Soal (PDF)" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="NavRiwayatNilai" Click="NavRiwayatNilai_Click" Style="{StaticResource MaterialDesignFlatButton}" Foreground="White" Height="44" HorizontalContentAlignment="Left" Padding="12,0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="History" Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,12,0" Foreground="#60A5FA"/>
+                                <TextBlock Text="Riwayat Nilai Saya" VerticalAlignment="Center" FontSize="13"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Right Main Viewport Area -->
+        <ContentControl Grid.Column="1" x:Name="MainContentArea"/>
+    </Grid>
+</Window>
