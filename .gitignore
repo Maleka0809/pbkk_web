@@ -16,3 +16,4 @@
 *.db-wal
 *.tmp
 *.log
+*.zip
