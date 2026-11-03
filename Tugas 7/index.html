@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjelasan Tugas 7 - Toko Online CodeIgniter 3</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .isi {
+            max-width: 1080px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            padding: 32px 40px;
+            line-height: 1.68;
+            color: #2d3748;
+        }
+
+        .isi h2 {
+            color: #1a202c;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 32px;
+        }
+
+        .isi h3 {
+            color: #2b6cb0;
+            margin-top: 26px;
+        }
+
+        .isi h4 {
+            color: #2d3748;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .badge-tech {
+            display: inline-block;
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 12px;
+            margin-right: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #bee3f8;
+        }
+
+        .github-btn {
+            display: inline-block;
+            background-color: #24292e;
+            color: #ffffff !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 8px 10px 8px 0;
+            transition: background-color 0.2s, transform 0.15s;
+        }
+
+        .github-btn:hover {
+            background-color: #0366d6;
+            transform: translateY(-1px);
+        }
+
+        .img-card {
+            margin: 20px 0 28px 0;
+            text-align: center;
+            background-color: #f8fafc;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .img-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            border: 1px solid #cbd5e1;
+        }
+
+        .img-caption {
+            font-size: 13.5px;
+            color: #4a5568;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 13.5px;
+            line-height: 1.48;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+        }
+
+        p code, li code {
+            background-color: #edf2f7;
+            color: #c53030;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .feature-box {
+            background-color: #f7fafc;
+            border-left: 4px solid #3182ce;
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #edf2f7;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+            color: #2d3748;
+        }
+
+        td {
+            padding: 10px 12px;
+            font-size: 13.5px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .step-number {
+            background-color: #3182ce;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../contact.html">Contact</a>
+    </div>
+
+    <div class="judul">
+        <h1>Penjelasan Tugas 7</h1>
+    </div>
+
+    <div class="isi">
+        <h2>Soal :</h2>
+        <p>Membuat aplikasi web <strong>E-Commerce / Toko Online</strong> berbasis framework <strong>CodeIgniter 3 (PHP)</strong> dan database <strong>MySQL</strong> yang menerapkan pola arsitektur <strong>MVC (Model-View-Controller)</strong>. Sistem harus mencakup otentikasi multi-role (Administrator & Customer), katalog produk dan filter kategori, sistem keranjang belanja (Shopping Cart), proses checkout dan pembuatan invoice pesanan, panel manajemen inventaris CRUD barang oleh admin dengan upload gambar, serta trigger otomatis pada database untuk pengurangan stok produk secara realtime.</p>
+
+        <h2>Jawaban :</h2>
+        <div>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%207/CodeIgniter-3/CodeIgniter-3.1.13" target="_blank">&#128196; Lihat Kode Sumber di GitHub (CodeIgniter-3)</a>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%207" target="_blank">&#128193; Buka Folder Tugas 7 di GitHub</a>
+        </div>
+
+        <p>Pada Tugas 7 ini, dibangun sistem informasi toko online lengkap bernama <strong>Toko Online Elektronik & Gadget</strong>. Aplikasi ini memisahkan hak akses antara pengunjung/pelanggan dan pengelola toko melalui sistem otentikasi role-based:</p>
+        
+        <div>
+            <span class="badge-tech">PHP 7 / 8</span>
+            <span class="badge-tech">CodeIgniter 3.1.13</span>
+            <span class="badge-tech">MySQL / MariaDB</span>
+            <span class="badge-tech">Bootstrap 4 & SB Admin 2</span>
+            <span class="badge-tech">FontAwesome</span>
+            <span class="badge-tech">MVC Architecture</span>
+            <span class="badge-tech">CI Cart Library & Sessions</span>
+            <span class="badge-tech">MySQL Database Trigger</span>
+        </div>
+
+        <h3>1. Arsitektur Pola MVC (Model - View - Controller)</h3>
+        <p>CodeIgniter 3 memisahkan logika aplikasi ke dalam tiga lapisan utama:</p>
+        <ul>
+            <li><strong>Model:</strong> Bertanggung jawab atas seluruh komunikasi dan manipulasi data di database MySQL (<code>Model_barang</code>, <code>Model_invoice</code>, <code>Model_kategori</code>, <code>Model_auth</code>).</li>
+            <li><strong>View:</strong> Menampilkan antarmuka pengguna (UI) kepada pelanggan dan admin menggunakan template modular (header, sidebar, konten utama, modal, footer).</li>
+            <li><strong>Controller:</strong> Menjembatani model dan view, mengatur alur logika bisnis, memproses request HTTP, otentikasi session, validasi form, serta manipulasi shopping cart.</li>
+        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Komponen</th>
+                    <th>Nama File</th>
+                    <th>Tanggung Jawab & Fungsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Controller</strong></td>
+                    <td><code>Welcome.php</code></td>
+                    <td>Menampilkan katalog utama produk di beranda pelanggan.</td>
+                </tr>
+                <tr>
+                    <td><strong>Controller</strong></td>
+                    <td><code>Dashboard.php</code></td>
+                    <td>Menangani operasi keranjang belanja (tambah, hapus, kosongkan), checkout pembayaran, dan detail produk.</td>
+                </tr>
+                <tr>
+                    <td><strong>Controller</strong></td>
+                    <td><code>Kategori.php</code></td>
+                    <td>Menyaring dan menampilkan produk berdasarkan kategori (Laptop, Smartphone, Aksesoris, Gaming).</td>
+                </tr>
+                <tr>
+                    <td><strong>Controller</strong></td>
+                    <td><code>Auth.php</code> & <code>Registrasi.php</code></td>
+                    <td>Menangani proses login multi-role, logout, dan pendaftaran pelanggan baru dengan form validation.</td>
+                </tr>
+                <tr>
+                    <td><strong>Controller (Admin)</strong></td>
+                    <td><code>admin/Data_barang.php</code></td>
+                    <td>Mengelola data produk (CRUD), upload foto produk ke direktori <code>uploads/</code>, dan filter stok.</td>
+                </tr>
+                <tr>
+                    <td><strong>Controller (Admin)</strong></td>
+                    <td><code>admin/Invoice.php</code></td>
+                    <td>Menampilkan daftar invoice pesanan dan rincian item pesanan dari pelanggan.</td>
+                </tr>
+                <tr>
+                    <td><strong>Model</strong></td>
+                    <td><code>Model_barang.php</code></td>
+                    <td>Query CRUD data barang (<code>get()</code>, <code>insert()</code>, <code>update()</code>, <code>delete()</code>, pencarian, detail).</td>
+                </tr>
+                <tr>
+                    <td><strong>Model</strong></td>
+                    <td><code>Model_invoice.php</code></td>
+                    <td>Menyimpan transaksi invoice, menyalin data keranjang ke tabel pesanan, serta relasi data pesanan.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2. Struktur Database, Relasi, dan Trigger Otomatis</h3>
+        <p>Aplikasi menggunakan database MySQL bernama <code>db_toko_online</code> dengan empat tabel utama yang saling berelasi:</p>
+        <ul>
+            <li><code>tb_user</code>: Menyimpan kredensial user dan hak akses (<code>role_id = 1</code> untuk Admin, <code>role_id = 2</code> untuk Customer).</li>
+            <li><code>tb_barang</code>: Menyimpan katalog barang, harga, stok, kategori, dan path file foto.</li>
+            <li><code>tb_invoice</code>: Menyimpan data faktur pemesanan (nama penerima, alamat pengiriman, kurir, bank, waktu pemesanan, tenggat bayar).</li>
+            <li><code>tb_pesanan</code>: Menyimpan rincian item pesanan per invoice (foreign key merujuk ke <code>id_invoice</code> dan <code>id_brg</code>).</li>
+        </ul>
+
+        <h4>Trigger Otomatis Pengurangan Stok (MySQL)</h4>
+        <p>Untuk menjamin konsistensi data stok barang saat transaksi terjadi, dibuat <em>Trigger</em> pada database yang akan terpanggil secara otomatis setiap kali ada data baru yang masuk ke tabel <code>tb_pesanan</code>:</p>
+        <pre class="language-sql"><code>-- Trigger otomatis kurangi stok saat pesanan baru masuk
+DELIMITER $$
+CREATE TRIGGER `pesanan_penjualan` AFTER INSERT ON `tb_pesanan` 
+FOR EACH ROW BEGIN
+    UPDATE tb_barang 
+    SET stok = stok - NEW.jumlah
+    WHERE id_brg = NEW.id_brg;
+END$$
+DELIMITER ;</code></pre>
+        <p>Dengan trigger di atas, stok barang di tabel <code>tb_barang</code> akan otomatis berkurang secara atomik sesuai kuantitas (<code>NEW.jumlah</code>) tanpa perlu query manual tambahan di sisi controller.</p>
+
+        <h3>3. Logika Kode Kunci & Cara Kerjanya</h3>
+
+        <h4>A. Manajemen Keranjang Belanja (Shopping Cart Library)</h4>
+        <p>CodeIgniter 3 menyediakan library bawaan <code>$this->cart</code> yang memanfaatkan session pengguna. Saat pelanggan menekan tombol <strong>Tambah ke Keranjang</strong>, method <code>tambah_ke_keranjang($id)</code> di <code>Dashboard.php</code> dieksekusi:</p>
+        <pre class="language-php"><code>public function tambah_ke_keranjang($id)
+{
+    // Memastikan user sudah login sebagai pelanggan (role_id = 2)
+    if ($this->session->userdata('role_id') != '2') {
+        $this->session->set_flashdata('pesan', '&lt;div class="alert alert-warning"&gt;
+            Silakan &lt;strong&gt;Login sebagai Pelanggan&lt;/strong&gt; terlebih dahulu untuk berbelanja!
+        &lt;/div&gt;');
+        redirect('auth/login');
+    }
+
+    $barang = $this->model_barang->find($id);
+
+    if ($barang && $barang->stok > 0) {
+        $data = array(
+            'id'      => $barang->id_brg,
+            'qty'     => 1,
+            'price'   => $barang->harga,
+            'name'    => $barang->nama_brg
+        );
+        $this->cart->insert($data);
+        $this->session->set_flashdata('notif_cart', 'Produk &lt;strong&gt;' . htmlspecialchars($barang->nama_brg) . '&lt;/strong&gt; berhasil ditambahkan ke keranjang!');
+    }
+    redirect('welcome');
+}</code></pre>
+
+        <h4>B. Pemrosesan Checkout & Pembuatan Invoice (Model_invoice.php)</h4>
+        <p>Ketika pelanggan mengisi form alamat, kurir pengiriman, dan rekening bank, data transaksi diproses dalam dua tahap sekaligus:</p>
+        <ol>
+            <li>Menyimpan informasi header pembayaran ke tabel <code>tb_invoice</code> dan mengambil ID invoice yang baru dibuat menggunakan <code>$this->db->insert_id()</code>.</li>
+            <li>Melakukan iterasi terhadap seluruh item yang ada di <code>$this->cart->contents()</code> untuk dimasukkan ke tabel <code>tb_pesanan</code> (yang kemudian memicu trigger pengurangan stok).</li>
+        </ol>
+
+        <pre class="language-php"><code>public function index()
+{
+    date_default_timezone_set('Asia/Jakarta');
+    $invoice = array(
+        'nama'            => $this->input->post('nama', TRUE),
+        'alamat'          => $this->input->post('alamat', TRUE),
+        'no_telp'         => $this->input->post('no_telp', TRUE),
+        'jasa_pengiriman' => $this->input->post('jasa_pengiriman', TRUE),
+        'bank'            => $this->input->post('bank', TRUE),
+        'tgl_pesan'       => date('Y-m-d H:i:s'),
+        'batas_bayar'     => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
+    );
+    $this->db->insert('tb_invoice', $invoice);
+    $id_invoice = $this->db->insert_id();
+
+    foreach ($this->cart->contents() as $item) {
+        $data = array(
+            'id_invoice' => $id_invoice,
+            'id_brg'     => $item['id'],
+            'nama_brg'   => $item['name'],
+            'jumlah'     => $item['qty'],
+            'harga'      => $item['price'],
+        );
+        $this->db->insert('tb_pesanan', $data);
+    }
+
+    return TRUE;
+}</code></pre>
+
+        <h4>C. Otentikasi Multi-Role & Proteksi Akses Admin</h4>
+        <p>Sistem membedakan alur login pengguna berdasarkan nilai <code>role_id</code> di tabel <code>tb_user</code>. Pada controller admin, diterapkan pengecekan session di method <code>__construct()</code> sehingga pengguna yang bukan admin akan langsung ditolak dan diarahkan kembali ke halaman login:</p>
+        <pre class="language-php"><code>// Di dalam Controller admin/Data_barang.php
+public function __construct()
+{
+    parent::__construct();
+    if ($this->session->userdata('role_id') != '1') {
+        $this->session->set_flashdata('pesan', '&lt;div class="alert alert-danger"&gt;
+            Akses Ditolak! Anda belum login sebagai Administrator.
+        &lt;/div&gt;');
+        redirect('auth/login');
+    }
+}</code></pre>
+
+        <h4>D. Upload Gambar Produk (CodeIgniter File Uploading Class)</h4>
+        <p>Pada saat admin menambahkan barang baru atau mengunggah gambar produk, controller <code>Data_barang.php</code> memanfaatkan library <code>upload</code> untuk memvalidasi tipe file dan direktori penyimpanan:</p>
+        <pre class="language-php"><code>$config['upload_path']   = './uploads';
+$config['allowed_types'] = 'jpg|jpeg|png|gif|svg|webp';
+$config['max_size']      = 4096; // 4MB
+
+$this->load->library('upload', $config);
+if (!$this->upload->do_upload('gambar')) {
+    $gambar = 'default.svg';
+} else {
+    $gambar = $this->upload->data('file_name');
+}</code></pre>
+
+        <h3>4. Alur Kerja Sistem (Workflow)</h3>
+        <div class="flow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Eksplorasi Katalog & Kategori:</strong> Pengunjung dapat menelusuri katalog barang di halaman beranda, melihat banner promo, atau menyaring barang berdasarkan kategori di sidebar (Laptop, Smartphone, Aksesoris, Gaming).
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Otentikasi Akun:</strong> Pelanggan baru dapat melakukan registrasi akun melalui form pendaftaran. Untuk melakukan transaksi, pelanggan login menggunakan username dan password yang sudah terdaftar.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>Pemesanan ke Keranjang:</strong> Pelanggan memilih produk dan kuantitas. Total harga belanja dan jumlah item otomatis diperbarui pada indikator cart di bagian atas navigasi.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>Checkout & Konfirmasi Invoice:</strong> Pelanggan mengisi formulir alamat lengkap, nomor telepon, ekspedisi kurir, serta metode pembayaran transfer bank. Invoice diterbitkan dan stok barang otomatis terpotong.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <strong>Pengelolaan oleh Admin:</strong> Administrator masuk ke panel admin untuk memantau ringkasan pesanan, menambah/mengedit produk dan stok, serta melihat rincian barang per invoice pemesanan.
+            </div>
+        </div>
+
+        <h3>5. Dokumentasi Antarmuka Aplikasi</h3>
+        <p>Berikut adalah tangkapan layar antarmuka pengguna dari sistem yang telah selesai dikembangkan:</p>
+
+        <h4>1. Halaman Utama / Katalog Produk & Banner Promo</h4>
+        <div class="img-card">
+            <img src="screenshots/01_katalog_utama.png" alt="Katalog Utama Toko Online" width="850">
+            <div class="img-caption">Gambar 1: Halaman beranda menampilkan slider promo, kategori cepat, indikator cart, dan kartu produk dengan tombol beli.</div>
+        </div>
+
+        <h4>2. Filter Kategori Produk (Kategori Laptop)</h4>
+        <div class="img-card">
+            <img src="screenshots/02_kategori_laptop.png" alt="Filter Kategori Laptop" width="850">
+            <div class="img-caption">Gambar 2: Fitur filter kategori di sidebar yang menampilkan produk khusus pada kategori yang dipilih.</div>
+        </div>
+
+        <h4>3. Detail Spesifikasi Produk</h4>
+        <div class="img-card">
+            <img src="screenshots/03_detail_produk.png" alt="Halaman Detail Produk" width="850">
+            <div class="img-caption">Gambar 3: Halaman informasi lengkap spesifikasi produk, harga resmi, sisa stok, serta aksi tambah ke keranjang.</div>
+        </div>
+
+        <h4>4. Halaman Login Multi-Role</h4>
+        <div class="img-card">
+            <img src="screenshots/04_form_login.png" alt="Form Login Akun" width="850">
+            <div class="img-caption">Gambar 4: Form login aman yang mendukung otentikasi role Administrator maupun Pelanggan (Customer).</div>
+        </div>
+
+        <h4>5. Halaman Registrasi Pelanggan Baru</h4>
+        <div class="img-card">
+            <img src="screenshots/05_form_registrasi.png" alt="Form Registrasi Pelanggan" width="850">
+            <div class="img-caption">Gambar 5: Form pendaftaran akun baru dengan validasi isian nama, username, serta pencocokan ulang password.</div>
+        </div>
+
+        <h4>6. Keranjang Belanja (Shopping Cart)</h4>
+        <div class="img-card">
+            <img src="screenshots/06_keranjang_belanja.png" alt="Keranjang Belanja" width="850">
+            <div class="img-caption">Gambar 6: Halaman ringkasan keranjang belanja menampilkan daftar item, kuantitas, harga satuan, dan grand total.</div>
+        </div>
+
+        <h4>7. Form Checkout & Pembayaran</h4>
+        <div class="img-card">
+            <img src="screenshots/07_checkout_pembayaran.png" alt="Form Checkout Pembayaran" width="850">
+            <div class="img-caption">Gambar 7: Form input identitas pembeli, alamat pengiriman, nomor telepon, opsi ekspedisi kurir, dan bank transfer.</div>
+        </div>
+
+        <h4>8. Dashboard Administrator</h4>
+        <div class="img-card">
+            <img src="screenshots/08_admin_dashboard.png" alt="Dashboard Administrator" width="850">
+            <div class="img-caption">Gambar 8: Panel utama admin dengan kartu ringkasan total produk, total invoice masuk, dan shortcut pengelolaan.</div>
+        </div>
+
+        <h4>9. Kelola Data Barang (CRUD Inventaris)</h4>
+        <div class="img-card">
+            <img src="screenshots/09_admin_data_barang.png" alt="Data Barang Administrator" width="850">
+            <div class="img-caption">Gambar 9: Tabel inventaris produk yang dilengkapi modal tambah barang baru, upload foto, edit, dan hapus barang.</div>
+        </div>
+
+        <h4>10. Form Edit Data Barang</h4>
+        <div class="img-card">
+            <img src="screenshots/10_admin_edit_barang.png" alt="Form Edit Barang" width="850">
+            <div class="img-caption">Gambar 10: Formulir pengubahan informasi barang (nama, kategori, deskripsi, harga, stok, dan pergantian gambar).</div>
+        </div>
+
+        <h4>11. Daftar Faktur / Invoice Pesanan</h4>
+        <div class="img-card">
+            <img src="screenshots/11_admin_invoices.png" alt="Daftar Invoice Pesanan" width="850">
+            <div class="img-caption">Gambar 11: Daftar seluruh faktur transaksi pesanan masuk dari pembeli beserta tanggal pemesanan dan tenggat pembayaran.</div>
+        </div>
+
+        <h4>12. Rincian Detail Invoice Pesanan</h4>
+        <div class="img-card">
+            <img src="screenshots/12_admin_detail_invoice.png" alt="Detail Invoice Pesanan" width="850">
+            <div class="img-caption">Gambar 12: Halaman rincian pesanan menampilkan data pemesan, alamat, ekspedisi pengiriman, serta subtotal rincian produk yang dibeli.</div>
+        </div>
+
+        <h3>6. Petunjuk Menjalankan Proyek</h3>
+        <p>Untuk menjalankan proyek ini pada server lokal (seperti XAMPP / Laragon):</p>
+        <ol>
+            <li>Pastikan Apache dan MySQL sudah berjalan.</li>
+            <li>Buka <code>phpMyAdmin</code>, buat database baru dengan nama <code>db_toko_online</code>.</li>
+            <li>Import file <code>db_toko_online.sql</code> yang terletak di folder proyek ke database tersebut.</li>
+            <li>Buka browser dan akses alamat aplikasi: <code>http://localhost/PBKK-web/Tugas%207/CodeIgniter-3/CodeIgniter-3.1.13/</code>.</li>
+            <li>Gunakan akun demo berikut untuk mencoba aplikasi:
+                <ul>
+                    <li><strong>Akun Admin:</strong> Username: <code>admin</code> | Password: <code>123</code></li>
+                    <li><strong>Akun Customer:</strong> Username: <code>user</code> | Password: <code>123</code></li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+</body>
+
+</html>
+
