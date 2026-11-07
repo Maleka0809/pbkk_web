@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjelasan Tugas 8 - ShopEase Online Store (CodeIgniter 4)</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .isi {
+            max-width: 1080px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            padding: 32px 40px;
+            line-height: 1.68;
+            color: #2d3748;
+        }
+
+        .isi h2 {
+            color: #1a202c;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 32px;
+        }
+
+        .isi h3 {
+            color: #0284c7;
+            margin-top: 28px;
+        }
+
+        .isi h4 {
+            color: #2d3748;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .badge-tech {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 12px;
+            margin-right: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #bae6fd;
+        }
+
+        .github-btn {
+            display: inline-block;
+            background-color: #24292e;
+            color: #ffffff !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 8px 10px 8px 0;
+            transition: background-color 0.2s, transform 0.15s;
+        }
+
+        .github-btn:hover {
+            background-color: #0284c7;
+            transform: translateY(-1px);
+        }
+
+        .img-card {
+            margin: 20px 0 28px 0;
+            text-align: center;
+            background-color: #f8fafc;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .img-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            border: 1px solid #cbd5e1;
+        }
+
+        .img-caption {
+            font-size: 13.5px;
+            color: #4a5568;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 13.5px;
+            line-height: 1.48;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+        }
+
+        p code, li code {
+            background-color: #edf2f7;
+            color: #c53030;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .feature-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #edf2f7;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+            color: #2d3748;
+        }
+
+        td {
+            padding: 10px 12px;
+            font-size: 13.5px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .step-number {
+            background-color: #0284c7;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../contact.html">Contact</a>
+    </div>
+
+    <div class="judul">
+        <h1>Penjelasan Tugas 8</h1>
+    </div>
+
+    <div class="isi">
+        <h2>Soal :</h2>
+        <p>Mengembangkan aplikasi toko online <strong>ShopEase - Online Store</strong> menggunakan framework <strong>CodeIgniter 4 (PHP 8)</strong> dan database <strong>MySQL (MariaDB)</strong> berdasarkan panduan project-based learning. Aplikasi harus mengimplementasikan pola arsitektur <strong>Model-View-Controller (MVC)</strong> secara menyeluruh dengan pembagian hak akses 3 aktor (<strong>Administrator</strong>, <strong>Operator Toko</strong>, dan <strong>Customer</strong>), fitur katalog produk dengan filter dan pencarian, sistem keranjang belanja (Shopping Cart) persisten, pemrosesan transaksi checkout dan manajemen pesanan dengan snapshot harga historis, unggah bukti pembayaran transfer, modul inventaris CRUD kategori dan produk dengan upload gambar, verifikasi pembayaran, manajemen pengiriman kurir dan nomor resi, pelaporan omset penjualan, proteksi CSRF, session otentikasi hashing password, serta database trigger untuk otomatisasi pengurangan dan pemulihan stok barang.</p>
+
+        <h2>Jawaban :</h2>
+        <div>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%208/shopease" target="_blank">&#128196; Lihat Kode Sumber di GitHub (CodeIgniter-4 ShopEase)</a>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%208" target="_blank">&#128193; Buka Folder Tugas 8 di GitHub</a>
+        </div>
+
+        <p>Pada Tugas 8 ini, telah dibangun aplikasi toko online lengkap bernama <strong>ShopEase - Online Store</strong> dengan standar arsitektur modern CodeIgniter 4. Seluruh fitur backend dan frontend telah diuji dan berjalan sempurna di atas server PHP 8.2 dan database MySQL:</p>
+        
+        <div>
+            <span class="badge-tech">PHP 8.2 (Strict Typing & Nullable)</span>
+            <span class="badge-tech">CodeIgniter 4.7.6</span>
+            <span class="badge-tech">MySQL 10.4 / MariaDB</span>
+            <span class="badge-tech">Bootstrap 5.3 & Bootstrap Icons</span>
+            <span class="badge-tech">MVC Architecture</span>
+            <span class="badge-tech">Role-Based Filter (RBAC)</span>
+            <span class="badge-tech">Bcrypt Password Hashing</span>
+            <span class="badge-tech">Database Triggers & Transactions</span>
+            <span class="badge-tech">CSRF Protection</span>
+        </div>
+
+        <h3>1. Identitas Studi Kasus & Hak Akses Aktor</h3>
+        <p>Sistem membedakan tiga aktor utama dengan hak akses dan wewenang yang terpisah secara ketat:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 180px;">Aktor</th>
+                    <th>Hak Akses dan Aktivitas Utama</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Administrator</strong></td>
+                    <td>
+                        Login ke dashboard analitik; mengelola master kategori dan produk (CRUD + upload foto); mengatur harga, stok, dan status publikasi; memantau data pelanggan; memproses transaksi pesanan; meninjau dan memverifikasi/menolak bukti transfer pembayaran; mengelola pengiriman kurir dan nomor resi; melihat rekapitulasi laporan penjualan dan omset berkala.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Operator Toko</strong></td>
+                    <td>
+                        Melihat pesanan masuk dari pelanggan; memproses pesanan di gudang; memperbarui status pemrosesan dan pengemasan; memperbarui informasi nomor resi pengiriman kurir; memantau ketersediaan stok fisik barang.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Customer (Pelanggan)</strong></td>
+                    <td>
+                        Registrasi akun baru dan login aman; menelusuri homepage dengan banner promo; melihat katalog produk, filter kategori, pencarian, dan pengurutan harga; melihat spesifikasi teknis di halaman detail; memasukkan barang ke keranjang belanja (Shopping Cart); melakukan checkout pesanan dan memilih alamat kirim; mengunggah foto bukti transfer pembayaran; memantau riwayat dan progres status pengiriman pesanan hingga selesai.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2. Arsitektur Pola MVC CodeIgniter 4 & Struktur Folder</h3>
+        <p>ShopEase membagi tanggung jawab sistem ke dalam pola Model-View-Controller murni:</p>
+        <ul>
+            <li><strong>Model (<code>app/Models/</code>):</strong> Mengelola interaksi dengan database MySQL menggunakan CodeIgniter 4 Model, Query Builder, validasi data, dan relasi tabel.</li>
+            <li><strong>Controller (<code>app/Controllers/</code>):</strong> Mengendalikan alur logika bisnis, memproses request HTTP, validasi masukan form, sanitasi input, transaksi database, manipulasi session, dan merender view.</li>
+            <li><strong>View (<code>app/Views/</code>):</strong> Menampilkan antarmuka pengguna (UI) responsif menggunakan template layout terpisah (<code>layouts/main.php</code> untuk customer dan <code>layouts/admin.php</code> untuk admin).</li>
+            <li><strong>Filter Middleware (<code>app/Filters/</code>):</strong> Memproteksi rute sensitif pelanggan (<code>AuthFilter</code>) dan rute back-office (<code>RoleFilter</code>).</li>
+        </ul>
+
+        <h4>Contoh Struktur Direktori Proyek:</h4>
+        <pre><code>shopease/
+├── app/
+│   ├── Config/
+│   │   ├── Routes.php          # Definisi routing RESTful dan grup middleware
+│   │   ├── Filters.php         # Registrasi alias filter Auth dan Role
+│   │   └── Database.php        # Konfigurasi koneksi MySQL
+│   ├── Controllers/
+│   │   ├── HomeController.php      # Halaman utama (banner promo, rekomendasi)
+│   │   ├── AuthController.php      # Login, Registrasi, dan Logout
+│   │   ├── ProductController.php   # Katalog, pencarian, filter, detail barang
+│   │   ├── CartController.php      # Tambah, update kuantitas, hapus keranjang
+│   │   ├── CheckoutController.php  # Transaksi checkout pesanan & alamat
+│   │   ├── OrderController.php     # Riwayat pesanan & upload bukti bayar
+│   │   └── Admin/
+│   │       ├── DashboardController.php # Statistik ringkasan toko & alert stok
+│   │       ├── CategoryController.php  # CRUD data kategori
+│   │       ├── ProductController.php   # CRUD produk & upload gambar
+│   │       ├── OrderController.php     # Detail pesanan & update status
+│   │       ├── PaymentController.php   # Verifikasi bukti transfer
+│   │       ├── ShipmentController.php  # Manajemen kurir & input nomor resi
+│   │       ├── UserController.php      # Daftar akun customer & staff
+│   │       └── ReportController.php    # Rekap omset dan laporan berkala
+│   ├── Models/
+│   │   ├── UserModel.php       ├── ProductModel.php    ├── CategoryModel.php
+│   │   ├── CartModel.php       ├── CartItemModel.php   ├── AddressModel.php
+│   │   ├── OrderModel.php      ├── OrderItemModel.php  ├── PaymentModel.php
+│   │   └── ShipmentModel.php
+│   ├── Views/
+│   │   ├── layouts/ (main.php, admin.php)
+│   │   ├── auth/ (login.php, register.php)
+│   │   ├── frontend/ (home.php, products/, cart/, checkout/, orders/)
+│   │   └── admin/ (dashboard.php, categories/, products/, orders/, payments/, shipments/, users/, reports/)
+│   └── Filters/
+│       ├── AuthFilter.php      # Memastikan user telah login
+│       └── RoleFilter.php      # Membatasi akses berdasarkan role (admin/operator)
+├── public/
+│   ├── uploads/
+│   │   ├── products/           # File gambar produk yang diunggah
+│   │   ├── payments/           # File bukti transfer yang diunggah pelanggan
+│   │   └── avatars/            # Avatar foto profil user
+│   ├── index.php               # Front controller utama CodeIgniter 4
+│   └── .htaccess               # URL rewriting Apache
+├── writable/                   # Cache, logs, dan sesi CI4
+├── db_shopease.sql             # Skema SQL, trigger otomatis, dan data seed
+└── .env                        # Konfigurasi environment database</code></pre>
+
+        <h3>3. Desain Database, Relasi Antar Tabel, dan Trigger Otomatis</h3>
+        <p>Database <code>db_shopease</code> dirancang menggunakan 10 tabel inti yang saling berelasi dengan integritas referensial (Foreign Key):</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40px;">No</th>
+                    <th>Nama Tabel</th>
+                    <th>Fungsi dan Keterangan Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><code>users</code></td><td>Menyimpan akun pengguna (nama, email, hash password, role: admin/operator/customer, nomor telepon, avatar).</td></tr>
+                <tr><td>2</td><td><code>categories</code></td><td>Menyimpan kategori produk, slug URL unik, deskripsi, dan nama ikon Bootstrap.</td></tr>
+                <tr><td>3</td><td><code>products</code></td><td>Informasi lengkap produk, referensi ke category_id, nama, slug, harga, stok fisik, status (active/inactive), dan nama file gambar.</td></tr>
+                <tr><td>4</td><td><code>carts</code></td><td>Menyimpan entitas keranjang belanja aktif milik customer (relasi 1-to-1 dengan user).</td></tr>
+                <tr><td>5</td><td><code>cart_items</code></td><td>Daftar rincian item produk dan kuantitas belanja yang ada di dalam keranjang aktif.</td></tr>
+                <tr><td>6</td><td><code>addresses</code></td><td>Buku alamat pengiriman milik customer (nama penerima, nomor telepon, alamat jalan, kota, kode pos).</td></tr>
+                <tr><td>7</td><td><code>orders</code></td><td>Header faktur pesanan (nomor order unik, total harga, ongkos kirim, grand total, status pesanan, catatan pelanggan).</td></tr>
+                <tr><td>8</td><td><code>order_items</code></td><td>Rincian produk yang dibeli beserta snapshot harga historis saat transaksi terjadi.</td></tr>
+                <tr><td>9</td><td><code>payments</code></td><td>Informasi pembayaran transfer bank, bank tujuan, rekening pengirim, bukti foto transfer, dan status verifikasi admin.</td></tr>
+                <tr><td>10</td><td><code>shipments</code></td><td>Informasi ekspedisi pengiriman paket, layanan kurir, nomor resi pelacakan, dan status kirim (preparing, in_transit, delivered).</td></tr>
+            </tbody>
+        </table>
+
+        <h4>Trigger Otomatis Pengurangan & Pemulihan Stok (MySQL)</h4>
+        <p>Untuk menjamin konsistensi stok barang dan mencegah <em>race condition</em> atau kelalaian kalkulasi di controller, sistem memanfaatkan dua buah <strong>Database Trigger</strong> pada MySQL:</p>
+
+        <pre class="language-sql"><code>-- Trigger 1: Kurangi stok produk secara otomatis saat item pesanan baru dibuat
+DELIMITER $$
+CREATE TRIGGER `trg_reduce_stock_after_order` AFTER INSERT ON `order_items` 
+FOR EACH ROW BEGIN
+    UPDATE `products` 
+    SET `stock` = `stock` - NEW.`quantity`
+    WHERE `id` = NEW.`product_id`;
+END$$
+
+-- Trigger 2: Pulihkan stok produk kembali jika status pesanan diubah menjadi 'cancelled'
+CREATE TRIGGER `trg_restore_stock_on_cancel` AFTER UPDATE ON `orders`
+FOR EACH ROW BEGIN
+    IF OLD.`status` != 'cancelled' AND NEW.`status` = 'cancelled' THEN
+        UPDATE `products` p
+        INNER JOIN `order_items` oi ON p.`id` = oi.`product_id`
+        SET p.`stock` = p.`stock` + oi.`quantity`
+        WHERE oi.`order_id` = NEW.`id`;
+    END IF;
+END$$
+DELIMITER ;</code></pre>
+
+        <h3>4. Logika Kode Kunci & Cara Kerjanya</h3>
+
+        <h4>A. Proteksi Rute dengan Role-Based Filter (RoleFilter.php)</h4>
+        <p>CodeIgniter 4 menyediakan mekanisme Filter yang berjalan sebelum controller dipanggil. Pada ShopEase, filter memeriksa session dan memastikan hanya pengguna dengan role yang diizinkan (misal: <code>admin</code> atau <code>operator</code>) yang dapat membuka halaman administrasi:</p>
+        <pre class="language-php"><code>public function before(RequestInterface $request, $arguments = null)
+{
+    $session = session();
+    if (!$session->get('isLoggedIn')) {
+        return redirect()->to(base_url('login'));
+    }
+
+    $userRole = $session->get('role');
+    $allowedRoles = $arguments ?? ['admin'];
+
+    // Tolak akses jika role pengguna tidak terdaftar dalam argument rute
+    if (!in_array($userRole, $allowedRoles, true)) {
+        $session->setFlashdata('error', 'Akses ditolak! Anda tidak memiliki izin untuk membuka halaman tersebut.');
+        return redirect()->to(base_url());
+    }
+}</code></pre>
+
+        <h4>B. Transaksi Checkout Pesanan & Snapshot Harga (CheckoutController.php)</h4>
+        <p>Saat customer menekan tombol buat pesanan, controller menjalankan validasi stok, menghitung ulang total harga di backend (tidak mempercayai client), dan membungkus seluruh operasi database dalam <strong>Database Transaction</strong> agar atomik:</p>
+        <pre class="language-php"><code>$db = \Config\Database::connect();
+$db->transBegin();
+
+try {
+    // 1. Simpan Header Pesanan (Orders)
+    $orderId = $this->orderModel->insert([
+        'order_number' => $this->orderModel->generateOrderNumber(),
+        'user_id'      => $userId,
+        'address_id'   => $addressId,
+        'total_amount' => $subtotal,
+        'shipping_cost'=> 20000.00,
+        'grand_total'  => $subtotal + 20000.00,
+        'status'       => 'pending',
+    ]);
+
+    // 2. Simpan Item Pesanan (Snapshot Harga & Memicu Trigger Pengurangan Stok)
+    foreach ($items as $item) {
+        $this->orderItemModel->insert([
+            'order_id'     => $orderId,
+            'product_id'   => $item['product_id'],
+            'product_name' => $item['product_name'],
+            'price'        => $item['price'], // Harga saat transaksi
+            'quantity'     => $item['quantity'],
+            'subtotal'     => $item['price'] * $item['quantity'],
+        ]);
+    }
+
+    // 3. Buat Rekord Pembayaran & Pengiriman Awal
+    $this->paymentModel->insert(['order_id' => $orderId, 'amount' => $grandTotal, 'status' => 'pending']);
+    $this->shipmentModel->insert(['order_id' => $orderId, 'courier' => $courier, 'status' => 'preparing']);
+
+    // 4. Kosongkan Keranjang Belanja Customer
+    $this->cartItemModel->where('cart_id', $cart['id'])->delete();
+
+    $db->transCommit();
+    return redirect()->to(base_url('orders/' . $orderId));
+} catch (\Exception $e) {
+    $db->transRollback();
+    return redirect()->to(base_url('cart'))->with('error', 'Gagal memproses pesanan: ' . $e->getMessage());
+}</code></pre>
+
+        <h4>C. Upload File & Validasi Keamanan (Unggah Bukti Bayar & Foto Produk)</h4>
+        <p>File yang diunggah divalidasi ketat terhadap ukuran file (maks 4MB), tipe MIME, dan ekstensi gambar yang diizinkan (jpg, png, webp, svg). Nama file diubah secara acak menggunakan <code>getRandomName()</code> untuk menghindari tabrakan nama dan celah eksekusi script berbahaya:</p>
+        <pre class="language-php"><code>$rules = [
+    'proof_image' => 'uploaded[proof_image]|max_size[proof_image,4096]|is_image[proof_image]|ext_in[proof_image,jpg,jpeg,png,webp,svg]',
+];
+
+if ($this->validate($rules)) {
+    $img = $this->request->getFile('proof_image');
+    $newName = $img->getRandomName();
+    $img->move(FCPATH . 'uploads/payments', $newName);
+}</code></pre>
+
+        <h3>5. Alur Proses Bisnis Transaksi (Workflow 10 Tahap)</h3>
+        <div class="flow-step">
+            <div class="step-number">1</div>
+            <div class="step-content"><strong>Eksplorasi Katalog:</strong> Customer membuka website ShopEase, melihat banner promo di beranda, mencari produk via search bar, atau memfilter kategori di katalog.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">2</div>
+            <div class="step-content"><strong>Pilih Produk & Spesifikasi:</strong> Customer membuka halaman detail produk untuk meninjau foto, garansi resmi, ketersediaan stok, dan memilih jumlah unit.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">3</div>
+            <div class="step-content"><strong>Keranjang Belanja (Cart):</strong> Produk dimasukkan ke keranjang. Customer dapat mengubah kuantitas atau menghapus item dengan kalkulasi subtotal dinamis.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">4</div>
+            <div class="step-content"><strong>Autentikasi:</strong> Jika belum masuk, customer login atau melakukan registrasi akun baru terlebih dahulu sebelum checkout.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">5</div>
+            <div class="step-content"><strong>Checkout & Alamat:</strong> Customer memilih alamat pengiriman tersimpan (atau menginput alamat baru), memilih jasa ekspedisi (JNE/SiCepat/J&T), dan rekening bank transfer.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">6</div>
+            <div class="step-content"><strong>Konfirmasi Order:</strong> Sistem membuat order unik (misal: <code>ORD-20261107-XXXX</code>), menyimpan snapshot harga, mengosongkan keranjang, dan trigger otomatis memotong stok barang.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">7</div>
+            <div class="step-content"><strong>Unggah Bukti Transfer:</strong> Customer melakukan pembayaran ke nomor rekening resmi toko dan mengunggah foto bukti transfer pada halaman detail pesanan.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">8</div>
+            <div class="step-content"><strong>Verifikasi Administrator:</strong> Admin membuka panel <em>Verifikasi Pembayaran</em>, meninjau foto bukti transfer, dan menekan tombol <strong>Terima</strong> sehingga status pesanan beralih menjadi <em>Processing</em>.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">9</div>
+            <div class="step-content"><strong>Pengemasan & Resi Kurir:</strong> Operator gudang mengemas produk fisik dan menginput nomor resi pengiriman kurir. Status pesanan otomatis beralih menjadi <em>Shipped</em>.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">10</div>
+            <div class="step-content"><strong>Pesanan Selesai:</strong> Paket diterima pembeli dan pesanan ditandai sebagai <em>Completed</em>. Seluruh histori transaksi tercatat rapi pada laporan penjualan.</div>
+        </div>
+
+        <h3>6. Skenario Pengujian Fungsional (12 Skenario)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40px;">No</th>
+                    <th>Skenario Pengujian</th>
+                    <th>Hasil yang Diharapkan</th>
+                    <th style="width: 100px;" class="text-center">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Registrasi customer dengan data lengkap dan valid.</td><td>Akun berhasil dibuat dan password tersimpan dalam bentuk Bcrypt hash.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>2</td><td>Login dengan email dan password valid.</td><td>Pengguna berhasil masuk dan session diarahkan sesuai role (Admin ke Dashboard, Customer ke Beranda).</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>3</td><td>Login dengan kata sandi salah.</td><td>Akses ditolak dan alert pesan kesalahan ditampilkan di form login.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>4</td><td>Tambah kategori & produk baru melalui admin.</td><td>Data tersimpan di tabel database dan langsung tampil di halaman katalog.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>5</td><td>Ubah (edit) harga dan stok produk.</td><td>Perubahan data terupdate di database dan tercermin di etalase toko.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>6</td><td>Hapus produk yang sudah tidak dijual.</td><td>Produk berhasil dihapus dari tabel produk.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>7</td><td>Upload file non-gambar pada foto produk.</td><td>Validasi CI4 menolak file dan menampilkan pesan kesalahan format.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>8</td><td>Menambahkan produk ke keranjang belanja.</td><td>Item dan kuantitas tersimpan di database <code>cart_items</code>.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>9</td><td>Checkout dengan stok barang mencukupi.</td><td>Pesanan terbentuk dan trigger MySQL otomatis mengurangi kuantitas stok.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>10</td><td>Checkout melebihi stok yang tersedia.</td><td>Transaksi ditolak oleh controller dan stok barang tidak berkurang.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>11</td><td>Customer mengunggah foto bukti pembayaran.</td><td>File tersimpan di <code>uploads/payments/</code> dan status pembayaran menjadi <em>Pending</em>.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+                <tr><td>12</td><td>Admin memverifikasi dan menyetujui pembayaran.</td><td>Status pembayaran menjadi <em>Verified</em> dan status pesanan beralih ke <em>Processing</em>.</td><td class="text-center"><span class="badge bg-success">Passed</span></td></tr>
+            </tbody>
+        </table>
+
+        <h3>7. Dokumentasi Antarmuka Aplikasi</h3>
+        <p>Berikut adalah 12 tangkapan layar antarmuka pengguna (UI) dari sistem ShopEase yang telah aktif dan berfungsi penuh:</p>
+
+        <h4>1. Halaman Beranda (Homepage) & Banner Promosi</h4>
+        <div class="img-card">
+            <img src="screenshots/01_homepage.png" alt="Homepage ShopEase" width="850">
+            <div class="img-caption">Gambar 1: Halaman beranda ShopEase dengan carousel promo gajian, trust badges, kategori pilihan, dan produk terlaris.</div>
+        </div>
+
+        <h4>2. Katalog Produk & Filter Sidebar</h4>
+        <div class="img-card">
+            <img src="screenshots/02_katalog_produk.png" alt="Katalog Produk" width="850">
+            <div class="img-caption">Gambar 2: Halaman katalog produk dengan filter kategori, pencarian kata kunci, serta pengurutan harga termurah/termahal.</div>
+        </div>
+
+        <h4>3. Detail Spesifikasi Produk</h4>
+        <div class="img-card">
+            <img src="screenshots/03_detail_produk.png" alt="Detail Produk" width="850">
+            <div class="img-caption">Gambar 3: Halaman spesifikasi teknis lengkap produk, status ketersediaan stok, kuantitas spinner, dan tombol beli.</div>
+        </div>
+
+        <h4>4. Keranjang Belanja (Shopping Cart)</h4>
+        <div class="img-card">
+            <img src="screenshots/04_keranjang_belanja.png" alt="Keranjang Belanja" width="850">
+            <div class="img-caption">Gambar 4: Halaman keranjang belanja menampilkan ringkasan daftar barang, kuantitas input, subtotal, dan tombol lanjut checkout.</div>
+        </div>
+
+        <h4>5. Halaman Checkout & Pemilihan Alamat</h4>
+        <div class="img-card">
+            <img src="screenshots/05_checkout_pesanan.png" alt="Checkout Pesanan" width="850">
+            <div class="img-caption">Gambar 5: Formulir checkout 3 tahap: pemilihan/penambahan alamat kirim, pilihan kurir pengiriman, dan metode transfer bank.</div>
+        </div>
+
+        <h4>6. Riwayat Pesanan Customer</h4>
+        <div class="img-card">
+            <img src="screenshots/06_riwayat_pesanan.png" alt="Riwayat Pesanan Customer" width="850">
+            <div class="img-caption">Gambar 6: Halaman daftar riwayat transaksi pelanggan lengkap dengan filter tab status pesanan dan pelacakan resi.</div>
+        </div>
+
+        <h4>7. Halaman Masuk Akun (Login)</h4>
+        <div class="img-card">
+            <img src="screenshots/07_form_login.png" alt="Form Login Akun" width="850">
+            <div class="img-caption">Gambar 7: Form login modern dengan proteksi CSRF, session remember, dan informasi akun demo siap pakai.</div>
+        </div>
+
+        <h4>8. Dashboard Administrator</h4>
+        <div class="img-card">
+            <img src="screenshots/08_admin_dashboard.png" alt="Dashboard Administrator" width="850">
+            <div class="img-caption">Gambar 8: Panel analitik utama admin menampilkan total pendapatan, pesanan masuk, daftar verifikasi pending, dan alert stok menipis.</div>
+        </div>
+
+        <h4>9. Manajemen Master Kategori</h4>
+        <div class="img-card">
+            <img src="screenshots/09_admin_kategori.png" alt="Manajemen Kategori" width="850">
+            <div class="img-caption">Gambar 9: Tabel pengelolaan kategori produk dengan modal popup penambahan dan pengubahan data kategori.</div>
+        </div>
+
+        <h4>10. Manajemen Inventaris Produk & Stok</h4>
+        <div class="img-card">
+            <img src="screenshots/10_admin_produk.png" alt="Manajemen Produk" width="850">
+            <div class="img-caption">Gambar 10: Modul CRUD produk dilengkapi unggah file foto, pengaturan harga jual, kuantitas stok, dan status aktif.</div>
+        </div>
+
+        <h4>11. Verifikasi Pembayaran Transfer</h4>
+        <div class="img-card">
+            <img src="screenshots/11_admin_verifikasi_pembayaran.png" alt="Verifikasi Pembayaran" width="850">
+            <div class="img-caption">Gambar 11: Panel peninjauan foto bukti transfer bank pelanggan dengan tombol aksi persetujuan terima atau tolak transaksi.</div>
+        </div>
+
+        <h4>12. Pengiriman & Input Nomor Resi Kurir</h4>
+        <div class="img-card">
+            <img src="screenshots/12_admin_pengiriman_resi.png" alt="Pengiriman dan Resi" width="850">
+            <div class="img-caption">Gambar 12: Pengelolaan logistik pengiriman barang untuk pengemasan di gudang serta input nomor resi ekspedisi kurir.</div>
+        </div>
+
+        <h3>8. Petunjuk Menjalankan Proyek Secara Lokal</h3>
+        <p>Ikuti langkah-langkah berikut untuk menjalankan aplikasi ShopEase di komputer lokal:</p>
+        <ol>
+            <li>Pastikan web server <strong>Apache</strong> dan database <strong>MySQL (MariaDB)</strong> telah berjalan di XAMPP / Laragon.</li>
+            <li>Buka <code>phpMyAdmin</code>, buat database baru dengan nama <code>db_shopease</code>.</li>
+            <li>Import file <code>db_shopease.sql</code> (yang tersedia di folder <code>Tugas 8/db_shopease.sql</code>) ke database tersebut.</li>
+            <li>Buka terminal/PowerShell pada folder project <code>Tugas 8/shopease</code> dan jalankan server pengembangan CodeIgniter 4:
+                <pre><code>cd "Tugas 8/shopease"
+php spark serve</code></pre>
+            </li>
+            <li>Buka browser dan akses alamat aplikasi: <code>http://localhost:8080/</code> (atau via Apache: <code>http://localhost/PBKK-web/Tugas%208/shopease/public/</code>).</li>
+            <li>Gunakan kredensial akun demo berikut untuk mencoba seluruh fitur aplikasi:
+                <ul>
+                    <li><strong>Akun Administrator:</strong> Email: <code>admin@shopease.com</code> | Password: <code>admin123</code></li>
+                    <li><strong>Akun Operator Gudang:</strong> Email: <code>operator@shopease.com</code> | Password: <code>operator123</code></li>
+                    <li><strong>Akun Customer / Pembeli:</strong> Email: <code>budi@gmail.com</code> | Password: <code>user123</code></li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+</body>
+
+</html>
