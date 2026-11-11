@@ -581,78 +581,78 @@ session()->set([
         </table>
 
         <h3>7. Dokumentasi Antarmuka Aplikasi</h3>
-        <p>Berikut adalah 12 tangkapan layar antarmuka pengguna (UI) dari sistem autentikasi dan manajemen ShopEase yang telah aktif dan berfungsi penuh:</p>
+        <p>Berikut adalah 12 tangkapan layar antarmuka pengguna (UI) dari sistem ShopEase yang telah ditingkatkan pada Tugas 9, mencakup etalase belanja, sistem keranjang belanja, proses checkout, serta panel kontrol administrator dan operator:</p>
 
-        <h4>1. Halaman Formulir Registrasi Customer</h4>
+        <h4>1. Halaman Beranda (Homepage) & Banner Promosi</h4>
         <div class="img-card">
-            <img src="screenshots/01_halaman_registrasi.png" alt="Halaman Registrasi ShopEase" width="850">
-            <div class="img-caption">Gambar 1: Formulir pendaftaran akun customer baru dengan nama, email, nomor HP, alamat, password min. 8 karakter, dan token CSRF.</div>
+            <img src="screenshots/01_homepage.png" alt="Homepage ShopEase" width="850">
+            <div class="img-caption">Gambar 1: Halaman beranda ShopEase dengan carousel promo gajian, trust badges, kategori pilihan, dan produk terlaris.</div>
         </div>
 
-        <h4>2. Penanganan Validasi Registrasi Gagal</h4>
+        <h4>2. Katalog Produk & Filter Sidebar</h4>
         <div class="img-card">
-            <img src="screenshots/02_validasi_registrasi_gagal.png" alt="Validasi Form Registrasi Gagal" width="850">
-            <div class="img-caption">Gambar 2: Penanganan kesalahan form dinamis melalui <code>listErrors()</code> saat password kurang dari 8 karakter atau email kembar.</div>
+            <img src="screenshots/02_katalog_produk.png" alt="Katalog Produk" width="850">
+            <div class="img-caption">Gambar 2: Halaman katalog produk dengan filter kategori, pencarian kata kunci, serta pengurutan harga termurah/termahal.</div>
         </div>
 
-        <h4>3. Notifikasi Registrasi Berhasil</h4>
+        <h4>3. Detail Spesifikasi Produk</h4>
         <div class="img-card">
-            <img src="screenshots/03_registrasi_berhasil.png" alt="Registrasi Berhasil" width="850">
-            <div class="img-caption">Gambar 3: Flash message alert warna hijau mengonfirmasi bahwa data berhasil tersimpan di tabel users MySQL.</div>
+            <img src="screenshots/03_detail_produk.png" alt="Detail Produk" width="850">
+            <div class="img-caption">Gambar 3: Halaman spesifikasi teknis lengkap produk, status ketersediaan stok, kuantitas spinner, dan tombol beli.</div>
         </div>
 
-        <h4>4. Halaman Masuk Akun (Login)</h4>
+        <h4>4. Keranjang Belanja (Shopping Cart)</h4>
         <div class="img-card">
-            <img src="screenshots/04_halaman_login.png" alt="Halaman Login ShopEase" width="850">
-            <div class="img-caption">Gambar 4: Halaman login modern ShopEase dilengkapi credential demo siap pakai untuk ketiga role (Admin, Operator, Customer).</div>
+            <img src="screenshots/04_keranjang_belanja.png" alt="Keranjang Belanja" width="850">
+            <div class="img-caption">Gambar 4: Halaman keranjang belanja menampilkan ringkasan daftar barang, kuantitas input, subtotal, dan tombol lanjut checkout.</div>
         </div>
 
-        <h4>5. Penolakan Login dengan Password Salah</h4>
+        <h4>5. Halaman Checkout & Pemilihan Alamat</h4>
         <div class="img-card">
-            <img src="screenshots/05_login_gagal.png" alt="Login Gagal" width="850">
-            <div class="img-caption">Gambar 5: Alert kesalahan login saat pengguna salah memasukkan password tanpa membocorkan eksistensi data sensitif.</div>
+            <img src="screenshots/05_checkout_pesanan.png" alt="Checkout Pesanan" width="850">
+            <div class="img-caption">Gambar 5: Formulir checkout 3 tahap: pemilihan/penambahan alamat kirim, pilihan kurir pengiriman, dan metode transfer bank.</div>
         </div>
 
-        <h4>6. Portal Dashboard Customer</h4>
+        <h4>6. Riwayat Pesanan Customer</h4>
         <div class="img-card">
-            <img src="screenshots/06_dashboard_customer.png" alt="Dashboard Customer" width="850">
-            <div class="img-caption">Gambar 6: Portal dashboard pelanggan terproteksi filter <code>auth:customer</code> menampilkan profil terautentikasi dan rekomendasi produk.</div>
+            <img src="screenshots/06_riwayat_pesanan.png" alt="Riwayat Pesanan Customer" width="850">
+            <div class="img-caption">Gambar 6: Halaman daftar riwayat transaksi pelanggan lengkap dengan filter tab status pesanan dan pelacakan resi.</div>
         </div>
 
-        <h4>7. Panel Dashboard Operator</h4>
+        <h4>7. Halaman Masuk Akun (Login)</h4>
         <div class="img-card">
-            <img src="screenshots/07_dashboard_operator.png" alt="Dashboard Operator" width="850">
-            <div class="img-caption">Gambar 7: Panel dashboard operator gudang terproteksi filter <code>auth:operator</code> menampilkan stok inventaris toko.</div>
+            <img src="screenshots/07_form_login.png" alt="Form Login Akun" width="850">
+            <div class="img-caption">Gambar 7: Form login modern dengan proteksi CSRF, session remember, validasi ketat, dan informasi akun demo siap pakai.</div>
         </div>
 
-        <h4>8. Dashboard Administrator Utama</h4>
+        <h4>8. Dashboard Administrator</h4>
         <div class="img-card">
-            <img src="screenshots/08_dashboard_admin.png" alt="Dashboard Administrator" width="850">
-            <div class="img-caption">Gambar 8: Panel analitik utama admin terproteksi filter <code>auth:admin</code> menyajikan ringkasan omset dan kontrol toko.</div>
+            <img src="screenshots/08_admin_dashboard.png" alt="Dashboard Administrator" width="850">
+            <div class="img-caption">Gambar 8: Panel analitik utama admin terproteksi filter auth:admin menampilkan total pendapatan, pesanan masuk, dan alert stok menipis.</div>
         </div>
 
-        <h4>9. Proteksi Filter Terhadap Akses Tanpa Sesi</h4>
+        <h4>9. Manajemen Master Kategori</h4>
         <div class="img-card">
-            <img src="screenshots/09_proteksi_filter_tanpa_login.png" alt="Proteksi Filter Tanpa Login" width="850">
-            <div class="img-caption">Gambar 9: AuthFilter secara otomatis mencegat akses pengguna tanpa sesi dan mengarahkannya kembali ke halaman login.</div>
+            <img src="screenshots/09_admin_kategori.png" alt="Manajemen Kategori" width="850">
+            <div class="img-caption">Gambar 9: Tabel pengelolaan kategori produk dengan modal popup penambahan dan pengubahan data kategori.</div>
         </div>
 
-        <h4>10. Proteksi Role Mismatch (Hak Akses Dibatasi)</h4>
+        <h4>10. Manajemen Inventaris Produk & Stok</h4>
         <div class="img-card">
-            <img src="screenshots/10_proteksi_role_mismatch.png" alt="Proteksi Role Mismatch" width="850">
-            <div class="img-caption">Gambar 10: AuthFilter menolak akses customer yang mencoba membuka rute administrator dan mengarahkannya kembali ke dashboard aman.</div>
+            <img src="screenshots/10_admin_produk.png" alt="Manajemen Produk" width="850">
+            <div class="img-caption">Gambar 10: Modul CRUD produk dilengkapi unggah file foto, pengaturan harga jual, kuantitas stok, dan status aktif.</div>
         </div>
 
-        <h4>11. Pengakhiran Sesi Pengguna (Logout)</h4>
+        <h4>11. Verifikasi Pembayaran Transfer</h4>
         <div class="img-card">
-            <img src="screenshots/11_logout_session_selesai.png" alt="Logout Berhasil" width="850">
-            <div class="img-caption">Gambar 11: Proses logout menghapus identitas sesi dari server dan menampilkan notifikasi sukses keluar akun.</div>
+            <img src="screenshots/11_admin_verifikasi_pembayaran.png" alt="Verifikasi Pembayaran" width="850">
+            <div class="img-caption">Gambar 11: Panel peninjauan foto bukti transfer bank pelanggan dengan tombol aksi persetujuan terima atau tolak transaksi.</div>
         </div>
 
-        <h4>12. Etalase Katalog Produk Publik</h4>
+        <h4>12. Pengiriman & Input Nomor Resi Kurir</h4>
         <div class="img-card">
-            <img src="screenshots/12_katalog_publik_shopease.png" alt="Katalog Publik Produk" width="850">
-            <div class="img-caption">Gambar 12: Halaman katalog publik produk ShopEase yang terkoneksi langsung dengan tabel categories dan products di MySQL.</div>
+            <img src="screenshots/12_admin_pengiriman_resi.png" alt="Pengiriman dan Resi" width="850">
+            <div class="img-caption">Gambar 12: Pengelolaan logistik pengiriman barang untuk pengemasan di gudang serta input nomor resi ekspedisi kurir.</div>
         </div>
 
         <h3>8. Petunjuk Menjalankan Proyek Secara Lokal</h3>
