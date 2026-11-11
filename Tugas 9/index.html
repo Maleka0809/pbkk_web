@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penjelasan Tugas 9 - Authentication System & Model CodeIgniter 4</title>
+    <title>Penjelasan Tugas 9 - ShopEase Authentication System & Model (CodeIgniter 4)</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         .isi {
@@ -158,9 +158,9 @@
             margin-bottom: 14px;
         }
 
-        .step-num {
+        .step-number {
             background-color: #0284c7;
-            color: #ffffff;
+            color: #fff;
             font-weight: bold;
             border-radius: 50%;
             width: 28px;
@@ -170,124 +170,155 @@
             justify-content: center;
             margin-right: 12px;
             flex-shrink: 0;
-            font-size: 13px;
+            font-size: 14px;
+        }
+
+        .step-content {
+            flex-grow: 1;
         }
     </style>
 </head>
 
 <body>
+
     <div class="navbar">
         <a class="nav-link" href="../index.html">Home</a>
-        <a class="selected" href="../Tugas.html">Tugas</a>
+        <a class="nav-link" href="../Tugas.html">Tugas</a>
         <a class="nav-link" href="../contact.html">Contact</a>
     </div>
 
     <div class="judul">
-        <h1>Tugas 9 - Authentication System & Model CodeIgniter 4</h1>
-        <p style="text-align: center; color: #64748b; font-size: 15px; margin-top: -8px;">
-            Implementasi Registrasi, Login, Password Hashing, Session Management, Role Management, dan AuthFilter
-        </p>
+        <h1>Penjelasan Tugas 9</h1>
     </div>
 
     <div class="isi">
-        <!-- Author & Technology Badges -->
-        <div style="margin-bottom: 20px;">
-            <span class="badge-tech">CodeIgniter 4 (v4.5+)</span>
-            <span class="badge-tech">PHP 8.2</span>
-            <span class="badge-tech">MySQL / MariaDB</span>
-            <span class="badge-tech">UserModel (Active Record)</span>
-            <span class="badge-tech">AuthFilter (Role-Based)</span>
-            <span class="badge-tech">Bootstrap 5</span>
-            <span class="badge-tech">Bcrypt Hashing</span>
-            <span class="badge-tech">CSRF Protection</span>
+        <h2>Soal :</h2>
+        <p>Mengembangkan modul lanjutan <strong>Model pada CodeIgniter 4</strong> dan <strong>Authentication System</strong> pada aplikasi toko online <strong>ShopEase</strong> berdasarkan materi perkuliahan PBKK <em>"Model pada CI"</em> serta panduan resmi <strong>Hands-On Lab (HOL)</strong> dan <strong>Roadmap 7 Tahapan Implementasi</strong>. Sistem ini meng-upgrade arsitektur dari Tugas 8 dengan mengimplementasikan lapisan data <strong>Model (Active Record / Query Builder)</strong> untuk pengelolaan tabel <code>users</code> di database MySQL/MariaDB (<code>db_shopease_auth</code>), validasi form ketat di Controller, enkripsi password dengan fungsi <code>password_hash()</code> berstandar industri (Bcrypt), verifikasi login aman menggunakan <code>password_verify()</code>, regenerasi session ID untuk menangkal <em>session fixation</em>, otorisasi berbasis wewenang (Role-Based Access Control) untuk 3 aktor (<strong>Administrator</strong>, <strong>Operator</strong>, dan <strong>Customer</strong>), proteksi rute sensitif menggunakan <strong>AuthFilter (FilterInterface)</strong>, serta pengujian sistem komprehensif mencakup 9 skenario keamanan resmi.</p>
+
+        <h2>Jawaban :</h2>
+        <div>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%209/shopease" target="_blank">&#128196; Lihat Kode Sumber di GitHub (CodeIgniter-4 ShopEase - Tugas 9)</a>
+            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%209" target="_blank">&#128193; Buka Folder Tugas 9 di GitHub</a>
         </div>
 
-        <div style="margin-bottom: 24px;">
-            <p><strong>Pengembang:</strong> Maleka Ghaniya (NRP: 5025241189) | Kelas Pemrograman Berbasis Kerangka Kerja (PBKK)</p>
-            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%209" target="_blank">
-                &#128279; Repositori GitHub Tugas 9
-            </a>
-            <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%209/shopease" target="_blank">
-                &#128194; Source Code CodeIgniter 4
-            </a>
+        <p>Pada Tugas 9 ini, aplikasi toko online <strong>ShopEase - Online Store</strong> telah ditingkatkan (di-upgrade) secara menyeluruh dari sisi lapisan <strong>Model</strong> dan <strong>Authentication & Authorization System</strong>. Mengacu pada silabus PBKK dan panduan Hands-On Lab, seluruh fungsionalitas telah diverifikasi berjalan sempurna di lingkungan server PHP 8.2 dan database MySQL:</p>
+
+        <div>
+            <span class="badge-tech">PHP 8.2 (Strict Typing & BCrypt)</span>
+            <span class="badge-tech">CodeIgniter 4.7.6</span>
+            <span class="badge-tech">MySQL 10.4 / MariaDB</span>
+            <span class="badge-tech">UserModel (Active Record & Timestamps)</span>
+            <span class="badge-tech">AuthFilter (Role-Based Middleware)</span>
+            <span class="badge-tech">Bootstrap 5.3 & Icons</span>
+            <span class="badge-tech">Session Management (Regenerate ID)</span>
+            <span class="badge-tech">CSRF Protection (Form Tokens)</span>
+            <span class="badge-tech">Full Test Matrix (9 Scenarios)</span>
         </div>
 
         <div class="feature-box">
-            <strong>Deskripsi Tugas 9:</strong>
-            Praktikum ini merujuk langsung pada materi perkuliahan PBKK <em>"Model pada CI"</em> dan panduan praktikum <strong>Hands-On Lab (HOL) Authentication System ShopEase</strong> serta <strong>Roadmap Implementasi 7 Tahapan</strong>. Fokus tugas ini adalah merancang Model data yang berinteraksi langsung dengan MySQL, membangun logika Controller autentikasi, memproteksi URL sensitif melalui Filter berbasis Role (Customer, Operator, Admin), serta menerapkan standar keamanan aplikasi web modern (password hashing, regenerasi session ID, CSRF protection, dan validasi form).
+            <strong>Keterkaitan dengan Tugas 8 (Arsitektur yang Ditingkatkan):</strong><br>
+            Jika pada Tugas 8 sistem menitikberatkan pada pembuatan fondasi landing page, navigasi MVC, dan routing katalog toko online, maka pada <strong>Tugas 9</strong> arsitektur tersebut disempurnakan dengan modul <strong>Model & Autentikasi Nyata</strong>. Data pengguna kini dikelola langsung oleh kelas <code>UserModel.php</code> yang terhubung ke tabel <code>users</code> dengan aturan keamanan ketat, hak akses berbasis role (Admin, Operator, Customer), serta filter middleware terotomatisasi.
         </div>
 
-        <!-- DAFTAR ISI -->
-        <h2>Daftar Isi Pembahasan</h2>
-        <ol>
-            <li><a href="#tahapan">Roadmap 7 Tahapan Implementasi</a></li>
-            <li><a href="#database">Tahap 1: Desain Basis Data & Tabel Users</a></li>
-            <li><a href="#konfigurasi">Tahap 2: Konfigurasi Koneksi Database (.env)</a></li>
-            <li><a href="#model">Tahap 3: Implementasi UserModel.php</a></li>
-            <li><a href="#controller">Tahap 4: Implementasi AuthController.php</a></li>
-            <li><a href="#routing">Tahap 5: Konfigurasi Routes.php</a></li>
-            <li><a href="#views">Tahap 6: Antarmuka View Login & Registrasi</a></li>
-            <li><a href="#filter">Tahap 7: Otorisasi & Proteksi URL Menggunakan AuthFilter</a></li>
-            <li><a href="#pengujian">Hasil Pengujian Sistem (9 Skenario Lengkap)</a></li>
-            <li><a href="#dokumentasi">Dokumentasi Screenshot Aplikasi</a></li>
-        </ol>
-
-        <!-- 1. ROADMAP 7 TAHAPAN -->
-        <h2 id="tahapan">1. Roadmap 7 Tahapan Implementasi</h2>
-        <p>Berdasarkan dokumen roadmap implementasi resmi dari pengampu mata kuliah, pengembangan modul autentikasi ShopEase dibagi ke dalam 7 langkah terstruktur:</p>
+        <h3>1. Roadmap 7 Tahapan Implementasi & Upgrade Arsitektur</h3>
+        <p>Sesuai dengan panduan Roadmap Implementasi Authentication System ShopEase CodeIgniter 4, pengembangan dilakukan melalui 7 tahapan berurutan:</p>
 
         <table>
             <thead>
                 <tr>
-                    <th style="width: 8%;">Tahap</th>
-                    <th style="width: 42%;">Aktivitas / Materi</th>
-                    <th style="width: 50%;">Output yang Dihasilkan</th>
+                    <th style="width: 70px;">Tahap</th>
+                    <th style="width: 40%;">Aktivitas / Materi</th>
+                    <th>Output & Komponen yang Dihasilkan</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>1</strong></td>
-                    <td>Membuat database <code>db_shopease_auth</code> dan tabel <code>users</code>; menetapkan tipe data, ENUM role, dan timestamp.</td>
-                    <td>Database & Skema Tabel <code>users</code></td>
+                    <td><strong>Tahap 1</strong></td>
+                    <td>Membuat database <code>db_shopease_auth</code> dan tabel <code>users</code>; menetapkan tipe data, ENUM role, dan default timestamp.</td>
+                    <td>Database MySQL & Tabel <code>users</code> terstruktur.</td>
                 </tr>
                 <tr>
-                    <td><strong>2</strong></td>
-                    <td>Konfigurasi koneksi MySQL pada file <code>.env</code> (hostname, database, username, port 3307).</td>
-                    <td>Koneksi Database Aktif & Terverifikasi</td>
+                    <td><strong>Tahap 2</strong></td>
+                    <td>Mengatur konfigurasi hostname, database, username, password, dan port MySQL (3307) pada file <code>.env</code>.</td>
+                    <td>Koneksi MySQL berhasil dan stabil.</td>
                 </tr>
                 <tr>
-                    <td><strong>3</strong></td>
-                    <td>Membuat <code>UserModel.php</code> mewarisi <code>CodeIgniter\Model</code> dengan properti <code>$allowedFields</code> dan <code>$useTimestamps</code>.</td>
-                    <td>File <code>app/Models/UserModel.php</code></td>
+                    <td><strong>Tahap 3</strong></td>
+                    <td>Membuat <code>UserModel.php</code>; menetapkan nama tabel, primary key <code>id_user</code>, <code>allowedFields</code>, dan <code>useTimestamps</code>.</td>
+                    <td>Lapisan abstraksi data <code>app/Models/UserModel.php</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>4</strong></td>
+                    <td><strong>Tahap 4</strong></td>
                     <td>Membuat <code>AuthController.php</code> dengan method <code>register()</code>, <code>store()</code>, <code>login()</code>, <code>authenticate()</code>, dan <code>logout()</code>.</td>
-                    <td>File <code>app/Controllers/AuthController.php</code></td>
+                    <td>Controller logika bisnis <code>app/Controllers/AuthController.php</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>5</strong></td>
-                    <td>Mengatur routing HTTP GET dan POST untuk alur registrasi, login, logout, dan dashboard role.</td>
-                    <td>File <code>app/Config/Routes.php</code></td>
+                    <td><strong>Tahap 5</strong></td>
+                    <td>Mengatur rute HTTP GET dan POST untuk proses registrasi, login, logout, dan dashboard role pada <code>Routes.php</code>.</td>
+                    <td>Pemetaan URL pada <code>app/Config/Routes.php</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>6</strong></td>
-                    <td>Membangun view antarmuka <code>login.php</code> dan <code>register.php</code> menggunakan Bootstrap 5 dan CSRF token.</td>
-                    <td>File View di <code>app/Views/auth/</code></td>
+                    <td><strong>Tahap 6</strong></td>
+                    <td>Membangun view antarmuka <code>login.php</code> dan <code>register.php</code> menggunakan Bootstrap 5, penampil validasi, dan token CSRF.</td>
+                    <td>Antarmuka responsif di <code>app/Views/auth/</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>7</strong></td>
-                    <td>Membangun <code>AuthFilter.php</code>, mendaftarkan alias filter, memvalidasi role, dan menguji skenario keamanan.</td>
-                    <td>Proteksi Akses URL Berbasis Role</td>
+                    <td><strong>Tahap 7</strong></td>
+                    <td>Membuat <code>AuthFilter.php</code>, mendaftarkan alias filter pada <code>Filters.php</code>, memvalidasi role, dan menguji 9 skenario.</td>
+                    <td>Proteksi rute URL sensitif berbasis role (RBAC).</td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- 2. TAHAP 1: BASIS DATA -->
-        <h2 id="database">2. Tahap 1: Desain Basis Data & Tabel Users</h2>
-        <p>Tabel <code>users</code> dirancang untuk menyimpan kredensial akun, data profil, dan wewenang (role). Password disimpan dalam bentuk hash 255 karakter dan tidak pernah disimpan dalam bentuk plain text.</p>
+        <h3>2. Arsitektur Pola MVC CodeIgniter 4 & Struktur Folder</h3>
+        <p>ShopEase membagi tanggung jawab sistem ke dalam pola <strong>Model-View-Controller</strong> yang bersih dan terisolasi:</p>
+        <ul>
+            <li><strong>Model (<code>app/Models/</code>):</strong> Mengelola interaksi dengan database MySQL menggunakan CodeIgniter 4 Model, Query Builder, validasi data, serta relasi tabel.</li>
+            <li><strong>Controller (<code>app/Controllers/</code>):</strong> Mengendalikan alur logika bisnis, memproses request HTTP, validasi masukan form, sanitasi input, password hashing, manipulasi session, dan merender view.</li>
+            <li><strong>View (<code>app/Views/</code>):</strong> Menampilkan antarmuka pengguna (UI) responsif menggunakan template layout terpisah (<code>layouts/main.php</code>) dengan alert feedback flash data.</li>
+            <li><strong>Filter Middleware (<code>app/Filters/</code>):</strong> Memproteksi rute sensitif pelanggan (<code>AuthFilter</code>) dan membatasi akses back-office sesuai peran pengguna.</li>
+        </ul>
 
-        <pre><code>CREATE DATABASE IF NOT EXISTS `db_shopease_auth` DEFAULT CHARACTER SET utf8mb4;
+        <h4>Struktur Direktori Proyek Tugas 9:</h4>
+        <pre><code>Tugas 9/shopease/
+├── app/
+│   ├── Config/
+│   │   ├── Routes.php          # Definisi rute publik, rute auth, dan grup filter role
+│   │   ├── Filters.php         # Registrasi alias filter 'auth' => AuthFilter::class
+│   │   └── Database.php        # Konfigurasi koneksi MySQL
+│   ├── Controllers/
+│   │   ├── AuthController.php          # Logika login, registrasi, validasi, dan logout
+│   │   ├── HomeController.php          # Beranda toko online & rekomendasi
+│   │   ├── ProductController.php       # Katalog barang & detail produk
+│   │   ├── Customer/
+│   │   │   └── DashboardController.php # Dashboard customer terproteksi 'auth:customer'
+│   │   ├── Operator/
+│   │   │   └── DashboardController.php # Dashboard operator terproteksi 'auth:operator'
+│   │   └── Admin/
+│   │       └── DashboardController.php # Dashboard admin terproteksi 'auth:admin'
+│   ├── Models/
+│   │   ├── UserModel.php       # Model tabel users (primary key: id_user)
+│   │   ├── ProductModel.php    # Model tabel products
+│   │   ├── CategoryModel.php   # Model tabel categories
+│   │   ├── CartModel.php       # Model tabel carts
+│   │   └── OrderModel.php      # Model tabel orders
+│   ├── Views/
+│   │   ├── layouts/ (main.php)
+│   │   ├── auth/ (login.php, register.php)
+│   │   ├── customer/ (dashboard.php)
+│   │   ├── operator/ (dashboard.php)
+│   │   └── admin/ (dashboard.php)
+│   └── Filters/
+│       └── AuthFilter.php      # FilterInterface: cek session isLoggedIn & kecocokan role
+├── public/                     # Dokumen root web, aset CSS, dan Bootstrap Icons
+├── writable/                   # Cache, logs, dan sesi CI4
+├── db_shopease_auth.sql        # Skema SQL, tabel users, dan data akun seed
+└── .env                        # Konfigurasi database lokal MySQL 3307</code></pre>
+
+        <h3>3. Desain Database & Skema Tabel Users</h3>
+        <p>Berdasarkan panduan resmi HOL, tabel <code>users</code> dirancang untuk menyimpan kredensial akun, data profil, dan wewenang (role). Password disimpan dalam bentuk hash 255 karakter dan tidak pernah disimpan dalam bentuk plain text:</p>
+
+        <pre class="language-sql"><code>CREATE DATABASE IF NOT EXISTS `db_shopease_auth` DEFAULT CHARACTER SET utf8mb4;
 USE `db_shopease_auth`;
 
 CREATE TABLE `users` (
@@ -302,34 +333,13 @@ CREATE TABLE `users` (
     `updated_at` DATETIME NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
 
-        <p><strong>Ketentuan Otorisasi:</strong> Role bawaan registrasi adalah <code>customer</code>. Formulir registrasi publik sengaja tidak menyediakan pilihan role admin maupun operator. Akun berhak istimewa (Admin dan Operator) hanya diberikan melalui manajemen basis data langsung oleh administrator sistem.</p>
+        <p><strong>Ketentuan Otorisasi:</strong> Role bawaan registrasi adalah <code>customer</code>. Formulir registrasi publik sengaja tidak menyediakan pilihan role admin maupun operator. Akun dengan hak istimewa (Admin dan Operator) hanya diberikan melalui manajemen basis data langsung oleh administrator sistem untuk menjamin integritas keamanan.</p>
 
-        <!-- 3. TAHAP 2: KONFIGURASI .ENV -->
-        <h2 id="konfigurasi">3. Tahap 2: Konfigurasi Koneksi Database (.env)</h2>
-        <p>File environment <code>.env</code> digunakan untuk memisahkan konfigurasi sensitif dari kode sumber, mendukung lingkungan development lokal dengan port MySQL 3307:</p>
+        <h3>4. Logika Kode Kunci & Cara Kerjanya</h3>
 
-        <pre><code>CI_ENVIRONMENT = development
-
-app.baseURL = 'http://localhost:8080/'
-app.defaultLocale = 'id'
-app.appTimezone = 'Asia/Jakarta'
-
-database.default.hostname = 127.0.0.1
-database.default.database = db_shopease_auth
-database.default.username = root
-database.default.password = 
-database.default.DBDriver = MySQLi
-database.default.port = 3307
-
-security.csrfProtection = 'cookie'
-security.tokenName = 'csrf_test_name'
-security.regenerate = true</code></pre>
-
-        <!-- 4. TAHAP 3: USERMODEL -->
-        <h2 id="model">4. Tahap 3: Implementasi UserModel.php</h2>
+        <h4>A. Lapisan Abstraksi Data (UserModel.php)</h4>
         <p>Model dalam CodeIgniter 4 bertindak sebagai lapisan abstraksi data yang menghubungkan aplikasi dengan database menggunakan <strong>Query Builder</strong> dan <strong>Active Record</strong> bawaan framework:</p>
-
-        <pre><code>&lt;?php
+        <pre class="language-php"><code>&lt;?php
 
 namespace App\Models;
 
@@ -342,6 +352,7 @@ class UserModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
 
+    // Mencegah Mass Assignment Vulnerability
     protected $allowedFields = [
         'name',
         'email',
@@ -351,6 +362,7 @@ class UserModel extends Model
         'address'
     ];
 
+    // Otomatisasi Timestamp
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
@@ -358,390 +370,316 @@ class UserModel extends Model
 
     public function findByEmail(string $email)
     {
-        return $this->where('email', strtolower(trim($email)))-&gt;first();
+        return $this->where('email', strtolower(trim($email)))->first();
     }
 }</code></pre>
 
-        <p><strong>Poin Kunci UserModel:</strong></p>
-        <ul>
-            <li><code>$table = 'users'</code>: Menentukan tabel acuan di database.</li>
-            <li><code>$primaryKey = 'id_user'</code>: Menentukan kunci utama sesuai rancangan HOL.</li>
-            <li><code>$allowedFields</code>: Mencegah serangan <em>Mass Assignment Vulnerability</em> dengan hanya mengizinkan kolom terdaftar untuk di-insert atau di-update.</li>
-            <li><code>$useTimestamps = true</code>: Mengisi otomatis kolom <code>created_at</code> dan <code>updated_at</code> saat data dimanipulasi.</li>
-        </ul>
+        <h4>B. Logika Bisnis & Validasi Autentikasi (AuthController.php)</h4>
+        <p>Controller menangani alur permintaan HTTP, validasi masukan formulir, enkripsi password dengan <code>password_hash()</code>, verifikasi kredensial via <code>password_verify()</code>, serta pembaruan sesi:</p>
+        <pre class="language-php"><code>// 1. Validasi Input Registrasi
+$rules = [
+    'name'             => 'required|min_length[3]|max_length[100]',
+    'email'            => 'required|valid_email|is_unique[users.email]',
+    'password'         => 'required|min_length[8]',
+    'password_confirm' => 'required|matches[password]'
+];
 
-        <!-- 5. TAHAP 4: AUTHCONTROLLER -->
-        <h2 id="controller">5. Tahap 4: Implementasi AuthController.php</h2>
-        <p>Controller menangani alur logika permintaan HTTP, validasi input pengguna, hashing keamanan, serta siklus hidup sesi (session management):</p>
+// 2. Simpan Akun Baru dengan Bcrypt Hashing
+$this->userModel->insert([
+    'name'     => trim($this->request->getPost('name')),
+    'email'    => strtolower(trim($this->request->getPost('email'))),
+    'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+    'role'     => 'customer',
+    'phone'    => $this->request->getPost('phone'),
+    'address'  => $this->request->getPost('address')
+]);
 
-        <pre><code>&lt;?php
+// 3. Verifikasi Login & Regenerasi ID Sesi
+if (!$user || !password_verify($password, $user['password'])) {
+    return redirect()->back()->withInput()->with('error', 'Email atau password salah.');
+}
 
-namespace App\Controllers;
+// Regenerasi ID Session mencegah Session Fixation Attack
+session()->regenerate(true);
+session()->set([
+    'isLoggedIn' => true,
+    'user_id'    => $user['id_user'],
+    'name'       => $user['name'],
+    'email'      => $user['email'],
+    'role'       => $user['role']
+]);</code></pre>
 
-use App\Models\UserModel;
-
-class AuthController extends BaseController
+        <h4>C. Proteksi Rute dengan Role-Based Filter (AuthFilter.php & Routes.php)</h4>
+        <p>CodeIgniter 4 menyediakan mekanisme Filter yang dieksekusi sebelum controller dipanggil. Filter memeriksa session pengguna dan memastikan hanya pengguna dengan role yang sesuai yang diizinkan mengakses URL:</p>
+        <pre class="language-php"><code>public function before(RequestInterface $request, $arguments = null)
 {
-    protected $userModel;
+    $session = session();
 
-    public function __construct()
-    {
-        $this->userModel = new UserModel();
+    // 1. Cek apakah user telah login
+    if (!$session->get('isLoggedIn')) {
+        $session->setFlashdata('error', 'Silakan login terlebih dahulu.');
+        return redirect()->to('/login');
     }
 
-    public function register()
-    {
-        return view('auth/register', ['title' =&gt; 'Registrasi Akun - ShopEase']);
-    }
+    // 2. Cek kesesuaian role dengan argumen rute (misal: 'auth:admin')
+    if (!empty($arguments) && !in_array($session->get('role'), $arguments, true)) {
+        $session->setFlashdata('error', 'Akses ditolak! Anda login sebagai [' . esc($session->get('role')) . '], tidak memiliki izin mengakses halaman tersebut.');
 
-    public function store()
-    {
-        $rules = [
-            'name'             =&gt; 'required|min_length[3]|max_length[100]',
-            'email'            =&gt; 'required|valid_email|is_unique[users.email]',
-            'password'         =&gt; 'required|min_length[8]',
-            'password_confirm' =&gt; 'required|matches[password]'
-        ];
-
-        if (!$this-&gt;validate($rules)) {
-            return view('auth/register', [
-                'validation' =&gt; $this-&gt;validator
-            ]);
+        $role = $session->get('role');
+        if ($role === 'admin') {
+            return redirect()->to('/admin');
+        } elseif ($role === 'operator') {
+            return redirect()->to('/operator');
+        } else {
+            return redirect()->to('/customer');
         }
-
-        $this-&gt;userModel-&gt;insert([
-            'name'     =&gt; trim($this-&gt;request-&gt;getPost('name')),
-            'email'    =&gt; strtolower(trim($this-&gt;request-&gt;getPost('email'))),
-            'password' =&gt; password_hash($this-&gt;request-&gt;getPost('password'), PASSWORD_DEFAULT),
-            'role'     =&gt; 'customer',
-            'phone'    =&gt; $this-&gt;request-&gt;getPost('phone'),
-            'address'  =&gt; $this-&gt;request-&gt;getPost('address')
-        ]);
-
-        return redirect()-&gt;to('/login')
-            -&gt;with('success', 'Registrasi berhasil. Silakan login.');
-    }
-
-    public function authenticate()
-    {
-        $email    = strtolower(trim($this-&gt;request-&gt;getPost('email')));
-        $password = $this-&gt;request-&gt;getPost('password');
-
-        $user = $this-&gt;userModel-&gt;where('email', $email)-&gt;first();
-
-        if (!$user || !password_verify($password, $user['password'])) {
-            return redirect()-&gt;back()
-                -&gt;withInput()
-                -&gt;with('error', 'Email atau password salah.');
-        }
-
-        // Regenerasi ID Session untuk mencegah Session Fixation Attack
-        session()-&gt;regenerate(true);
-
-        session()-&gt;set([
-            'isLoggedIn' =&gt; true,
-            'user_id'    =&gt; $user['id_user'],
-            'name'       =&gt; $user['name'],
-            'email'      =&gt; $user['email'],
-            'role'       =&gt; $user['role']
-        ]);
-
-        // Pengalihan Berdasarkan Role
-        switch ($user['role']) {
-            case 'admin':
-                return redirect()-&gt;to('/admin');
-            case 'operator':
-                return redirect()-&gt;to('/operator');
-            default:
-                return redirect()-&gt;to('/customer');
-        }
-    }
-
-    public function logout()
-    {
-        session()-&gt;destroy();
-        return redirect()-&gt;to('/login')
-            -&gt;with('success', 'Anda berhasil logout.');
     }
 }</code></pre>
 
         <div class="security-box">
-            <strong>Keunggulan Mekanisme Keamanan:</strong>
+            <strong>Tiga Pilar Keamanan Modul Autentikasi:</strong>
             <ol>
-                <li><strong>Password Hashing:</strong> Menggunakan <code>password_hash(..., PASSWORD_DEFAULT)</code> yang mengimplementasikan algoritma Bcrypt kuat dengan salt otomatis.</li>
-                <li><strong>Verifikasi Aman:</strong> <code>password_verify()</code> tahan terhadap serangan <em>timing attack</em>.</li>
-                <li><strong>Regenerasi Sesi:</strong> <code>session()-&gt;regenerate(true)</code> langsung mengganti Session ID setelah otentikasi berhasil untuk menggugurkan sesi lama.</li>
+                <li><strong>One-Way Bcrypt Hashing:</strong> Password dienkripsi satu arah menggunakan fungsi bawaan PHP <code>password_hash(..., PASSWORD_DEFAULT)</code> dengan cost factor dinamis dan salt kriptografis unik setiap user.</li>
+                <li><strong>Mitigasi Session Hijacking:</strong> Panggilan <code>session()-&gt;regenerate(true)</code> langsung memusnahkan ID sesi lama dan menerbitkan ID baru segera setelah kredensial terverifikasi.</li>
+                <li><strong>Perlindungan CSRF:</strong> Setiap form POST diwajibkan menyertakan <code>&lt;?= csrf_field() ?&gt;</code> untuk memvalidasi keaslian token yang tersimpan di cookie browser pengguna.</li>
             </ol>
         </div>
 
-        <!-- 6. TAHAP 5: ROUTES -->
-        <h2 id="routing">6. Tahap 5: Konfigurasi Routes.php</h2>
-        <p>Routing diatur dengan memisahkan rute publik, rute proses autentikasi, serta rute yang diproteksi oleh Filter berbasis role:</p>
-
-        <pre><code>// 1. Rute Publik
-$routes-&gt;get('/', 'HomeController::index');
-$routes-&gt;get('products', 'ProductController::index');
-
-// 2. Rute Autentikasi
-$routes-&gt;get('register', 'AuthController::register');
-$routes-&gt;post('register', 'AuthController::store');
-
-$routes-&gt;get('login', 'AuthController::login');
-$routes-&gt;post('login', 'AuthController::authenticate');
-
-$routes-&gt;get('logout', 'AuthController::logout');
-$routes-&gt;post('logout', 'AuthController::logout');
-
-// 3. Rute Khusus Customer (Filter: auth:customer)
-$routes-&gt;group('customer', ['filter' =&gt; 'auth:customer'], static function ($routes) {
-    $routes-&gt;get('/', 'Customer\DashboardController::index');
-});
-
-// 4. Rute Khusus Operator (Filter: auth:operator)
-$routes-&gt;group('operator', ['filter' =&gt; 'auth:operator'], static function ($routes) {
-    $routes-&gt;get('/', 'Operator\DashboardController::index');
-});
-
-// 5. Rute Khusus Admin (Filter: auth:admin)
-$routes-&gt;group('admin', ['filter' =&gt; 'auth:admin'], static function ($routes) {
-    $routes-&gt;get('/', 'Admin\DashboardController::index');
-});</code></pre>
-
-        <!-- 7. TAHAP 6: VIEWS -->
-        <h2 id="views">7. Tahap 6: Antarmuka View Login & Registrasi</h2>
-        <p>Antarmuka dibangun dengan Bootstrap 5 yang bersih dan responsif, dilengkapi alert flash data, penampil pesan validasi form, serta token CSRF:</p>
-
+        <h3>5. Alur Proses Bisnis Autentikasi & Otorisasi (Workflow 8 Tahap)</h3>
         <div class="flow-step">
-            <div class="step-num">&#10003;</div>
-            <div><strong>Token CSRF Bawaan:</strong> Disematkan dengan memanggil helper <code>&lt;?= csrf_field() ?&gt;</code> di dalam setiap form HTML untuk menangkal serangan Cross-Site Request Forgery.</div>
+            <div class="step-number">1</div>
+            <div class="step-content"><strong>Pengisian Formulir Registrasi:</strong> Calon pengguna mengakses <code>/register</code>, menginput nama, email, nomor HP, alamat tempat tinggal, password (minimal 8 karakter), dan konfirmasi password.</div>
         </div>
         <div class="flow-step">
-            <div class="step-num">&#10003;</div>
-            <div><strong>Pesan Kesalahan Dinamis:</strong> Validasi CodeIgniter ditampilkan via <code>&lt;?= $validation-&gt;listErrors() ?&gt;</code> sehingga calon pengguna mengetahui secara spesifik input mana yang belum memenuhi syarat.</div>
+            <div class="step-number">2</div>
+            <div class="step-content"><strong>Validasi Data di Server:</strong> <code>AuthController::store()</code> memvalidasi data. Jika ada kesalahan (email kembar atau konfirmasi beda), form me-render alert kesalahan melalui <code>listErrors()</code>.</div>
         </div>
         <div class="flow-step">
-            <div class="step-num">&#10003;</div>
-            <div><strong>Quick Demo Credential Helper:</strong> Tersedia tombol satu klik pada form login untuk mempermudah dosen penguji mencoba ketiga role akun (Admin, Operator, Customer).</div>
+            <div class="step-number">3</div>
+            <div class="step-content"><strong>Penyimpanan Data Aman:</strong> Password di-hash menggunakan algoritma Bcrypt. <code>UserModel</code> menyimpan record baru ke MySQL dengan role default <code>customer</code> dan timestamp aktif.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">4</div>
+            <div class="step-content"><strong>Pengalihan ke Login:</strong> Pengguna dialihkan ke <code>/login</code> dengan flash data sukses <em>"Registrasi berhasil. Silakan login menggunakan akun baru Anda"</em>.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">5</div>
+            <div class="step-content"><strong>Proses Autentikasi Login:</strong> Pengguna menginput email dan password. <code>UserModel::findByEmail()</code> mengambil record user, lalu <code>password_verify()</code> menguji kecocokan hash password.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">6</div>
+            <div class="step-content"><strong>Penerbitan Sesi Login:</strong> Session ID diregenerasi secara aman dan data identitas pengguna (<code>isLoggedIn</code>, <code>user_id</code>, <code>name</code>, <code>role</code>) disimpan ke dalam session server.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">7</div>
+            <div class="step-content"><strong>Pengalihan Berbasis Peran:</strong> Sistem secara cerdas mengarahkan Admin ke <code>/admin</code>, Operator ke <code>/operator</code>, dan Customer ke portal <code>/customer</code>.</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">8</div>
+            <div class="step-content"><strong>Sesi Berakhir (Logout):</strong> Menekan tombol logout memanggil <code>session()->destroy()</code> yang menghapus seluruh data sesi dan mengembalikan pengguna ke halaman login dengan status bersih.</div>
         </div>
 
-        <!-- 8. TAHAP 7: AUTHFILTER -->
-        <h2 id="filter">8. Tahap 7: Otorisasi & Proteksi URL Menggunakan AuthFilter</h2>
-        <p>Filter bertindak sebagai <em>Middleware</em> yang memeriksa setiap request sebelum dieksekusi oleh Controller tujuan:</p>
-
-        <pre><code>&lt;?php
-
-namespace App\Filters;
-
-use CodeIgniter\Filters\FilterInterface;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\ResponseInterface;
-
-class AuthFilter implements FilterInterface
-{
-    public function before(RequestInterface $request, $arguments = null)
-    {
-        $session = session();
-
-        // 1. Verifikasi Status Login Pengguna
-        if (!$session-&gt;get('isLoggedIn')) {
-            $session-&gt;setFlashdata('error', 'Silakan login terlebih dahulu.');
-            return redirect()-&gt;to('/login');
-        }
-
-        // 2. Verifikasi Kesesuaian Role
-        if (!empty($arguments) &amp;&amp; !in_array($session-&gt;get('role'), $arguments, true)) {
-            $session-&gt;setFlashdata('error', 
-                'Akses ditolak! Anda login sebagai [' . esc($session-&gt;get('role')) . '], tidak berhak mengakses halaman tersebut.');
-
-            $role = $session-&gt;get('role');
-            if ($role === 'admin') {
-                return redirect()-&gt;to('/admin');
-            } elseif ($role === 'operator') {
-                return redirect()-&gt;to('/operator');
-            } else {
-                return redirect()-&gt;to('/customer');
-            }
-        }
-    }
-
-    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
-    {
-        // Tidak diperlukan proses lanjutan
-    }
-}</code></pre>
-
-        <!-- 9. HASIL PENGUJIAN SISTEM -->
-        <h2 id="pengujian">9. Hasil Pengujian Sistem (9 Skenario Lengkap)</h2>
-        <p>Seluruh skenario pengujian yang tercantum pada dokumen Hands-On Lab telah diuji secara komprehensif:</p>
+        <h3>6. Skenario Pengujian Sistem (Matriks 12 Skenario Lengkap)</h3>
+        <p>Seluruh skenario pengujian fungsionalitas dan keamanan yang diwajibkan pada dokumen Hands-On Lab (HOL) telah diuji dan menghasilkan status lulus (passed):</p>
 
         <table>
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th style="width: 40px;">No</th>
                     <th>Skenario Pengujian</th>
-                    <th>Input / Aksi</th>
+                    <th>Input & Aksi Pengujian</th>
                     <th>Hasil yang Diharapkan</th>
-                    <th>Status Uji</th>
+                    <th style="width: 100px;" class="text-center">Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Registrasi Customer Baru</td>
+                    <td>Registrasi customer baru dengan data valid</td>
                     <td>Nama, email baru, password 8+ karakter cocok</td>
-                    <td>Data tersimpan di MySQL, redirect ke Login dengan notifikasi sukses</td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Data tersimpan di tabel <code>users</code> MySQL dengan password hash Bcrypt</td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Registrasi Email Duplikat</td>
+                    <td>Registrasi dengan email yang sudah ada</td>
                     <td>Email yang sudah terdaftar di tabel users</td>
-                    <td>Validasi menolak dengan pesan "Email sudah terdaftar"</td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Validasi menolak input dengan pesan <em>"Email sudah terdaftar"</em></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Password Kurang dari 8 Karakter</td>
-                    <td>Password 4 karakter</td>
-                    <td>Validasi menolak dengan pesan "Password minimal 8 karakter"</td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Registrasi dengan password kurang dari 8 karakter</td>
+                    <td>Password hanya 4 karakter</td>
+                    <td>Validasi menolak input dengan pesan <em>"Password minimal 8 karakter"</em></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>Konfirmasi Password Berbeda</td>
-                    <td>Password dan konfirmasi tidak identik</td>
-                    <td>Validasi menolak dengan pesan "Konfirmasi password tidak sama"</td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Konfirmasi password tidak cocok saat registrasi</td>
+                    <td>Password dan konfirmasi sengaja dibuat berbeda</td>
+                    <td>Validasi menolak input dengan pesan <em>"Konfirmasi password tidak sama"</em></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>5</td>
-                    <td>Login Data Benar (Role Customer)</td>
-                    <td>Email valid dan password benar</td>
-                    <td>Session dibuat, pengguna dialihkan ke <code>/customer</code></td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Login akun customer dengan data valid</td>
+                    <td>Email dan password benar milik customer</td>
+                    <td>Login sukses, session ID diregenerasi, diarahkan ke <code>/customer</code></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>6</td>
-                    <td>Login Password Salah</td>
-                    <td>Email benar namun password salah</td>
-                    <td>Login ditolak dengan flash message "Email atau password salah"</td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Login gagal dengan password salah</td>
+                    <td>Email benar namun password keliru</td>
+                    <td>Login ditolak dengan flash message <em>"Email atau password salah"</em></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>7</td>
-                    <td>Login Role Admin & Operator</td>
-                    <td>Kredensial akun admin & operator</td>
-                    <td>Dialihkan tepat ke <code>/admin</code> atau <code>/operator</code></td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Login akun Administrator</td>
+                    <td>Kredensial email dan password role admin</td>
+                    <td>Session admin aktif dan otomatis diarahkan ke <code>/admin</code></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>8</td>
-                    <td>Akses Halaman Terlindungi Tanpa Login</td>
-                    <td>Mengunjungi URL <code>/admin</code> langsung</td>
-                    <td>AuthFilter memblokir dan mengarahkan ke <code>/login</code></td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Login akun Operator Toko</td>
+                    <td>Kredensial email dan password role operator</td>
+                    <td>Session operator aktif dan otomatis diarahkan ke <code>/operator</code></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
                 <tr>
                     <td>9</td>
-                    <td>Akses Role Tidak Sesuai (Role Mismatch)</td>
-                    <td>Customer mencoba membuka URL <code>/admin</code></td>
-                    <td>AuthFilter menolak dan mengarahkan kembali ke <code>/customer</code></td>
-                    <td><span style="color: #16a34a; font-weight: bold;">&#10004; BERHASIL</span></td>
+                    <td>Akses halaman terproteksi tanpa login</td>
+                    <td>Membuka URL <code>/admin</code> langsung via browser</td>
+                    <td>AuthFilter memblokir dan mengarahkan ke <code>/login</code> dengan alert peringatan</td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Akses role tidak sesuai (Role Mismatch)</td>
+                    <td>Customer mencoba membuka URL rute <code>/admin</code></td>
+                    <td>AuthFilter menolak izin akses dan mengembalikan pengguna ke dashboard customer</td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Pengujian proses Logout</td>
+                    <td>Menekan tombol Logout pada navbar / dashboard</td>
+                    <td>Seluruh data sesi dimusnahkan dan muncul notifikasi <em>"Anda berhasil logout"</em></td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Verifikasi integrasi katalog publik</td>
+                    <td>Membuka katalog publik <code>/products</code></td>
+                    <td>Katalog menampilkan produk aktif yang bersumber dari tabel database MySQL</td>
+                    <td class="text-center"><span style="color: #16a34a; font-weight: bold;">&#10004; Passed</span></td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- 10. DOKUMENTASI SCREENSHOT -->
-        <h2 id="dokumentasi">10. Dokumentasi Screenshot Aplikasi</h2>
-        <p>Berikut adalah 12 tangkapan layar live dari pengujian sistem autentikasi dan otorisasi ShopEase:</p>
+        <h3>7. Dokumentasi Antarmuka Aplikasi</h3>
+        <p>Berikut adalah 12 tangkapan layar antarmuka pengguna (UI) dari sistem autentikasi dan manajemen ShopEase yang telah aktif dan berfungsi penuh:</p>
 
-        <!-- Screenshot 1 -->
+        <h4>1. Halaman Formulir Registrasi Customer</h4>
         <div class="img-card">
-            <img src="screenshots/01_halaman_registrasi.png" alt="Halaman Registrasi ShopEase">
-            <div class="img-caption">Gambar 1: Halaman Registrasi Pengguna Baru (Customer) dengan Form Lengkap Bootstrap 5</div>
+            <img src="screenshots/01_halaman_registrasi.png" alt="Halaman Registrasi ShopEase" width="850">
+            <div class="img-caption">Gambar 1: Formulir pendaftaran akun customer baru dengan nama, email, nomor HP, alamat, password min. 8 karakter, dan token CSRF.</div>
         </div>
 
-        <!-- Screenshot 2 -->
+        <h4>2. Penanganan Validasi Registrasi Gagal</h4>
         <div class="img-card">
-            <img src="screenshots/02_validasi_registrasi_gagal.png" alt="Validasi Form Registrasi Gagal">
-            <div class="img-caption">Gambar 2: Penanganan Validasi Form Gagal (Email Duplikat, Password Minimal 8 Karakter, Password Tidak Cocok)</div>
+            <img src="screenshots/02_validasi_registrasi_gagal.png" alt="Validasi Form Registrasi Gagal" width="850">
+            <div class="img-caption">Gambar 2: Penanganan kesalahan form dinamis melalui <code>listErrors()</code> saat password kurang dari 8 karakter atau email kembar.</div>
         </div>
 
-        <!-- Screenshot 3 -->
+        <h4>3. Notifikasi Registrasi Berhasil</h4>
         <div class="img-card">
-            <img src="screenshots/03_registrasi_berhasil.png" alt="Registrasi Berhasil">
-            <div class="img-caption">Gambar 3: Flash Message Sukses Registrasi dan Redirect Otomatis ke Halaman Login</div>
+            <img src="screenshots/03_registrasi_berhasil.png" alt="Registrasi Berhasil" width="850">
+            <div class="img-caption">Gambar 3: Flash message alert warna hijau mengonfirmasi bahwa data berhasil tersimpan di tabel users MySQL.</div>
         </div>
 
-        <!-- Screenshot 4 -->
+        <h4>4. Halaman Masuk Akun (Login)</h4>
         <div class="img-card">
-            <img src="screenshots/04_halaman_login.png" alt="Halaman Login ShopEase">
-            <div class="img-caption">Gambar 4: Halaman Login Utama ShopEase Dilengkapi Credential Demo Cepat untuk Pengujian</div>
+            <img src="screenshots/04_halaman_login.png" alt="Halaman Login ShopEase" width="850">
+            <div class="img-caption">Gambar 4: Halaman login modern ShopEase dilengkapi credential demo siap pakai untuk ketiga role (Admin, Operator, Customer).</div>
         </div>
 
-        <!-- Screenshot 5 -->
+        <h4>5. Penolakan Login dengan Password Salah</h4>
         <div class="img-card">
-            <img src="screenshots/05_login_gagal.png" alt="Login Gagal">
-            <div class="img-caption">Gambar 5: Penolakan Autentikasi dengan Notifikasi Kesalahan saat Password Salah</div>
+            <img src="screenshots/05_login_gagal.png" alt="Login Gagal" width="850">
+            <div class="img-caption">Gambar 5: Alert kesalahan login saat pengguna salah memasukkan password tanpa membocorkan eksistensi data sensitif.</div>
         </div>
 
-        <!-- Screenshot 6 -->
+        <h4>6. Portal Dashboard Customer</h4>
         <div class="img-card">
-            <img src="screenshots/06_dashboard_customer.png" alt="Dashboard Customer">
-            <div class="img-caption">Gambar 6: Dashboard Customer Terproteksi Filter <code>auth:customer</code> Menampilkan Profil dan Rekomendasi Produk</div>
+            <img src="screenshots/06_dashboard_customer.png" alt="Dashboard Customer" width="850">
+            <div class="img-caption">Gambar 6: Portal dashboard pelanggan terproteksi filter <code>auth:customer</code> menampilkan profil terautentikasi dan rekomendasi produk.</div>
         </div>
 
-        <!-- Screenshot 7 -->
+        <h4>7. Panel Dashboard Operator</h4>
         <div class="img-card">
-            <img src="screenshots/07_dashboard_operator.png" alt="Dashboard Operator">
-            <div class="img-caption">Gambar 7: Dashboard Operator Terproteksi Filter <code>auth:operator</code> Menampilkan Inventaris Produk</div>
+            <img src="screenshots/07_dashboard_operator.png" alt="Dashboard Operator" width="850">
+            <div class="img-caption">Gambar 7: Panel dashboard operator gudang terproteksi filter <code>auth:operator</code> menampilkan stok inventaris toko.</div>
         </div>
 
-        <!-- Screenshot 8 -->
+        <h4>8. Dashboard Administrator Utama</h4>
         <div class="img-card">
-            <img src="screenshots/08_dashboard_admin.png" alt="Dashboard Admin">
-            <div class="img-caption">Gambar 8: Dashboard Administrator Terproteksi Filter <code>auth:admin</code> Menampilkan Statistik Pendapatan dan Toko</div>
+            <img src="screenshots/08_dashboard_admin.png" alt="Dashboard Administrator" width="850">
+            <div class="img-caption">Gambar 8: Panel analitik utama admin terproteksi filter <code>auth:admin</code> menyajikan ringkasan omset dan kontrol toko.</div>
         </div>
 
-        <!-- Screenshot 9 -->
+        <h4>9. Proteksi Filter Terhadap Akses Tanpa Sesi</h4>
         <div class="img-card">
-            <img src="screenshots/09_proteksi_filter_tanpa_login.png" alt="Proteksi Filter Tanpa Login">
-            <div class="img-caption">Gambar 9: AuthFilter Mengalihkan Pengguna Tanpa Sesi ke Halaman Login dengan Pesan Peringatan</div>
+            <img src="screenshots/09_proteksi_filter_tanpa_login.png" alt="Proteksi Filter Tanpa Login" width="850">
+            <div class="img-caption">Gambar 9: AuthFilter secara otomatis mencegat akses pengguna tanpa sesi dan mengarahkannya kembali ke halaman login.</div>
         </div>
 
-        <!-- Screenshot 10 -->
+        <h4>10. Proteksi Role Mismatch (Hak Akses Dibatasi)</h4>
         <div class="img-card">
-            <img src="screenshots/10_proteksi_role_mismatch.png" alt="Proteksi Role Mismatch">
-            <div class="img-caption">Gambar 10: AuthFilter Menolak Akses Customer yang Mencoba Membuka Rute Administrator</div>
+            <img src="screenshots/10_proteksi_role_mismatch.png" alt="Proteksi Role Mismatch" width="850">
+            <div class="img-caption">Gambar 10: AuthFilter menolak akses customer yang mencoba membuka rute administrator dan mengarahkannya kembali ke dashboard aman.</div>
         </div>
 
-        <!-- Screenshot 11 -->
+        <h4>11. Pengakhiran Sesi Pengguna (Logout)</h4>
         <div class="img-card">
-            <img src="screenshots/11_logout_session_selesai.png" alt="Logout Berhasil">
-            <div class="img-caption">Gambar 11: Proses Logout Mengakhiri Seluruh Data Session dan Menampilkan Flash Message Sukses</div>
+            <img src="screenshots/11_logout_session_selesai.png" alt="Logout Berhasil" width="850">
+            <div class="img-caption">Gambar 11: Proses logout menghapus identitas sesi dari server dan menampilkan notifikasi sukses keluar akun.</div>
         </div>
 
-        <!-- Screenshot 12 -->
+        <h4>12. Etalase Katalog Produk Publik</h4>
         <div class="img-card">
-            <img src="screenshots/12_katalog_publik_shopease.png" alt="Katalog Publik Produk">
-            <div class="img-caption">Gambar 12: Halaman Katalog Publik ShopEase yang Terintegrasi dengan Database MySQL</div>
+            <img src="screenshots/12_katalog_publik_shopease.png" alt="Katalog Publik Produk" width="850">
+            <div class="img-caption">Gambar 12: Halaman katalog publik produk ShopEase yang terkoneksi langsung dengan tabel categories dan products di MySQL.</div>
         </div>
 
-        <h2>Kesimpulan</h2>
-        <p>
-            Modul <strong>Authentication & Authorization System</strong> pada aplikasi ShopEase telah selesai dibangun dan memenuhi seluruh kriteria pada modul pembelajaran PBKK:
-        </p>
-        <ul>
-            <li>Model <code>UserModel.php</code> telah berhasil menangani operasi CRUD dan relasi data pengguna pada database MySQL.</li>
-            <li>Controller <code>AuthController.php</code> menerapkan validasi ketat, password hashing Bcrypt yang aman, dan regenerasi session.</li>
-            <li>Filter <code>AuthFilter.php</code> sukses mengisolasi wewenang antar role (Customer, Operator, Admin) dan melindungi endpoint sensitif dari akses tanpa izin.</li>
-            <li>Tampilan responsif dengan Bootstrap 5 memberikan pengalaman pengguna yang intuitif dan profesional.</li>
-        </ul>
+        <h3>8. Petunjuk Menjalankan Proyek Secara Lokal</h3>
+        <p>Ikuti langkah-langkah berikut untuk menjalankan aplikasi ShopEase Tugas 9 di komputer lokal:</p>
+        <ol>
+            <li>Pastikan database server <strong>MySQL (MariaDB)</strong> telah berjalan di XAMPP / Laragon (pada port 3307 atau 3306).</li>
+            <li>Buka <code>phpMyAdmin</code> atau MySQL CLI, buat database baru dengan nama <code>db_shopease_auth</code>.</li>
+            <li>Import file <code>db_shopease_auth.sql</code> (yang tersedia di folder <code>Tugas 9/db_shopease_auth.sql</code>) ke database tersebut.</li>
+            <li>Buka terminal / PowerShell pada folder project <code>Tugas 9/shopease</code> dan jalankan server pengembangan CodeIgniter 4:
+                <pre><code>cd "Tugas 9/shopease"
+php spark serve</code></pre>
+            </li>
+            <li>Buka browser dan akses alamat aplikasi: <code>http://localhost:8080/</code> atau langsung ke halaman login di <code>http://localhost:8080/login</code>.</li>
+            <li>Gunakan kredensial akun pengujian berikut untuk mencoba seluruh fitur otorisasi:
+                <ul>
+                    <li><strong>Akun Administrator:</strong> Email: <code>admin@shopease.com</code> | Password: <code>password123</code> (Akses: <code>/admin</code>)</li>
+                    <li><strong>Akun Operator Gudang:</strong> Email: <code>operator@shopease.com</code> | Password: <code>password123</code> (Akses: <code>/operator</code>)</li>
+                    <li><strong>Akun Customer Terdaftar:</strong> Email: <code>malekaghaniya0809@gmail.com</code> | Password: <code>password123</code> (Akses: <code>/customer</code>)</li>
+                </ul>
+            </li>
+        </ol>
 
         <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
             <a href="../Tugas.html" style="color: #0284c7; text-decoration: none; font-weight: bold;">&larr; Kembali ke Daftar Tugas PBKK</a>
         </div>
     </div>
+
 </body>
 
 </html>
