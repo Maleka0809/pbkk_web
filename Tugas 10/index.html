@@ -201,7 +201,7 @@
 
     <div class="isi">
         <h2>Soal :</h2>
-        <p>Mengembangkan modul <strong>CRUD (Create, Read, Update, Delete) dalam CodeIgniter 4</strong> untuk <strong>Product Management</strong> pada aplikasi e-commerce <strong>ShopEase</strong> berdasarkan materi perkuliahan PBKK <em>"CRUD dalam CI"</em> (blog: <a href="https://fajarbaskoro.blogspot.com/2021/05/crud-dalam-ci.html" target="_blank">fajarbaskoro.blogspot.com/2021/05/crud-dalam-ci.html</a>) dan panduan resmi <strong>Hands-On Lab (HOL) Product Management - CodeIgniter 4</strong>. Tugas ini mengimplementasikan manajemen katalog barang secara penuh yang mencakup relasi basis data multi-tabel (One-to-Many antara <code>categories</code> &rarr; <code>products</code> &rarr; <code>product_images</code>), operasi CRUD Master Kategori dan Produk, unggah berkas multi-gambar (<em>multi-image gallery</em>) dengan validasi MIME/ukuran, fitur pencarian kata kunci dan filter kategori menggunakan Query Builder JOIN, pengelolaan stok dan status produk, pembersihan file fisik saat data dihapus, serta integrasi proteksi otentikasi role admin.</p>
+        <p>Mengembangkan modul <strong>CRUD dalam CodeIgniter 4 (Mengimplementasikan CRUD Produk & Kategori pada ShopEase)</strong> berdasarkan materi perkuliahan PBKK <em>"CRUD dalam CI"</em> (referensi blog: <a href="https://fajarbaskoro.blogspot.com/2021/05/crud-dalam-ci.html" target="_blank">fajarbaskoro.blogspot.com/2021/05/crud-dalam-ci.html</a>) dan panduan resmi <strong>Hands-On Lab (HOL) Product Management - CodeIgniter 4</strong>. Tugas ini mengimplementasikan manajemen katalog barang secara menyeluruh yang mencakup relasi basis data multi-tabel (One-to-Many antara <code>categories</code> &rarr; <code>products</code> &rarr; <code>product_images</code>), operasi lengkap Create, Read, Update, Delete untuk Master Kategori dan Produk, unggah berkas multi-gambar (<em>multi-image upload & gallery</em>) dengan validasi tipe MIME/ukuran, fitur pencarian kata kunci dan filter kategori menggunakan Query Builder JOIN, pengelolaan stok dan status produk, pembersihan file fisik saat data dihapus, serta integrasi proteksi otentikasi role admin.</p>
 
         <h2>Jawaban :</h2>
         <div>
@@ -209,7 +209,7 @@
             <a class="github-btn" href="https://github.com/Maleka0809/pbkk_web/tree/main/Tugas%2010" target="_blank">&#128193; Buka Folder Tugas 10 di GitHub</a>
         </div>
 
-        <p>Pada Tugas 10 ini, aplikasi e-commerce <strong>ShopEase</strong> telah berhasil dilengkapi dengan sistem <strong>Product Management CRUD</strong> berskala industri sesuai spesifikasi Hands-On Lab PBKK. Sistem dijalankan pada arsitektur CodeIgniter 4.7.6, PHP 8.2, dan basis data MariaDB/MySQL <code>db_shopease_crud</code>:</p>
+        <p>Pada Tugas 10 ini, aplikasi toko online <strong>ShopEase</strong> telah berhasil dilengkapi dengan sistem <strong>Product Management CRUD</strong> berskala industri sesuai spesifikasi Hands-On Lab PBKK. Sistem dijalankan pada arsitektur CodeIgniter 4.7.6, PHP 8.2, dan basis data MariaDB/MySQL <code>db_shopease_crud</code>:</p>
 
         <div>
             <span class="badge-tech">PHP 8.2 Strict</span>
@@ -224,185 +224,183 @@
             <span class="badge-tech">AuthFilter Middleware Protection</span>
         </div>
 
-        <!-- PERBEDAAN TUGAS 9 VS TUGAS 10 -->
-        <h3>1. Analisis Komprehensif: Perbedaan Tugas 9 dan Tugas 10</h3>
-        <p>Untuk memahami evolusi arsitektur aplikasi ShopEase, berikut adalah perbandingan mendalam antara <strong>Tugas 9 (Authentication System & Model)</strong> dan <strong>Tugas 10 (Product Management CRUD & Multi-Table Relations)</strong>:</p>
-
         <div class="compare-box">
-            <strong>Ringkasan Esensi Perbedaan:</strong><br>
-            <strong>Tugas 9</strong> berfokus pada <em>identitas dan keamanan akses (Security & Identity Layer)</em>: siapa pengguna yang masuk, bagaimana memverifikasi password terenkripsi Bcrypt, mengelola session aman, dan membatasi hak akses role (Admin, Operator, Customer).<br>
-            <strong>Tugas 10</strong> berfokus pada <em>pengelolaan data dan logika bisnis (Business Data & Catalog Management Layer)</em>: bagaimana mengelola siklus hidup data produk (Create, Read, Update, Delete), menghubungkan 3 tabel berelasi (Kategori &rarr; Produk &rarr; Galeri Gambar), menangani unggah multi-berkas (file uploading) ke filesystem, melakukan pencarian dan penyaringan data secara dinamis, serta menjaga integritas referensial (Foreign Key constraints).
+            <strong>Keterkaitan & Perbandingan dengan Tugas 9:</strong><br>
+            Jika pada <strong>Tugas 9</strong> sistem berfokus pada <em>Authentication & Model</em> (pengelolaan akun, login, registrasi, hashing password Bcrypt, dan middleware role pada tabel <code>users</code>), maka pada <strong>Tugas 10</strong> arsitektur diperluas ke <em>Business Data & Product Management CRUD</em>. Sistem mengelola siklus hidup data produk (Create, Read, Update, Delete), menghubungkan 3 tabel berelasi (Kategori &rarr; Produk &rarr; Galeri Gambar), menangani unggah file biner (multi-image upload) ke filesystem, melakukan pencarian dan penyaringan dinamis, serta menjaga integritas referensial (Foreign Key constraints).
         </div>
+
+        <!-- 1. ROADMAP 8 TAHAPAN -->
+        <h3>1. Roadmap 8 Tahapan Implementasi CRUD Product Management</h3>
+        <p>Sesuai dengan panduan resmi Hands-On Lab (HOL) dan materi referensi Pak Fajar Baskoro, implementasi CRUD Produk diselesaikan melalui 8 langkah sistematis:</p>
 
         <table>
             <thead>
                 <tr>
-                    <th style="width: 22%;">Aspek Perbandingan</th>
-                    <th style="width: 39%;">Tugas 9 (Authentication System & Model)</th>
-                    <th style="width: 39%;">Tugas 10 (Product Management CRUD)</th>
+                    <th style="width: 70px;">Tahap</th>
+                    <th style="width: 42%;">Aktivitas / Materi</th>
+                    <th>Output & Komponen yang Dihasilkan</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Fokus Utama Perkuliahan</strong></td>
-                    <td>Materi <em>"Model pada CI"</em>: pembuatan Model dasar, validasi form login/register, dan enkripsi data kredensial.</td>
-                    <td>Materi <em>"CRUD dalam CI"</em>: operasi lengkap manipulasi database (Create, Read, Update, Delete) pada entitas bisnis utama.</td>
+                    <td><strong>Tahap 1</strong></td>
+                    <td>Merancang basis data <code>db_shopease_crud</code> dengan tabel <code>categories</code>, <code>products</code>, <code>product_images</code>, dan <code>users</code>.</td>
+                    <td>Skema SQL Relasional dengan Foreign Key (1:N).</td>
                 </tr>
                 <tr>
-                    <td><strong>Entitas & Tabel Database</strong></td>
-                    <td>Tabel tunggal: <code>users</code> (id_user, name, email, password, role, is_active, timestamps).</td>
-                    <td>Multi-tabel relasional: <code>categories</code>, <code>products</code>, <code>product_images</code>, dan <code>users</code> yang saling terhubung dengan Foreign Keys (1:N).</td>
+                    <td><strong>Tahap 2</strong></td>
+                    <td>Konfigurasi koneksi database MariaDB/MySQL port 3307 pada file <code>.env</code> CodeIgniter 4.</td>
+                    <td>Koneksi database aktif pada <code>db_shopease_crud</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>Operasi Basis Data</strong></td>
-                    <td>Dominan operasi <strong>Read</strong> (mencari email dan password hash) dan <strong>Create</strong> (registrasi akun baru).</td>
-                    <td>Lengkap <strong>Create, Read, Update, Delete (CRUD)</strong>: penambahan barang, pembaruan stok/harga, penghapusan produk beserta gambar fisiknya.</td>
+                    <td><strong>Tahap 3</strong></td>
+                    <td>Membuat <code>CategoryModel.php</code>, <code>ProductModel.php</code>, dan <code>ProductImageModel.php</code>.</td>
+                    <td>Lapisan abstraksi data Query Builder & JOIN.</td>
                 </tr>
                 <tr>
-                    <td><strong>Penanganan Berkas (File Upload)</strong></td>
-                    <td>Belum menangani unggah file biner (hanya form teks, string, dan hash).</td>
-                    <td>Menangani <strong>Multi-Image Upload</strong>: validasi tipe MIME (JPEG/PNG/WEBP), batas ukuran berkas (2MB), generasi nama acak acak (<code>getRandomName()</code>), penyimpanan ke <code>public/uploads/products/</code>, dan pembersihan file fisik (<code>unlink()</code>) saat dihapus.</td>
+                    <td><strong>Tahap 4</strong></td>
+                    <td>Membangun <code>CategoryController.php</code> untuk operasi CRUD kategori dan proteksi Foreign Key.</td>
+                    <td>Manajemen master kategori terproteksi di <code>/admin/categories</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>Query Builder & SQL Complexity</strong></td>
-                    <td>Query sederhana: <code>where('email', $email)->first()</code> dan <code>insert()</code>.</td>
-                    <td>Query kompleks: <code>select()</code> dengan <code>join('categories')</code>, <code>join('product_images')</code>, filter kondisi dinamis (<code>like()</code>, <code>where()</code>), pengurutan multi-kriteria, dan kalkulasi relasi (jumlah produk per kategori).</td>
+                    <td><strong>Tahap 5</strong></td>
+                    <td>Membangun <code>ProductController.php</code> untuk CRUD produk, penentuan status, dan stok.</td>
+                    <td>Manajemen master produk terproteksi di <code>/admin/products</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>Fitur Antarmuka Pengguna</strong></td>
-                    <td>Form Login, Form Registrasi, dan routing halaman statis per-role.</td>
-                    <td>Katalog dinamis dengan filter kategori, pencarian produk, dashboard statistik produk, tabel admin dengan pagination, form modal/tambah/edit produk, dan galeri multi-gambar dengan penanda foto utama (primary).</td>
+                    <td><strong>Tahap 6</strong></td>
+                    <td>Implementasi penanganan multi-image upload, penanda foto sampul utama, dan penghapusan fisik file via <code>unlink()</code>.</td>
+                    <td>Pengelolaan berkas di <code>public/uploads/products/</code>.</td>
                 </tr>
                 <tr>
-                    <td><strong>Integritas Data & Error Handling</strong></td>
-                    <td>Validasi unik email dan pencocokan password.</td>
-                    <td>Proteksi <strong>Foreign Key Constraint</strong>: pencegahan penghapusan kategori yang masih memiliki produk aktif, transaksi relasional, dan validasi berkas upload.</td>
+                    <td><strong>Tahap 7</strong></td>
+                    <td>Menyediakan fitur pencarian nama/deskripsi produk (<code>LIKE</code>) dan filter kategori dinamis.</td>
+                    <td>Fitur Search & Filter responsif di admin dan frontend.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tahap 8</strong></td>
+                    <td>Integrasi proteksi rute dengan <code>AuthFilter</code>, feedback Flashdata, dan pengujian 10 skenario.</td>
+                    <td>Sistem terverifikasi lulus 100% pada seluruh uji fungsional.</td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- 8 TAHAPAN IMPLEMENTASI -->
-        <h3>2. Roadmap 8 Tahapan Implementasi CRUD Product Management</h3>
-        <p>Berdasarkan panduan resmi Hands-On Lab (HOL) dan artikel referensi Pak Fajar Baskoro, implementasi CRUD Produk diselesaikan melalui 8 langkah sistematis:</p>
+        <!-- 2. ARSITEKTUR MVC & STRUKTUR FOLDER -->
+        <h3>2. Arsitektur Pola MVC CodeIgniter 4 & Struktur Folder</h3>
+        <p>Modul Product Management ShopEase menerapkan pemisahan tanggung jawab <strong>Model-View-Controller (MVC)</strong> yang terstruktur rapi:</p>
+        <ul>
+            <li><strong>Model (<code>app/Models/</code>):</strong> Mengelola interaksi query basis data, relasi antar tabel (JOIN), fungsi pencarian (Query Builder), dan validasi integritas data produk/kategori.</li>
+            <li><strong>Controller (<code>app/Controllers/Admin/</code>):</strong> Mengendalikan alur logika CRUD, validasi formulir input, manipulasi berkas gambar (upload & unlink), serta pengaturan Flashdata notifikasi.</li>
+            <li><strong>View (<code>app/Views/admin/</code> & <code>frontend/</code>):</strong> Merender antarmuka pengguna responsif (UI) berbasis Bootstrap 5.3, tabel inventaris interaktif, modal/form penambahan, serta etalase katalog publik pelanggan.</li>
+            <li><strong>Filter Middleware (<code>app/Filters/</code>):</strong> Memastikan seluruh rute CRUD administratif hanya dapat diakses oleh pengguna terotentikasi dengan hak akses Administrator.</li>
+        </ul>
 
-        <div class="flow-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-                <strong>Perancangan Skema Database Relasional:</strong><br>
-                Merancang database <code>db_shopease_crud</code> dengan tabel <code>categories</code>, <code>products</code>, <code>product_images</code>, dan <code>users</code>. Menerapkan Foreign Key <code>id_category</code> pada <code>products</code> dan <code>id_product</code> pada <code>product_images</code> dengan aturan <code>ON DELETE CASCADE</code>.
-            </div>
-        </div>
+        <h4>Struktur Direktori Proyek Tugas 10:</h4>
+        <pre><code>Tugas 10/shopease/
+├── app/
+│   ├── Config/
+│   │   ├── Routes.php              # Definisi rute CRUD admin (/admin/products, /admin/categories)
+│   │   ├── Filters.php             # Registrasi alias filter 'auth' => AuthFilter::class
+│   │   └── Database.php            # Konfigurasi koneksi MySQL / MariaDB
+│   ├── Controllers/
+│   │   ├── Admin/
+│   │   │   ├── DashboardController.php # Statistik produk, kategori, dan alert stok menipis
+│   │   │   ├── ProductController.php   # CRUD produk, multi-image upload, toggle status, unlink
+│   │   │   └── CategoryController.php  # CRUD kategori, validasi relasi foreign key
+│   │   ├── AuthController.php          # Login, registrasi, dan autentikasi admin
+│   │   └── ProductController.php       # Katalog produk publik, filter, dan pencarian customer
+│   ├── Models/
+│   │   ├── CategoryModel.php       # Query builder kategori dan penghitungan jumlah produk
+│   │   ├── ProductModel.php        # Query builder JOIN produk, gambar primary, filter, sorting
+│   │   ├── ProductImageModel.php   # Model galeri gambar (is_primary, nama file acak)
+│   │   └── UserModel.php           # Model akun admin dan pengguna terotentikasi
+│   ├── Views/
+│   │   ├── admin/
+│   │   │   ├── dashboard.php       # Ringkasan analitik katalog produk & kategori
+│   │   │   ├── products/
+│   │   │   │   ├── index.php       # Tabel daftar produk, filter kategori, search, tombol CRUD
+│   │   │   │   ├── create.php      # Formulir penambahan produk dan multi-image upload
+│   │   │   │   └── edit.php        # Formulir pengubahan spesifikasi produk & kelola foto
+│   │   │   └── categories/
+│   │   │       ├── index.php       # Tabel daftar kategori & modal penambahan
+│   │   │       ├── create.php      # Form tambah kategori
+│   │   │       └── edit.php        # Form ubah data kategori
+│   │   └── frontend/
+│   │       └── products/           # Katalog publik pelanggan & halaman detail produk
+│   └── Filters/
+│       └── AuthFilter.php          # FilterInterface: pencegahan akses anonim ke panel CRUD
+├── public/
+│   ├── uploads/
+│   │   └── products/               # Direktori penyimpanan fisik gambar produk (JPG/PNG/WEBP)
+│   ├── index.php                   # Front controller CodeIgniter 4
+│   └── .htaccess                   # Rewrite engine Apache
+├── writable/                       # Cache, session, dan log runtime CI4
+├── db_shopease_crud.sql            # Skrip basis data lengkap, relasi FK, dan data seed
+└── .env                            # Konfigurasi environment database MySQL port 3307</code></pre>
 
-        <div class="flow-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-                <strong>Konfigurasi Environment & Database Driver:</strong><br>
-                Mengonfigurasi berkas <code>.env</code> CodeIgniter 4 dengan parameter koneksi MariaDB (port <code>3307</code>, database <code>db_shopease_crud</code>, username <code>root</code>) dan menyetel mode <code>CI_ENVIRONMENT = development</code> untuk pelacakan error interaktif.
-            </div>
-        </div>
-
-        <div class="flow-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-                <strong>Pembuatan Lapisan Model & Query Builder:</strong><br>
-                Membuat 3 model CodeIgniter: <code>CategoryModel.php</code> (dengan agregasi <code>getCategoriesWithCount()</code>), <code>ProductModel.php</code> (dengan query JOIN <code>getProductsWithDetails()</code> dan <code>getActiveProducts()</code>), serta <code>ProductImageModel.php</code> untuk tabel relasi gambar.
-            </div>
-        </div>
-
-        <div class="flow-step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-                <strong>Implementasi CRUD Master Kategori:</strong><br>
-                Membangun <code>CategoryController.php</code> dengan fungsionalitas menampilkan daftar kategori, validasi penambahan kategori baru, edit data/slug, serta pengecekan foreign key constraint sebelum penghapusan data.
-            </div>
-        </div>
-
-        <div class="flow-step">
-            <div class="step-number">5</div>
-            <div class="step-content">
-                <strong>Implementasi CRUD Master Produk:</strong><br>
-                Membangun <code>ProductController.php</code> dengan operasi membaca tabel inventaris, penambahan produk baru dengan dropdown kategori dinamis, pengubahan spesifikasi harga dan stok, serta penghapusan data.
-            </div>
-        </div>
-
-        <div class="flow-step">
-            <div class="step-number">6</div>
-            <div class="step-content">
-                <strong>Penanganan Multi-Image Upload & Manajemen Galeri:</strong><br>
-                Mengimplementasikan pengunggahan banyak gambar sekaligus (<code>getFileMultiple('images')</code>), validasi tipe ekstensi berkas, penentuan gambar utama (<em>is_primary</em>), penghapusan gambar galeri, dan pembersihan file fisik dari direktori <code>public/uploads/products/</code> menggunakan fungsi <code>unlink()</code>.
-            </div>
-        </div>
-
-        <div class="flow-step">
-            <div class="step-number">7</div>
-            <div class="step-content">
-                <strong>Fitur Pencarian, Filter Kategori, & Pengurutan:</strong><br>
-                Menyediakan fitur pencarian nama atau deskripsi barang dengan klausa SQL <code>LIKE</code>, penyaringan instan berdasarkan kategori aktif, serta pengurutan harga termurah, termahal, dan produk terbaru.
-            </div>
-        </div>
-
-        <div class="flow-step">
-            <div class="step-number">8</div>
-            <div class="step-content">
-                <strong>Integrasi Middleware & Penataan Tampilan Modern:</strong><br>
-                Memproteksi seluruh endpoint <code>/admin/*</code> menggunakan filter otentikasi role <code>AuthFilter</code>, menyematkan notifikasi Flashdata (Success/Error/Warning), serta merender antarmuka responsif Bootstrap 5.3.
-            </div>
-        </div>
-
-        <!-- ARSITEKTUR & ERD -->
-        <h3>3. Arsitektur Relasi Basis Data (ERD) & Struktur Tabel</h3>
-        <p>Sistem Product Management ShopEase menggunakan relasi One-to-Many (1:N) antar entitas bisnis utama:</p>
+        <!-- 3. DESAIN BASIS DATA (ERD) -->
+        <h3>3. Desain Database & Skema Relasi Multi-Tabel (ERD)</h3>
+        <p>Sistem dirancang menggunakan 3 tabel utama yang saling berelasi secara relasional One-to-Many (1:N) dengan integritas referensial (Foreign Key):</p>
 
         <div class="feature-box">
+            <strong>Relasi Entitas:</strong><br>
             <code>categories (1) &mdash;&mdash;&lt; (N) products (1) &mdash;&mdash;&lt; (N) product_images</code><br>
-            Satu kategori dapat menaungi banyak produk. Satu produk wajib memiliki satu kategori induk, dan satu produk dapat memiliki banyak foto dokumentasi pada tabel galeri <code>product_images</code>.
+            Setiap kategori dapat menampung banyak produk. Setiap produk wajib terikat pada satu kategori dan dapat memiliki banyak berkas foto pada tabel galeri <code>product_images</code>.
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 25%;">Tabel</th>
-                    <th style="width: 35%;">Kolom Kunci & Tipe Data</th>
-                    <th>Relasi & Keterangan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>categories</code></td>
-                    <td><code>id_category</code> (PK, AI), <code>name</code> (VARCHAR 100), <code>slug</code> (VARCHAR 120), <code>icon</code>, <code>created_at</code></td>
-                    <td>Induk relasi ke tabel <code>products</code>. Menyimpan master klasifikasi barang seperti Pakaian Pria, Elektronik, Sepatu, dll.</td>
-                </tr>
-                <tr>
-                    <td><code>products</code></td>
-                    <td><code>id_product</code> (PK, AI), <code>id_category</code> (FK), <code>name</code>, <code>slug</code>, <code>price</code> (DECIMAL 12,2), <code>stock</code> (INT), <code>weight</code>, <code>status</code> (ENUM 'tersedia', 'tidak_tersedia'), <code>created_at</code></td>
-                    <td>Tabel utama produk. Menyimpan spesifikasi teknis barang, persediaan unit, dan status penayangan di katalog.</td>
-                </tr>
-                <tr>
-                    <td><code>product_images</code></td>
-                    <td><code>id_image</code> (PK, AI), <code>id_product</code> (FK), <code>image</code> (VARCHAR 255), <code>is_primary</code> (TINYINT 1), <code>created_at</code></td>
-                    <td>Tabel pendukung multi-gambar. Menghubungkan setiap file foto di folder upload ke produk yang bersangkutan.</td>
-                </tr>
-                <tr>
-                    <td><code>users</code></td>
-                    <td><code>id_user</code> (PK, AI), <code>name</code>, <code>email</code> (UNIQUE), <code>password</code> (Bcrypt Hash), <code>role</code> (ENUM 'admin', 'operator', 'customer')</td>
-                    <td>Tabel pengguna terotentikasi. Digunakan oleh AuthFilter untuk memverifikasi hak akses ke panel manajemen CRUD.</td>
-                </tr>
-            </tbody>
-        </table>
+        <pre class="language-sql"><code>CREATE DATABASE IF NOT EXISTS `db_shopease_crud` DEFAULT CHARACTER SET utf8mb4;
+USE `db_shopease_crud`;
 
-        <!-- LOGIKA KODE KUNCI -->
-        <h3>4. Implementasi Kode Kunci (Controller, Model, & Upload Handler)</h3>
+-- Tabel Master Kategori
+CREATE TABLE `categories` (
+    `id_category` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(100) NOT NULL,
+    `slug` VARCHAR(120) NOT NULL UNIQUE,
+    `description` TEXT NULL,
+    `icon` VARCHAR(50) DEFAULT 'bi-tag',
+    `created_at` DATETIME NULL,
+    `updated_at` DATETIME NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-        <h4>A. Multi-Image Upload Handler & Unlink File Fisik (<code>ProductController.php</code>)</h4>
-        <p>Kode Controller menangani penerimaan berkas multi-gambar, penyimpanan nama unik acak ke database, serta pembersihan file fisik di hard drive saat data produk dihapus:</p>
+-- Tabel Utama Produk
+CREATE TABLE `products` (
+    `id_product` INT AUTO_INCREMENT PRIMARY KEY,
+    `id_category` INT NOT NULL,
+    `name` VARCHAR(200) NOT NULL,
+    `slug` VARCHAR(220) NOT NULL UNIQUE,
+    `description` TEXT NULL,
+    `price` DECIMAL(12, 2) NOT NULL DEFAULT 0.00,
+    `stock` INT NOT NULL DEFAULT 0,
+    `weight` INT NOT NULL DEFAULT 0 COMMENT 'dalam gram',
+    `status` ENUM('tersedia', 'tidak_tersedia') NOT NULL DEFAULT 'tersedia',
+    `created_at` DATETIME NULL,
+    `updated_at` DATETIME NULL,
+    CONSTRAINT `fk_product_category` FOREIGN KEY (`id_category`) 
+        REFERENCES `categories` (`id_category`) ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-        <pre><code>// Method penyimpanan multi-image pada ProductController.php
+-- Tabel Galeri Multi-Gambar Produk
+CREATE TABLE `product_images` (
+    `id_image` INT AUTO_INCREMENT PRIMARY KEY,
+    `id_product` INT NOT NULL,
+    `image` VARCHAR(255) NOT NULL,
+    `is_primary` TINYINT(1) NOT NULL DEFAULT 0,
+    `created_at` DATETIME NULL,
+    CONSTRAINT `fk_image_product` FOREIGN KEY (`id_product`) 
+        REFERENCES `products` (`id_product`) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
+
+        <!-- 4. LOGIKA KODE KUNCI -->
+        <h3>4. Logika Kode Kunci Backend & Penanganan Berkas</h3>
+
+        <h4>A. Multi-Image Upload & File Unlinking (<code>ProductController.php</code>)</h4>
+        <p>Controller menangani penerimaan multi-berkas gambar dari formulir, pemberian nama acak unik (UUID/hash), penyimpanan ke direktori upload, dan pembersihan file fisik di disk saat produk dihapus:</p>
+        <pre class="language-php"><code>// Penyimpanan multi-image ke folder dan database
 private function saveImages($productId, $images)
 {
     $imageModel = new ProductImageModel();
     $uploadPath = FCPATH . 'uploads/products/';
 
-    // Buat direktori bila belum ada
     if (!is_dir($uploadPath)) {
         mkdir($uploadPath, 0777, true);
     }
@@ -423,7 +421,7 @@ private function saveImages($productId, $images)
     }
 }
 
-// Method penghapusan produk beserta seluruh file foto fisiknya
+// Penghapusan data produk beserta pembersihan seluruh file foto fisik (unlink)
 public function delete($id)
 {
     $productModel = new ProductModel();
@@ -434,7 +432,7 @@ public function delete($id)
         return redirect()->back()->with('error', 'Produk tidak ditemukan');
     }
 
-    // Ambil dan hapus file fisik seluruh gambar dari folder uploads
+    // Ambil dan hapus seluruh berkas fisik dari filesystem
     $images = $imageModel->where('id_product', $id)->findAll();
     foreach ($images as $img) {
         $filePath = FCPATH . 'uploads/products/' . $img['image'];
@@ -449,8 +447,7 @@ public function delete($id)
 
         <h4>B. Query Builder JOIN Kompleks & Filter Katalog (<code>ProductModel.php</code>)</h4>
         <p>Model mengombinasikan Query Builder untuk mengambil data produk lengkap dengan nama kategori dan foto sampul utama (primary):</p>
-
-        <pre><code>public function getProductsWithDetails($categoryId = null, $keyword = null, $sort = 'latest')
+        <pre class="language-php"><code>public function getProductsWithDetails($categoryId = null, $keyword = null, $sort = 'latest')
 {
     $builder = $this->db->table($this->table);
     $builder->select('products.*, categories.name as category_name, 
@@ -470,7 +467,6 @@ public function delete($id)
                 ->groupEnd();
     }
 
-    // Penanganan pengurutan data
     switch ($sort) {
         case 'price_low':  $builder->orderBy('products.price', 'ASC'); break;
         case 'price_high': $builder->orderBy('products.price', 'DESC'); break;
@@ -480,25 +476,68 @@ public function delete($id)
     return $builder->get()->getResultArray();
 }</code></pre>
 
-        <h4>C. Validasi Relasi Integritas Foreign Key pada Kategori (<code>CategoryController.php</code>)</h4>
-        <p>Sebelum menghapus kategori, sistem memeriksa apakah ada produk yang masih terhubung demi menjaga integritas data referensial:</p>
-
-        <pre><code>public function delete($id)
+        <h4>C. Validasi Integritas Foreign Key pada Kategori (<code>CategoryController.php</code>)</h4>
+        <p>Sebelum menghapus kategori, sistem memeriksa apakah terdapat produk yang masih terikat untuk mencegah inkonsistensi data:</p>
+        <pre class="language-php"><code>public function delete($id)
 {
     $productModel = new ProductModel();
     $productCount = $productModel->where('id_category', $id)->countAllResults();
 
     if ($productCount > 0) {
         return redirect()->back()->with('error', 
-            "Gagal menghapus kategori: masih terdapat {$productCount} produk yang terhubung ke kategori ini!");
+            "Gagal menghapus kategori: terdapat {$productCount} produk yang terhubung ke kategori ini!");
     }
 
     $this->categoryModel->delete($id);
     return redirect()->to(base_url('admin/categories'))->with('success', 'Kategori berhasil dihapus');
 }</code></pre>
 
-        <!-- MATRIX PENGUJIAN -->
-        <h3>5. Matriks Hasil Pengujian Fungsional (10 Skenario Hands-On Lab)</h3>
+        <!-- 5. ALUR KERJA OPERASIONAL (WORKFLOW) -->
+        <h3>5. Alur Kerja Operasional CRUD & Relasi Data (Workflow)</h3>
+        <p>Siklus hidup manajemen data produk pada aplikasi ShopEase berjalan melalui alur terstruktur:</p>
+
+        <div class="flow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Input Data & Validasi Formulir:</strong><br>
+                Admin mengisi data produk (nama, kategori, harga, stok, berat, deskripsi) dan memilih satu atau beberapa gambar. Controller memvalidasi tipe berkas (JPG/PNG/WEBP) dan ukuran maksimum 2MB.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Penyimpanan Transaksional Relasi 1:N:</strong><br>
+                Data produk disimpan terlebih dahulu ke tabel <code>products</code> untuk mendapatkan ID produk (<code>id_product</code>). Selanjutnya berkas gambar dipindahkan ke folder upload fisik dengan nama acak unik dan dicatat ke tabel relasi <code>product_images</code>.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>Penetapan Foto Sampul Utama (Primary Image):</strong><br>
+                Foto pertama secara otomatis ditetapkan sebagai foto sampul utama (<code>is_primary = 1</code>). Admin dapat mengganti status foto utama sewaktu-waktu melalui halaman edit produk.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <strong>Pencarian, Penyaringan, & Penayangan Katalog:</strong><br>
+                Query Builder Model menggabungkan data produk dengan nama kategori dan gambar sampul utama untuk ditayangkan di tabel inventaris admin maupun grid etalase etalase pelanggan dengan filter instan.
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <strong>Penghapusan Bersih (Clean Delete):</strong><br>
+                Saat produk dihapus, Controller melacak seluruh file foto yang terkait pada tabel <code>product_images</code>, mengeksekusi <code>unlink()</code> pada disk penyimpanan lokal, lalu menghapus record basis data secara aman.
+            </div>
+        </div>
+
+        <!-- 6. MATRIKS PENGUJIAN -->
+        <h3>6. Matriks Hasil Pengujian Sistem (10 Skenario Hands-On Lab)</h3>
         <p>Seluruh 10 skenario pengujian fungsional CRUD telah dieksekusi dan dinyatakan lulus 100%:</p>
 
         <table>
@@ -516,7 +555,7 @@ public function delete($id)
                     <td>1</td>
                     <td>Read Katalog Produk Admin</td>
                     <td>Akses <code>/admin/products</code> via peramban web sebagai Administrator.</td>
-                    <td>Daftar seluruh produk tampil rapi lengkap dengan foto thumbnail, kategori, harga, stok, dan tombol aksi.</td>
+                    <td>Daftar seluruh produk tampil rapi lengkap dengan thumbnail foto, badge kategori, harga, stok, dan tombol aksi.</td>
                     <td><strong style="color: #16a34a;">&#10004; Lulus</strong></td>
                 </tr>
                 <tr>
@@ -585,8 +624,8 @@ public function delete($id)
             </tbody>
         </table>
 
-        <!-- DOKUMENTASI SCREENSHOT -->
-        <h3>6. Dokumentasi Visual Bukti Eksekusi (12 Screenshots)</h3>
+        <!-- 7. DOKUMENTASI SCREENSHOT -->
+        <h3>7. Dokumentasi Visual Bukti Pengujian (12 Screenshots)</h3>
         <p>Berikut adalah rekaman visual antarmuka dan pembuktian fungsionalitas modul CRUD Product Management:</p>
 
         <h4>1. Dashboard Utama Product Management</h4>
@@ -661,8 +700,8 @@ public function delete($id)
             <div class="img-caption">Gambar 12: Mekanisme proteksi rute middleware AuthFilter yang secara otomatis menolak akses anonim ke panel CRUD admin dan mengarahkan kembali ke form login.</div>
         </div>
 
-        <!-- PETUNJUK MENJALANKAN -->
-        <h3>7. Petunjuk Menjalankan Proyek Secara Lokal</h3>
+        <!-- 8. PETUNJUK MENJALANKAN -->
+        <h3>8. Petunjuk Menjalankan Proyek Secara Lokal</h3>
         <p>Berikut adalah panduan langkah demi langkah untuk menjalankan aplikasi ShopEase Tugas 10 di lingkungan lokal komputer Anda:</p>
         <ol>
             <li>Pastikan service database server <strong>MySQL (MariaDB)</strong> telah aktif (misalnya di XAMPP port 3307 atau 3306).</li>
